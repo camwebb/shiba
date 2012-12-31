@@ -1,7 +1,7 @@
 shiba
 =====
 
-Simulated historical island biogeography analysisBioGeo simulator - Cam Webb (after discussions with Rick Ree, Michael Donoghue and Brian Moore)
+Simulated historical island biogeography analysis - Cam Webb (after discussions with Rick Ree, Michael Donoghue and Brian Moore)
 
 Very brief info!
 
@@ -26,3 +26,8 @@ bash $ nohup ./shiba -s > output 2> /dev/null &
 tcsh % nohup ( shiba -s > output ) >& /dev/null &
 
 
+----
+
+## Infile.xml
+
+The normative schema is `infile.rnc`: `infile.rng` is derived

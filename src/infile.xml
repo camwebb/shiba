@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shibaInput>
+  <time n="13">
+    <periodStart id="t1">12</periodStart>
+    <periodStart id="t2">11</periodStart>
+    <periodStart id="t3">10</periodStart>
+    <periodStart id="t4">9</periodStart>
+    <periodStart id="t5">8</periodStart>
+    <periodStart id="t6">7</periodStart>
+    <periodStart id="t7">6</periodStart>
+    <periodStart id="t8">5</periodStart>
+    <periodStart id="t9">4</periodStart>
+    <periodStart id="t10">3</periodStart>
+    <periodStart id="t11">2</periodStart>
+    <periodStart id="t12">1</periodStart>
+    <periodStart id="t13">0</periodStart>
+  </time>
+  <space n="4">
+    <spaceName id="s1">borneo</spaceName>
+    <spaceName id="s2">wsulaw</spaceName> 
+    <spaceName id="s3">cnewgn</spaceName> 
+    <spaceName id="s4">luzonp</spaceName>
+  </space>
+  <areas>
+    <area time="t1" space="s1">10</area>
+    <area time="t1" space="s2">3</area>
+    <area time="t1" space="s3">12</area>
+    <area time="t1" space="s4">3</area>
+
+    <area time="t2" space="s1">10</area>
+    <area time="t2" space="s2">3</area>
+    <area time="t2" space="s3">12</area>
+    <area time="t2" space="s4">3</area>
+
+    <area time="t3" space="s1">10</area>
+    <area time="t3" space="s2">3</area>
+    <area time="t3" space="s3">12</area>
+    <area time="t3" space="s4">3</area>
+
+    <area time="t4" space="s1">10</area>
+    <area time="t4" space="s2">3</area>
+    <area time="t4" space="s3">12</area>
+    <area time="t4" space="s4">3</area>
+
+    <area time="t5" space="s1">10</area>
+    <area time="t5" space="s2">3</area>
+    <area time="t5" space="s3">12</area>
+    <area time="t5" space="s4">3</area>
+
+    <area time="t6" space="s1">10</area>
+    <area time="t6" space="s2">3</area>
+    <area time="t6" space="s3">12</area>
+    <area time="t6" space="s4">3</area>
+
+    <area time="t7" space="s1">10</area>
+    <area time="t7" space="s2">3</area>
+    <area time="t7" space="s3">12</area>
+    <area time="t7" space="s4">3</area>
+
+    <area time="t8" space="s1">10</area>
+    <area time="t8" space="s2">3</area>
+    <area time="t8" space="s3">12</area>
+    <area time="t8" space="s4">3</area>
+
+    <area time="t9" space="s1">10</area>
+    <area time="t9" space="s2">3</area>
+    <area time="t9" space="s3">12</area>
+    <area time="t9" space="s4">3</area>
+
+    <area time="t10" space="s1">10</area>
+    <area time="t10" space="s2">3</area>
+    <area time="t10" space="s3">12</area>
+    <area time="t10" space="s4">3</area>
+
+    <area time="t11" space="s1">10</area>
+    <area time="t11" space="s2">3</area>
+    <area time="t11" space="s3">12</area>
+    <area time="t11" space="s4">3</area>
+
+    <area time="t12" space="s1">10</area>
+    <area time="t12" space="s2">3</area>
+    <area time="t12" space="s3">12</area>
+    <area time="t12" space="s4">3</area>
+
+    <area time="t13" space="s1">10</area>
+    <area time="t13" space="s2">3</area>
+    <area time="t13" space="s3">12</area>
+    <area time="t13" space="s4">3</area>
+  </areas>
+  <distances>
+    <dist time="t1" from="s1" to="s2">489</dist>
+    <dist time="t1" from="s1" to="s3">2221</dist>
+    <dist time="t1" from="s1" to="s4">1323</dist>
+    <dist time="t1" from="s2" to="s3">1176</dist>
+    <dist time="t1" from="s2" to="s4">1464</dist>
+    <dist time="t1" from="s3" to="s4">2238</dist>
+
+    <dist time="t2" from="s1" to="s2">489</dist>
+    <dist time="t2" from="s1" to="s3">2221</dist>
+    <dist time="t2" from="s1" to="s4">1323</dist>
+    <dist time="t2" from="s2" to="s3">1176</dist>
+    <dist time="t2" from="s2" to="s4">1464</dist>
+    <dist time="t2" from="s3" to="s4">2238</dist>
+
+    <dist time="t3" from="s1" to="s2">489</dist>
+    <dist time="t3" from="s1" to="s3">2221</dist>
+    <dist time="t3" from="s1" to="s4">1323</dist>
+    <dist time="t3" from="s2" to="s3">1176</dist>
+    <dist time="t3" from="s2" to="s4">1464</dist>
+    <dist time="t3" from="s3" to="s4">2238</dist>
+
+    <dist time="t4" from="s1" to="s2">605</dist>
+    <dist time="t4" from="s1" to="s3">2227</dist>
+    <dist time="t4" from="s1" to="s4">1290</dist>
+    <dist time="t4" from="s2" to="s3">1631</dist>
+    <dist time="t4" from="s2" to="s4">1325</dist>
+    <dist time="t4" from="s3" to="s4">2161</dist>
+
+    <dist time="t5" from="s1" to="s2">605</dist>
+    <dist time="t5" from="s1" to="s3">2227</dist>
+    <dist time="t5" from="s1" to="s4">1290</dist>
+    <dist time="t5" from="s2" to="s3">1631</dist>
+    <dist time="t5" from="s2" to="s4">1325</dist>
+    <dist time="t5" from="s3" to="s4">2161</dist>
+
+    <dist time="t6" from="s1" to="s2">605</dist>
+    <dist time="t6" from="s1" to="s3">2227</dist>
+    <dist time="t6" from="s1" to="s4">1290</dist>
+    <dist time="t6" from="s2" to="s3">1631</dist>
+    <dist time="t6" from="s2" to="s4">1325</dist>
+    <dist time="t6" from="s3" to="s4">2161</dist>
+
+    <dist time="t7" from="s1" to="s2">744</dist>
+    <dist time="t7" from="s1" to="s3">2230</dist>
+    <dist time="t7" from="s1" to="s4">1260</dist>
+    <dist time="t7" from="s2" to="s3">1486</dist>
+    <dist time="t7" from="s2" to="s4">1194</dist>
+    <dist time="t7" from="s3" to="s4">2084</dist>
+
+    <dist time="t8" from="s1" to="s2">744</dist>
+    <dist time="t8" from="s1" to="s3">2230</dist>
+    <dist time="t8" from="s1" to="s4">1260</dist>
+    <dist time="t8" from="s2" to="s3">1486</dist>
+    <dist time="t8" from="s2" to="s4">1194</dist>
+    <dist time="t8" from="s3" to="s4">2084</dist>
+
+    <dist time="t9" from="s1" to="s2">744</dist>
+    <dist time="t9" from="s1" to="s3">2230</dist>
+    <dist time="t9" from="s1" to="s4">1260</dist>
+    <dist time="t9" from="s2" to="s3">1486</dist>
+    <dist time="t9" from="s2" to="s4">1194</dist>
+    <dist time="t9" from="s3" to="s4">2084</dist>
+
+    <dist time="t10" from="s1" to="s2">591</dist>
+    <dist time="t10" from="s1" to="s3">1965</dist>
+    <dist time="t10" from="s1" to="s4">1173</dist>
+    <dist time="t10" from="s2" to="s3">1387</dist>
+    <dist time="t10" from="s2" to="s4">1245</dist>
+    <dist time="t10" from="s3" to="s4">1948</dist>
+
+    <dist time="t11" from="s1" to="s2">591</dist>
+    <dist time="t11" from="s1" to="s3">1965</dist>
+    <dist time="t11" from="s1" to="s4">1173</dist>
+    <dist time="t11" from="s2" to="s3">1387</dist>
+    <dist time="t11" from="s2" to="s4">1245</dist>
+    <dist time="t11" from="s3" to="s4">1948</dist>
+
+    <dist time="t12" from="s1" to="s2">591</dist>
+    <dist time="t12" from="s1" to="s3">1965</dist>
+    <dist time="t12" from="s1" to="s4">1173</dist>
+    <dist time="t12" from="s2" to="s3">1387</dist>
+    <dist time="t12" from="s2" to="s4">1245</dist>
+    <dist time="t12" from="s3" to="s4">1948</dist>
+
+    <dist time="t13" from="s1" to="s2">591</dist>
+    <dist time="t13" from="s1" to="s3">1965</dist>
+    <dist time="t13" from="s1" to="s4">1173</dist>
+    <dist time="t13" from="s2" to="s3">1387</dist>
+    <dist time="t13" from="s2" to="s4">1245</dist>
+    <dist time="t13" from="s3" to="s4">1948</dist>
+  </distances>
+  <taxa n="6">
+    <taxon id="x1">tuba</taxon>
+    <taxon id="x2">pudor</taxon>
+    <taxon id="x3">polyantha</taxon>
+    <taxon id="x4">javanica</taxon>
+    <taxon id="x5">kawak</taxon>
+    <taxon id="x6">fossil1</taxon>
+  </taxa>
+  <phylo n="1">
+    <newick id="p1">((tuba:9,(pudor:5,polyantha:5):4)fossil1:2,(javanica:6,kawak:6):5):1;</newick>
+  </phylo>
+  <extantIn> <!-- included fossils -->
+    <exant taxon="x1" time="t13" space="s3"/>
+    <exant taxon="x2" time="t13" space="s2"/>
+    <exant taxon="x3" time="t13" space="s1"/>
+    <exant taxon="x4" time="t13" space="s4"/>
+    <exant taxon="x5" time="t13" space="s1"/>
+    <exant taxon="x6" time="t3"  space="s1"/>
+  </extantIn>
+  <config>
+    <startSpaces>
+      <allowed space="s1"/> 
+      <allowed space="s2"/> 
+      <allowed space="s3"/> 
+      <allowed space="s4"/> 
+    </startSpaces>
+  </config>
+</shibaInput>

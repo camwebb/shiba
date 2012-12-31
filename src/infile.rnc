@@ -1,0 +1,62 @@
+default namespace = ""
+
+start =
+  element shibaInput {
+    element time {
+      attribute n { xsd:integer },
+      element periodStart {
+        attribute id { xsd:ID },
+        xsd:float
+      }+
+    },
+    element space {
+      attribute n { xsd:integer },
+      element spaceName {
+        attribute id { xsd:ID },
+        xsd:NCName
+      }+
+    },
+    element areas {
+      element area {
+        attribute space { xsd:IDREF },
+        attribute time { xsd:IDREF },
+        xsd:integer
+      }+
+    },
+    element distances {
+      element dist {
+        attribute from { xsd:IDREF },
+        attribute time { xsd:IDREF },
+        attribute to { xsd:IDREF },
+        xsd:integer
+      }+
+    },
+    element taxa {
+      attribute n { xsd:integer },
+      element taxon {
+        attribute id { xsd:ID },
+        xsd:NCName
+      }+
+    },
+    element phylo {
+      attribute n { xsd:integer },
+      element newick { 
+         attribute id { xsd:ID },
+         text 
+      }+
+    },
+    element extantIn {
+      element exant {
+        attribute space { xsd:IDREF },
+        attribute taxon { xsd:IDREF },
+        attribute time { xsd:IDREF }
+      }+
+    },
+    element config {
+      element startSpaces {
+        element allowed {
+          attribute space { xsd:IDREF }
+        }+
+      }
+    }
+  }
