@@ -379,6 +379,81 @@ void readXML()
 }
 
 /*!
+ * Output matrices for checking by user
+ */
+
+void printIndata()
+{
+  printf("# Data as read from infile.xml\n");
+
+  printf("\n## Spaces:\n");
+  for (int i = 0; i < Spaces; i++) printf("  %3d: %s\n", i, SpaceName[i]); 
+
+  printf("\n## Times:\n");
+  for (int i = 0; i < Times; i++) printf("  %3d: %7.2f\n", i, RealTime[i]); 
+
+  printf("\n## Areas:\n");
+  printf("  Spaces  :");
+  for (int i = 0; i < Spaces; i++) printf("  %6d", i); 
+  printf("\n");
+  for (int i = 0; i < Times; i++) 
+    {
+      printf("  Time %3d:", i);
+      for (int j = 0; j < Spaces; j++) printf("  %6.2f", Area[i][j]);
+      printf("\n");
+    }
+
+  printf("\n## Distances:\n");
+  for (int t = 0; t < Times; t++)
+    {
+      printf("  Time: %3d\n", t);
+      printf("    From    :");
+      for (int i = 0; i < Spaces; i++) printf("  %6d", i); 
+      printf("\n");
+      for (int i = 0; i < Spaces; i++) 
+        {
+          printf("    To   %3d:", i);
+          for (int j = 0; j < Spaces; j++) printf("  %6.1f", Dist[t][i][j]);
+          printf("\n");
+        }
+    }
+
+  printf("\n## Taxa:\n");
+  for (int i = 0; i < Taxa; i++) printf("  %d: %s\n", i, Taxon[i]); 
+
+  printf("\n## Extant:\n");
+  printf("  Spaces             :");
+  for (int i = 0; i < Spaces; i++) printf("  %3d", i); 
+  printf("\n");
+  for (int t = 0; t < Times; t++)
+    {
+      for (int i = 0; i < Taxa; i++)
+        {
+          int isOne = 0;
+          for (int j = 0; j < Spaces; j++)
+            if (Extant[i][t][j]) isOne++;
+          if (isOne)
+            {
+              printf("  Time %3d, Taxon %3d:", t, i);
+              for (int j = 0; j < Spaces; j++) printf("  %3d", Extant[i][t][j]);
+              printf("\n");
+            }
+        }
+    }
+
+  printf("\n## StartSpaces:\n");
+  printf("  Spaces  :");
+  for (int i = 0; i < Spaces; i++) printf("  %3d", i); 
+  printf("\n");
+  printf("  Allowed :");
+  for (int j = 0; j < Spaces; j++) printf("  %3d", Cfg.startSpace[j]);
+  printf("\n");
+
+  printf("\n");
+
+}
+
+/*!
  * Simple error warning, with exit from program, returning 1
  */
 

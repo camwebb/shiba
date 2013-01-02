@@ -42,6 +42,8 @@ char **TaxonLabel;
 // ------------------------ FUNCTIONS ---------------------------
 
 void readXML();
+void printIndata();
+
 void error(char *a);
 
 int* mem1d_i(int dimx);
