@@ -19,7 +19,8 @@ void readXML()
   mxml_node_t *tree;
   mxml_node_t *node;
   // Counters for occurrences of data elements
-  int t = 0; int s = 0; int p = 0; int x = 0; int a = 0; int d = 0; int e = 0;
+  int t = 0; int s = 0; int p = 0; int x = 0; 
+  int a = 0; int d = 0; int e = 0; int ss = 0;
 
   fp = fopen("infile.xml", "r");
   tree = mxmlLoadFile(NULL, fp, MXML_TEXT_CALLBACK);
@@ -49,17 +50,18 @@ void readXML()
 
   // ------------- Dimension arrays in the heap -----------------------------
 
-  Area       = mem2d_d(Times, Spaces, "Area");
-  Dist       = mem3d_d(Times, Spaces, Spaces, "Dist");
-  RealTime   = mem1d_d(Times, "RealTime");
-  TimeLabel  = mem2d1_c(Times, "TimeLabel");
-  SpaceName  = mem2d1_c(Spaces, "SpaceName");
-  SpaceLabel = mem2d1_c(Spaces, "SpaceLabel");
-  Phylo      = mem2d1_c(Phylos, "Phylo");
-  PhyloLabel = mem2d1_c(Phylos, "PhyloLabel");
-  Taxon      = mem2d1_c(Taxa, "Taxon");
-  TaxonLabel = mem2d1_c(Taxa, "TaxonLabel");
-  Extant     = mem3d_i(Taxa, Times, Spaces, "Extant");
+  Area       = mem2d_d(Times, Spaces);
+  Dist       = mem3d_d(Times, Spaces, Spaces);
+  RealTime   = mem1d_d(Times);
+  TimeLabel  = mem2d1_c(Times);
+  SpaceName  = mem2d1_c(Spaces);
+  SpaceLabel = mem2d1_c(Spaces);
+  Phylo      = mem2d1_c(Phylos);
+  PhyloLabel = mem2d1_c(Phylos);
+  Taxon      = mem2d1_c(Taxa);
+  TaxonLabel = mem2d1_c(Taxa);
+  Extant     = mem3d_i(Taxa, Times, Spaces);
+  Cfg.startSpace = mem1d_i(Spaces);
   
   // --------------------- Crawl the XML tree to fill in the data --------- 
 
@@ -327,6 +329,35 @@ void readXML()
               e++;
             }
 
+          // ------------- Config --------------------------------------
+
+          // startSpaces/allowed
+          else if (!strcmp(mxmlGetElement(node), "allowed"))
+            {
+              int ss_s;
+              if (ss >= Spaces) error("Too many startSpaces/allowed elements");
+              // Read the attr
+              if (!mxmlElementGetAttr(node, "space"))
+                error("A space attr is missing in allowed");
+              else
+                {
+                  ss_s = -1;
+                  for (int i = 0; i < Spaces; i++)
+                    {
+                      if (!strcmp(mxmlElementGetAttr(node, "space"),
+                                  SpaceLabel[i])) ss_s = i;
+                    }           
+                  if (ss_s == -1)
+                    {
+                      fprintf(stderr, 
+                        "XML parse error: //allowed/@space '%s' not IDREF\n", 
+                        mxmlElementGetAttr(node, "space"));
+                      exit(1);
+                    }
+                }
+              Cfg.startSpace[ss_s] = 1;
+              ss++;
+            }
         }
       
       node = mxmlWalkNext(node, tree, MXML_DESCEND);
@@ -365,15 +396,24 @@ void error(char *error_msg)
  * To free, just use free().
  */
 
-double* mem1d_d(int dimx, char *msg)
+double* mem1d_d(int dimx)
 {
   double *ptr;
   ptr = calloc(dimx, sizeof(double));
-  if (!ptr)
-    {
-      printf("allocation failure in mem1d_d() for pointer %s", msg);
-      exit(1);
-    }
+  if (!ptr) error("allocation failure in mem1d_d()");
+  return ptr;
+}
+
+/*!
+ * Dimensions an initialized 1-D array of int.
+ * To free, just use free().
+ */
+
+int* mem1d_i(int dimx)
+{
+  int *ptr;
+  ptr = calloc(dimx, sizeof(int));
+  if (!ptr) error("allocation failure in mem1d_i()");
   return ptr;
 }
 
@@ -384,15 +424,11 @@ double* mem1d_d(int dimx, char *msg)
  * To free, use free2d1_c().
  */
 
-char** mem2d1_c(int dimx, char *msg)
+char** mem2d1_c(int dimx)
 {
   char **ptr;
   ptr = calloc(dimx, sizeof(char *));
-  if (!ptr)
-    {
-      printf("allocation failure in mem2d1_c() for pointer %s", msg);
-      exit(1);
-    }
+  if (!ptr) error("allocation failure in mem2d1_c()");
   return ptr;
 
   // Direct, non-function alternative, e.g.: 
@@ -412,23 +448,15 @@ void free2d1_c(char **ptr, int dimx)
  * Dimensions an initialized 2-D array of doubles. Free with free2d_d()
  */
 
-double** mem2d_d(int dimx, int dimy, char *msg)
+double** mem2d_d(int dimx, int dimy)
 {
   double **ptr;
   ptr = calloc(dimx, sizeof(double *));
-  if (!ptr)
-    {
-      printf("allocation failure in mem2d_d() pass 1 for pointer %s", msg);
-      exit(1);
-    }
+  if (!ptr) error("allocation failure in mem2d_d() pass 1");
   for(int i = 0; i < dimx; i++) 
     {
       ptr[i] = calloc(dimy, sizeof(double));
-      if (!ptr[i])
-        {
-          printf("allocation failure in mem2d_d() pass 2 for pointer %s", msg);
-          exit(1);
-        }
+      if (!ptr[i]) error("allocation failure in mem2d_d() pass 2");
     }
   return ptr;
 }
@@ -444,33 +472,19 @@ void free2d_d(double **ptr, int dimx)
  * Dimensions an initialized 3-D array of doubles. Free with free3d_d()
  */
 
-double*** mem3d_d(int dimx, int dimy, int dimz, char *msg)
+double*** mem3d_d(int dimx, int dimy, int dimz)
 {
   double ***ptr;
   ptr = calloc(dimx, sizeof(double **));
-  if (!ptr)
-    {
-      printf("allocation failure in mem3d_d() pass 1 for pointer %s\n", msg);
-      exit(1);
-    }
+  if (!ptr) error("allocation failure in mem3d_d() pass 1");
   for(int i = 0; i < dimx; i++) 
     {
       ptr[i] = calloc(dimy, sizeof(double *));
-      if (!ptr[i])
-        {
-          printf("allocation failure in mem3d_d() pass 2 for pointer %s\n", 
-                 msg);
-          exit(1);
-        }
+      if (!ptr[i]) error("allocation failure in mem3d_d() pass 2");
       for(int j = 0; j < dimy; j++) 
         {
           ptr[i][j] = calloc(dimz, sizeof(double));
-          if (!ptr[i][j])
-            {
-              printf("allocation failure in mem3d_d() pass 3 for pointer %s", 
-                     msg);
-              exit(1);
-            }
+          if (!ptr[i][j]) error("allocation failure in mem3d_d() pass 3");
         }
     }
   return ptr;
@@ -491,33 +505,19 @@ void free3d_d(double ***ptr, int dimx, int dimy)
  * Dimensions an initialized 3-D array of int. Free with free3d_i()
  */
 
-int*** mem3d_i(int dimx, int dimy, int dimz, char *msg)
+int*** mem3d_i(int dimx, int dimy, int dimz)
 {
   int ***ptr;
   ptr = calloc(dimx, sizeof(int **));
-  if (!ptr)
-    {
-      printf("allocation failure in mem3d_d() pass 1 for pointer %s\n", msg);
-      exit(1);
-    }
+  if (!ptr) error("allocation failure in mem3d_d() pass 1");
   for(int i = 0; i < dimx; i++) 
     {
       ptr[i] = calloc(dimy, sizeof(int *));
-      if (!ptr[i])
-        {
-          printf("allocation failure in mem3d_d() pass 2 for pointer %s\n", 
-                 msg);
-          exit(1);
-        }
+      if (!ptr[i]) error("allocation failure in mem3d_d() pass 2");
       for(int j = 0; j < dimy; j++) 
         {
           ptr[i][j] = calloc(dimz, sizeof(int));
-          if (!ptr[i][j])
-            {
-              printf("allocation failure in mem3d_d() pass 3 for pointer %s", 
-                     msg);
-              exit(1);
-            }
+          if (!ptr[i][j]) error("allocation failure in mem3d_d() pass 3");
         }
     }
   return ptr;

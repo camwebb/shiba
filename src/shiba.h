@@ -8,7 +8,6 @@
 #include <math.h>
 #include <string.h>
 #include <time.h>
-#include "nrutil.h"
 
 // ------------------------ STRUCTURES ---------------------------
 
@@ -16,15 +15,13 @@
  * The structure that stores the configuration information
  */
 
-typedef struct shibaConfig {
-  int time;
-  int space;
-  char **spacenames;
+typedef struct {
+  int *startSpace;
 } shibaConfig;
 
 // ------------------------ VARIABLES ---------------------------
 
-shibaConfig cfg;
+shibaConfig Cfg;
 
 int Times;  ///< The number of time periods 
 char **TimeLabel; ///< The ID label in the XML file for the time period
@@ -46,14 +43,17 @@ char **TaxonLabel;
 
 void readXML();
 void error(char *a);
-double* mem1d_d(int dim, char *msg);
-//int mem2d_d(double ***ptr, int dimx, int dimy, char *msg);
-double** mem2d_d(int dimx, int dimy, char *msg);
+
+int* mem1d_i(int dimx);
+double* mem1d_d(int dim);
+
+double** mem2d_d(int dimx, int dimy);
 void free2d_d(double **ptr, int dimx);
-char** mem2d1_c(int dimx, char *msg);
-double*** mem3d_d(int dimx, int dimy, int dimz, char *msg);
+char** mem2d1_c(int dimx);
+
+double*** mem3d_d(int dimx, int dimy, int dimz);
 void free3d_d(double ***ptr, int dimx, int dimy);
-int*** mem3d_i(int dimx, int dimy, int dimz, char *msg);
+int*** mem3d_i(int dimx, int dimy, int dimz);
 void free3d_i(int ***ptr, int dimx, int dimy);
 
 

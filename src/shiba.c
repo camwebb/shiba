@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
   printf("Area[2][2]: %f\n", Area[2][2]);
   printf("Dist[3][1][3]: %f\n", Dist[3][1][2]);
   printf("Extant[2][12][0]: %d\n", Extant[2][12][0]);
+  printf("StartSpace[2]: %d\n", Cfg.startSpace[2]);
 
   free2d_d(Area, Times);
 
