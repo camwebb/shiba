@@ -1,5 +1,5 @@
 /*! \file
- * Input, output and error functions
+ * Input, output, error and memory allocation functions
  */
 
 #define _GNU_SOURCE
@@ -18,15 +18,15 @@ void readXML()
   FILE *fp;
   mxml_node_t *tree;
   mxml_node_t *node;
-  int t = 0; int s = 0; int p = 0; int x = 0;
-
-  //double datad;
+  // Counters for occurrences of data elements
+  int t = 0; int s = 0; int p = 0; int x = 0; int a = 0; int d = 0; int e = 0;
 
   fp = fopen("infile.xml", "r");
   tree = mxmlLoadFile(NULL, fp, MXML_TEXT_CALLBACK);
   fclose(fp);
 
   if (!tree) error("Unable to parse input file");
+
 
   // ----------- Get core dimensioning elements first using Xpath-ish -------- 
 
@@ -49,22 +49,18 @@ void readXML()
 
   // ------------- Dimension arrays in the heap -----------------------------
 
-  RealTime = dvector(0, Times-1); 
-  if ( (TimeLabel = (char**) malloc( Times * sizeof(char*))) == NULL ) \
-      error("Cannot allocate memory to TimeLabel");
-  if ( (SpaceName = (char**) malloc( Spaces * sizeof(char*))) == NULL ) \
-      error("Cannot allocate memory to SpaceName");
-  if ( (SpaceLabel = (char**) malloc( Spaces * sizeof(char*))) == NULL ) \
-      error("Cannot allocate memory to SpaceLabel");
-  if ( (Phylo = (char**) malloc( Phylos * sizeof(char*))) == NULL ) \
-      error("Cannot allocate memory to Phylo");
-  if ( (PhyloLabel = (char**) malloc( Phylos * sizeof(char*))) == NULL ) \
-      error("Cannot allocate memory to PhyloLabel");
-  if ( (Taxon = (char**) malloc( Taxa * sizeof(char*))) == NULL ) \
-      error("Cannot allocate memory to Taxon");
-  if ( (TaxonLabel = (char**) malloc( Taxa * sizeof(char*))) == NULL ) \
-      error("Cannot allocate memory to TaxonLabel");
-
+  Area       = mem2d_d(Times, Spaces, "Area");
+  Dist       = mem3d_d(Times, Spaces, Spaces, "Dist");
+  RealTime   = mem1d_d(Times, "RealTime");
+  TimeLabel  = mem2d1_c(Times, "TimeLabel");
+  SpaceName  = mem2d1_c(Spaces, "SpaceName");
+  SpaceLabel = mem2d1_c(Spaces, "SpaceLabel");
+  Phylo      = mem2d1_c(Phylos, "Phylo");
+  PhyloLabel = mem2d1_c(Phylos, "PhyloLabel");
+  Taxon      = mem2d1_c(Taxa, "Taxon");
+  TaxonLabel = mem2d1_c(Taxa, "TaxonLabel");
+  Extant     = mem3d_i(Taxa, Times, Spaces, "Extant");
+  
   // --------------------- Crawl the XML tree to fill in the data --------- 
 
   node = tree;
@@ -79,6 +75,13 @@ void readXML()
               if (!mxmlGetText(mxmlGetFirstChild(node),0)) \
                 error("A periodStart element is missing");
               else RealTime[t] = atof(mxmlGetText(mxmlGetFirstChild(node),0));
+              // test for declining times
+              if (t > 0)
+                {
+                  //! \todo Remove this constraint, by adding a sorting stage
+                  if (RealTime[t] > RealTime[t-1])
+                    error("Time sequence is not sorted in declining age");
+                }
               if (!mxmlElementGetAttr(node, "id"))            \
                 error("An id attr is missing in periodStart");
               else asprintf(&TimeLabel[t], "%s", \
@@ -131,10 +134,203 @@ void readXML()
               x++;
             }
 
-        }
+          // area elements
+          else if (!strcmp(mxmlGetElement(node), "area"))
+            {
+              int a_t; int a_s;
+              if (a >= Spaces * Times) error("Too many area elements");
+              // Test for text child element
+              if (!mxmlGetText(mxmlGetFirstChild(node),0))
+                error("An area datum is missing");
+              // Read the time attr
+              if (!mxmlElementGetAttr(node, "time"))        \
+                error("A time attr is missing in area");
+              else
+                {
+                  a_t = -1;
+                  for (int i = 0; i < Times; i++)
+                    {
+                      if (!strcmp(mxmlElementGetAttr(node, "time"),
+                        TimeLabel[i])) a_t = i;
+                    }           
+                  if (a_t == -1)
+                    {
+                      fprintf(stderr, 
+                        "XML parse error: //area/@time '%s' not IDREF\n", 
+                        mxmlElementGetAttr(node, "time"));
+                      exit(1);
+                    }
+                }
+              // Read the space attr
+              if (!mxmlElementGetAttr(node, "space"))        \
+                error("A space attr is missing in area");
+              else
+                {
+                  a_s = -1;
+                  for (int i = 0; i < Spaces; i++)
+                    {
+                      if (!strcmp(mxmlElementGetAttr(node, "space"),
+                             SpaceLabel[i])) a_s = i;
+                    }           
+                  if (a_s == -1)
+                    {
+                      fprintf(stderr, 
+                        "XML parse error: //area/@space '%s' not IDREF\n", 
+                        mxmlElementGetAttr(node, "space"));
+                      exit(1);
+                    }
+                }
+              // Set the datum
+              Area[a_t][a_s] = atof(mxmlGetText(mxmlGetFirstChild(node),0));
+              a++;
+            }
 
+          // dist elements
+          else if (!strcmp(mxmlGetElement(node), "dist"))
+            {
+              int d_t; int d_s1; int d_s2;
+              if (a >= ((Spaces * (Spaces-1))/2) * Times) 
+                error("Too many dist elements");
+              // Test for text child element
+              if (!mxmlGetText(mxmlGetFirstChild(node),0))
+                error("An dist datum is missing");
+              // Read the time attr
+              if (!mxmlElementGetAttr(node, "time"))        \
+                error("A time attr is missing in dist");
+              else
+                {
+                  d_t = -1;
+                  for (int i = 0; i < Times; i++)
+                    {
+                      if (!strcmp(mxmlElementGetAttr(node, "time"),
+                                  TimeLabel[i])) d_t = i;
+                    }
+                  if (d_t == -1)
+                    {
+                      fprintf(stderr, 
+                        "XML parse error: //dist/@time '%s' not IDREF\n", 
+                        mxmlElementGetAttr(node, "time"));
+                      exit(1);
+                    }
+                }
+              // Read the space from attr
+              if (!mxmlElementGetAttr(node, "from"))
+                error("A from attr is missing in dist");
+              else
+                {
+                  d_s1 = -1;
+                  for (int i = 0; i < Spaces; i++)
+                    {
+                      if (!strcmp(mxmlElementGetAttr(node, "from"),
+                             SpaceLabel[i])) d_s1 = i;
+                    }           
+                  if (d_s1 == -1)
+                    {
+                      fprintf(stderr, 
+                        "XML parse error: //dist/@from '%s' not IDREF\n", 
+                        mxmlElementGetAttr(node, "from"));
+                      exit(1);
+                    }
+                }
+              // Read the space to attr
+              if (!mxmlElementGetAttr(node, "to"))
+                error("A to attr is missing in dist");
+              else
+                {
+                  d_s2 = -1;
+                  for (int i = 0; i < Spaces; i++)
+                    {
+                      if (!strcmp(mxmlElementGetAttr(node, "to"),
+                             SpaceLabel[i])) d_s2 = i;
+                    }           
+                  if (d_s2 == -1)
+                    {
+                      fprintf(stderr, 
+                        "XML parse error: //dist/@to '%s' not IDREF\n", 
+                        mxmlElementGetAttr(node, "to"));
+                      exit(1);
+                    }
+                }
+              // Set the datum (symetrically)
+              Dist[d_t][d_s1][d_s2] = 
+                atof(mxmlGetText(mxmlGetFirstChild(node),0));
+              Dist[d_t][d_s2][d_s1] = 
+                atof(mxmlGetText(mxmlGetFirstChild(node),0));
+              d++;
+            }
+
+          // extant elements
+          else if (!strcmp(mxmlGetElement(node), "extant"))
+            {
+              int e_x; int e_t; int e_s;
+              // NB, No Test for text child element
+
+              // Read the taxon from attr
+              if (!mxmlElementGetAttr(node, "taxon"))
+                error("A taxon attr is missing in extant");
+              else
+                {
+                  e_x = -1;
+                  for (int i = 0; i < Taxa; i++)
+                    {
+                      if (!strcmp(mxmlElementGetAttr(node, "taxon"),
+                                  TaxonLabel[i])) e_x = i;
+                    }           
+                  if (e_x == -1)
+                    {
+                      fprintf(stderr, 
+                        "XML parse error: //extant/@taxon '%s' not IDREF\n", 
+                              mxmlElementGetAttr(node, "taxon"));
+                      exit(1);
+                    }
+                }
+              // Read the time attr
+              if (!mxmlElementGetAttr(node, "time"))        \
+                error("A time attr is missing in extant");
+              else
+                {
+                  e_t = -1;
+                  for (int i = 0; i < Times; i++)
+                    {
+                      if (!strcmp(mxmlElementGetAttr(node, "time"),
+                                  TimeLabel[i])) e_t = i;
+                    }
+                  if (e_t == -1)
+                    {
+                      fprintf(stderr, 
+                        "XML parse error: //extant/@time '%s' not IDREF\n", 
+                        mxmlElementGetAttr(node, "time"));
+                      exit(1);
+                    }
+                }
+              // Read the space to attr
+              if (!mxmlElementGetAttr(node, "space"))
+                error("A space attr is missing in extant");
+              else
+                {
+                  e_s = -1;
+                  for (int i = 0; i < Spaces; i++)
+                    {
+                      if (!strcmp(mxmlElementGetAttr(node, "space"),
+                                  SpaceLabel[i])) e_s = i;
+                    }           
+                  if (e_s == -1)
+                    {
+                      fprintf(stderr,
+                        "XML parse error: //extant/@space '%s' not IDREF\n", 
+                        mxmlElementGetAttr(node, "space"));
+                      exit(1);
+                    }
+                }
+              // Set the datum (symetrically)
+              Extant[e_x][e_t][e_s] = 1;
+              e++;
+            }
+
+        }
+      
       node = mxmlWalkNext(node, tree, MXML_DESCEND);
-        
+      
     }
 
   // Check for correct dimensioning
@@ -142,99 +338,200 @@ void readXML()
   if (s != Spaces) error("Wrong number of spaceName elements");
   if (p != Phylos) error("Wrong number of newick elements");
   if (x != Taxa) error("Wrong number of taxon elements");
+  if (a != (Spaces * Times)) error("Wrong number of area elements");
+  if (d != ((Spaces * (Spaces-1))/2) * Times) 
+    error("Wrong number of dist elements");
+  if (e < 1) error("Need at least one extant taxon");
   
-  /* cur = xmlDocGetRootElement(doc); */
-  /* if (!cur) error("Could not get root element");  */
-
-  /* if (xmlStrcmp(cur->name, (const xmlChar *) "shibaInput")) \ */
-  /*   error("document of the wrong type, root node != shibaInput"); */
-
-  /* // begin the crawl */
-  /* cur = cur->xmlChildrenNode; */
-  /* while (cur != NULL) */
-  /*   { */
-  /*     if ((!xmlStrcmp(cur->name, (const xmlChar *) "time"))) */
-  /*       { */
-  /*         cur = cur->xmlChildrenNode; */
-  /*         int i = 0; */
-  /*         while (cur != NULL) { */
-  /*           if (!xmlStrcmp(cur->name, (const xmlChar *) "periodStart")) */
-  /*             { */
-  /*               RealTimes[i] = atof((char *) xmlNodeListGetString(doc, cur->xmlChildrenNode, 1)); */
-  /*             } */
-  /*   	    printf("keyword: %f\n", RealTimes[i]); */
-  /*           i++; */
-  /*           cur = cur->next; */
-  /*         } */
-  /*   	} */
-      
-  /*     cur = cur->next; */
-  /*   } */
-	
-
-
-  /* /\* printf("Result (%d nodes):\n", size); *\/ */
-  /* /\* for(int i = 0; i < size; ++i) { *\/ */
-	
-  /* /\* if(nodes->nodeTab[i]->type == XML_ELEMENT_NODE) { *\/ */
-  /* /\*     cur = nodes->nodeTab[i];   	     *\/ */
-  /* /\*     if(cur->ns) {  *\/ */
-  /* /\*       printf("= element node \"%s:%s\"\n",  *\/ */
-  /* /\*               cur->ns->href, cur->name); *\/ */
-  /* /\*     } else { *\/ */
-  /* /\*       printf("= element node \"%s\"\n",  *\/ */
-  /* /\*               cur->name); *\/ */
-  /* /\*     } *\/ */
-  /* /\*   } else { *\/ */
-  /* /\*     cur = nodes->nodeTab[i];     *\/ */
-  /* /\*     printf("= node \"%s\": type %d\n", cur->name, cur->type); *\/ */
-  /* /\*   } *\/ */
-  /* /\* } *\/ */
-
-
-  /* /\* Print results *\/ */
-  /* // print_xpath_nodes(xpathObj->nodesetval, stdout); */
-  
-  /* /\* Cleanup *\/ */
-  /* xmlXPathFreeObject(xpathObj); */
-  /* xmlXPathFreeContext(xpathCtx);  */
-  /* xmlFreeDoc(doc);  */
-    
-  /* /\* // Set some scalars *\/ */
-  /* /\* cfg.time = cJSON_GetObjectItem(root,"time")->valueint; *\/ */
-  /* /\* cfg.space = cJSON_GetObjectItem(root,"space")->valueint; *\/ */
-
-  /* /\* // Set vectors *\/ */
-  /* /\* int jspace = cJSON_GetArraySize(cJSON_GetObjectItem(root,"spacenames")); *\/ */
-  /* /\* if (jspace != cfg.space)  *\/ */
-  /* /\*   { *\/ */
-  /* /\*     error("Number of space names not the same as declared areas") ; *\/ */
-  /* /\*   } *\/ */
-  /* /\* // Allocate memory to pointers to spacenames: *\/ */
-  /* /\* if (( cfg.spacenames = ( char** ) malloc( jspace*sizeof( char* ))) == NULL ) *\/ */
-  /* /\*   {  *\/ */
-  /* /\*     error("Cannot allocate memory to spacenames"); *\/ */
-  /* /\*   } *\/ */
-
-  /* /\* for (int i = 0; i < jspace; i++) *\/ */
-  /* /\*   { *\/ */
-  /* /\*     asprintf(&cfg.spacenames[i], "%s", \ *\/ */
-  /* /\*       cJSON_GetArrayItem(              \ *\/ */
-  /* /\*         cJSON_GetObjectItem(root,"spacenames"), i)->valuestring ); *\/ */
-  /* /\*   } *\/ */
-
-  /* /\* free(data); *\/ */
-  /* /\* cJSON_Delete(root); *\/ */
-
-
-mxmlDelete(tree);
+  mxmlDelete(tree);
 
 }
+
+/*!
+ * Simple error warning, with exit from program, returning 1
+ */
 
 void error(char *error_msg)
 {
   printf("ERROR:\n  %s\n", error_msg);
-  exit(0);
+  exit(1);
   // NB: In the tcsh, `echo $status` returns the exit status of 
   // the preceding command.
 }
+
+
+/*!
+ * Dimensions an initialized 1-D array of doubles.
+ * To free, just use free().
+ */
+
+double* mem1d_d(int dimx, char *msg)
+{
+  double *ptr;
+  ptr = calloc(dimx, sizeof(double));
+  if (!ptr)
+    {
+      printf("allocation failure in mem1d_d() for pointer %s", msg);
+      exit(1);
+    }
+  return ptr;
+}
+
+
+/*!
+ * Dimensions a initialized 1-D array of character pointers, ready to 
+ * be allocated using asprintf.  The result will be a `ragged' matrix.
+ * To free, use free2d1_c().
+ */
+
+char** mem2d1_c(int dimx, char *msg)
+{
+  char **ptr;
+  ptr = calloc(dimx, sizeof(char *));
+  if (!ptr)
+    {
+      printf("allocation failure in mem2d1_c() for pointer %s", msg);
+      exit(1);
+    }
+  return ptr;
+
+  // Direct, non-function alternative, e.g.: 
+  // SpaceName = (char**) malloc( Spaces * sizeof(char*));
+}
+
+
+void free2d1_c(char **ptr, int dimx)
+{
+  for(int i = 0; i < dimx; i++)
+    free(ptr[i]);
+  free(ptr);
+}
+
+
+/*!
+ * Dimensions an initialized 2-D array of doubles. Free with free2d_d()
+ */
+
+double** mem2d_d(int dimx, int dimy, char *msg)
+{
+  double **ptr;
+  ptr = calloc(dimx, sizeof(double *));
+  if (!ptr)
+    {
+      printf("allocation failure in mem2d_d() pass 1 for pointer %s", msg);
+      exit(1);
+    }
+  for(int i = 0; i < dimx; i++) 
+    {
+      ptr[i] = calloc(dimy, sizeof(double));
+      if (!ptr[i])
+        {
+          printf("allocation failure in mem2d_d() pass 2 for pointer %s", msg);
+          exit(1);
+        }
+    }
+  return ptr;
+}
+
+void free2d_d(double **ptr, int dimx)
+{
+  for(int i = 0; i < dimx; i++)
+    free(ptr[i]);
+  free(ptr);
+}
+
+/*!
+ * Dimensions an initialized 3-D array of doubles. Free with free3d_d()
+ */
+
+double*** mem3d_d(int dimx, int dimy, int dimz, char *msg)
+{
+  double ***ptr;
+  ptr = calloc(dimx, sizeof(double **));
+  if (!ptr)
+    {
+      printf("allocation failure in mem3d_d() pass 1 for pointer %s\n", msg);
+      exit(1);
+    }
+  for(int i = 0; i < dimx; i++) 
+    {
+      ptr[i] = calloc(dimy, sizeof(double *));
+      if (!ptr[i])
+        {
+          printf("allocation failure in mem3d_d() pass 2 for pointer %s\n", 
+                 msg);
+          exit(1);
+        }
+      for(int j = 0; j < dimy; j++) 
+        {
+          ptr[i][j] = calloc(dimz, sizeof(double));
+          if (!ptr[i][j])
+            {
+              printf("allocation failure in mem3d_d() pass 3 for pointer %s", 
+                     msg);
+              exit(1);
+            }
+        }
+    }
+  return ptr;
+}
+
+void free3d_d(double ***ptr, int dimx, int dimy)
+{
+  for(int i = 0; i < dimx; i++)
+    {
+      for(int j = 0; j < dimy; i++)
+        free(ptr[i][j]);
+      free(ptr[i]);
+    }
+  free(ptr);
+}
+
+/*!
+ * Dimensions an initialized 3-D array of int. Free with free3d_i()
+ */
+
+int*** mem3d_i(int dimx, int dimy, int dimz, char *msg)
+{
+  int ***ptr;
+  ptr = calloc(dimx, sizeof(int **));
+  if (!ptr)
+    {
+      printf("allocation failure in mem3d_d() pass 1 for pointer %s\n", msg);
+      exit(1);
+    }
+  for(int i = 0; i < dimx; i++) 
+    {
+      ptr[i] = calloc(dimy, sizeof(int *));
+      if (!ptr[i])
+        {
+          printf("allocation failure in mem3d_d() pass 2 for pointer %s\n", 
+                 msg);
+          exit(1);
+        }
+      for(int j = 0; j < dimy; j++) 
+        {
+          ptr[i][j] = calloc(dimz, sizeof(int));
+          if (!ptr[i][j])
+            {
+              printf("allocation failure in mem3d_d() pass 3 for pointer %s", 
+                     msg);
+              exit(1);
+            }
+        }
+    }
+  return ptr;
+}
+
+void free3d_i(int ***ptr, int dimx, int dimy)
+{
+  for(int i = 0; i < dimx; i++)
+    {
+      for(int j = 0; j < dimy; i++)
+        free(ptr[i][j]);
+      free(ptr[i]);
+    }
+  free(ptr);
+}
+
+

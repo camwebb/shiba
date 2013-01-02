@@ -81,15 +81,15 @@ char **cmatrix(long nrl, long nrh, long ncl, long nch)
 
 // cam new:
 
-/* char **cmatrix1(long nl, long nh) */
-/* /\* allocate only the first dimension of a character matrix with subscript range m[nl..nh] *\/ */
-/* { */
-/* 	char **v; */
+char **cmatrix1(long nl, long nh)
+/* allocate only the first dimension of a character matrix with subscript range m[nl..nh] */
+{
+	char **v;
 
-/* 	v=(char **)malloc((size_t) ((nh-nl+1+NR_END)*sizeof(char))); */
-/* 	if (!v) nrerror("allocation failure in cvector()"); */
-/* 	return v-nl+NR_END; */
-/* } */
+	v=(char **)malloc((size_t) ((nh-nl+1+NR_END) * sizeof(char*)));
+	if (!v) nrerror("allocation failure in cvector()");
+	return v-nl+NR_END;
+}
 
 unsigned long *lvector(long nl, long nh)
 /* allocate an unsigned long vector with subscript range v[nl..nh] */
@@ -351,11 +351,11 @@ void free_cvector(char *v, long nl, long nh)
 	free((FREE_ARG) (v+nl-NR_END));
 }
 
-/* void free_cmatrix1(char **v, long nl, long nh) */
-/* /\* free an char vector allocated with cvector() *\/ */
-/* { */
-/* 	free((FREE_ARG) (v+nl-NR_END)); */
-/* } */
+void free_cmatrix1(char **v, long nl, long nh)
+/* free an char vector allocated with cvector() */
+{
+	free((FREE_ARG) (v+nl-NR_END));
+}
 
 void free_lvector(unsigned long *v, long nl, long nh)
 /* free an unsigned long vector allocated with lvector() */

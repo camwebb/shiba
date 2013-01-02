@@ -46,7 +46,7 @@ start =
       }+
     },
     element extantIn {
-      element exant {
+      element extant {
         attribute space { xsd:IDREF },
         attribute taxon { xsd:IDREF },
         attribute time { xsd:IDREF }

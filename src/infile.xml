@@ -191,12 +191,12 @@
     <newick id="p1">((tuba:9,(pudor:5,polyantha:5):4)fossil1:2,(javanica:6,kawak:6):5):1;</newick>
   </phylo>
   <extantIn> <!-- included fossils -->
-    <exant taxon="x1" time="t13" space="s3"/>
-    <exant taxon="x2" time="t13" space="s2"/>
-    <exant taxon="x3" time="t13" space="s1"/>
-    <exant taxon="x4" time="t13" space="s4"/>
-    <exant taxon="x5" time="t13" space="s1"/>
-    <exant taxon="x6" time="t3"  space="s1"/>
+    <extant taxon="x1" time="t13" space="s3"/>
+    <extant taxon="x2" time="t13" space="s2"/>
+    <extant taxon="x3" time="t13" space="s1"/>
+    <extant taxon="x4" time="t13" space="s4"/>
+    <extant taxon="x5" time="t13" space="s1"/>
+    <extant taxon="x6" time="t3"  space="s1"/>
   </extantIn>
   <config>
     <startSpaces>
