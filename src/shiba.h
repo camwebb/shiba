@@ -19,6 +19,34 @@ typedef struct {
   int *startSpace;
 } shibaConfig;
 
+typedef struct {
+  int nnodes; // including 0 or root node
+  int *parent; //up[node]
+  int *ldaughter;
+  int *rsister;
+  int *ndaughter;
+  int *depth; //depth[node]
+  double *bl; //bl[node]
+  //float *tbl;
+  //float *age; //age[node]
+  char **taxon; // name of named node - taxon[node][]
+  //int ntaxa;  // number of named nodes = total number of names
+  //int termtaxa; // number of terminal taxa
+  //char **taxalist; //names of terminal taxa - taxalist[0 to termtaxa-1][]
+  //int *t2n;  //vector of node #s indexed by 0 to termtaxa-1, as taxalist
+  //float **dist; // matrix of all node-to-node distances dist[node1][node2]
+  //int arenotes; // 0 | 1
+  //char **notes;
+  // DA additions
+  //int maxDepth;
+  //int *ntip;
+  //int *nint;
+  //int **tiplist;
+  //int **intlist;
+  //int *upo; // up pass order
+} phylo;
+
+
 // ------------------------ VARIABLES ---------------------------
 
 shibaConfig Cfg;
@@ -58,6 +86,7 @@ void free3d_d(double ***ptr, int dimx, int dimy);
 int*** mem3d_i(int dimx, int dimy, int dimz);
 void free3d_i(int ***ptr, int dimx, int dimy);
 
+phylo parseNewick(char *in);
 
 /*!
 

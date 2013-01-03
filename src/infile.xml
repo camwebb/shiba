@@ -188,7 +188,8 @@
     <taxon id="x6">fossil1</taxon>
   </taxa>
   <phylo n="1">
-    <newick id="p1">((tuba:9,(pudor:5,polyantha:5):4)fossil1:2,(javanica:6,kawak:6):5):1;</newick>
+    <newick id="p1">((tuba:9,(pudor:5, polyantha:5):4)fossil1:2,
+    (javanica:6,kawak:6):5):1;</newick>
   </phylo>
   <extantIn> <!-- included fossils -->
     <extant taxon="x1" time="t13" space="s3"/>

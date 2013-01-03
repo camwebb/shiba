@@ -23,7 +23,7 @@ void readXML()
   int a = 0; int d = 0; int e = 0; int ss = 0;
 
   fp = fopen("infile.xml", "r");
-  tree = mxmlLoadFile(NULL, fp, MXML_TEXT_CALLBACK);
+  tree = mxmlLoadFile(NULL, fp, MXML_OPAQUE_CALLBACK);
   fclose(fp);
 
   if (!tree) error("Unable to parse input file");
@@ -74,9 +74,9 @@ void readXML()
           if (!strcmp(mxmlGetElement(node), "periodStart"))
             {
               if (t >= Times) error("Too many periodStart elements");
-              if (!mxmlGetText(mxmlGetFirstChild(node),0)) \
+              if (!mxmlGetOpaque(mxmlGetFirstChild(node))) \
                 error("A periodStart element is missing");
-              else RealTime[t] = atof(mxmlGetText(mxmlGetFirstChild(node),0));
+              else RealTime[t] = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
               // test for declining times
               if (t > 0)
                 {
@@ -95,10 +95,10 @@ void readXML()
           else if (!strcmp(mxmlGetElement(node), "spaceName"))
             {
               if (s >= Spaces) error("Too many spaceName elements");
-              if (!mxmlGetText(mxmlGetFirstChild(node),0)) \
+              if (!mxmlGetOpaque(mxmlGetFirstChild(node))) \
                 error("A spaceName datum is missing");
               else asprintf(&SpaceName[s], "%s", \
-                mxmlGetText(mxmlGetFirstChild(node),0));
+                mxmlGetOpaque(mxmlGetFirstChild(node)));
               if (!mxmlElementGetAttr(node, "id"))            \
                 error("An id attr is missing in spaceName");
               else asprintf(&SpaceLabel[s], "%s", \
@@ -110,13 +110,30 @@ void readXML()
           else if (!strcmp(mxmlGetElement(node), "newick"))
             {
               if (p >= Phylos) error("Too many newick elements");
-              if (!mxmlGetText(mxmlGetFirstChild(node),0))  \
+              if (!mxmlGetOpaque(mxmlGetFirstChild(node)))   
                 error("A newick datum is missing");
-              else asprintf(&Phylo[p], "%s",            \
-                mxmlGetText(mxmlGetFirstChild(node),0));
-              if (!mxmlElementGetAttr(node, "id"))          \
+              else 
+                {
+                  // scrub whitespace
+                  char *tmp; 
+                  asprintf(&tmp, "%s",
+                           mxmlGetOpaque(mxmlGetFirstChild(node)));
+                  for (int i = 0; i < strlen(tmp); i++)
+                    if ((tmp[i] != 32) && 
+                        (tmp[i] != 10) &&
+                        (tmp[i] != 12) &&
+                        (tmp[i] != 13)) {
+                      if (!Phylo[p]) {
+                        asprintf(&Phylo[p], "%c", tmp[i]);
+                      } else { 
+                        asprintf(&Phylo[p], "%s%c", Phylo[p], tmp[i]); 
+                      }
+                    }
+                  free(tmp);
+                }
+              if (!mxmlElementGetAttr(node, "id"))          
                 error("An id attr is missing in newick");
-              else asprintf(&PhyloLabel[p], "%s", \
+              else asprintf(&PhyloLabel[p], "%s", 
                 mxmlElementGetAttr(node, "id"));
               p++;
             }
@@ -125,10 +142,10 @@ void readXML()
           else if (!strcmp(mxmlGetElement(node), "taxon"))
             {
               if (x >= Taxa) error("Too many taxon elements");
-              if (!mxmlGetText(mxmlGetFirstChild(node),0))  \
+              if (!mxmlGetOpaque(mxmlGetFirstChild(node)))  \
                 error("A taxon datum is missing");
               else asprintf(&Taxon[x], "%s",                \
-                mxmlGetText(mxmlGetFirstChild(node),0));
+                mxmlGetOpaque(mxmlGetFirstChild(node)));
               if (!mxmlElementGetAttr(node, "id"))          \
                 error("An id attr is missing in taxon");
               else asprintf(&TaxonLabel[x], "%s", \
@@ -142,7 +159,7 @@ void readXML()
               int a_t; int a_s;
               if (a >= Spaces * Times) error("Too many area elements");
               // Test for text child element
-              if (!mxmlGetText(mxmlGetFirstChild(node),0))
+              if (!mxmlGetOpaque(mxmlGetFirstChild(node)))
                 error("An area datum is missing");
               // Read the time attr
               if (!mxmlElementGetAttr(node, "time"))        \
@@ -183,7 +200,7 @@ void readXML()
                     }
                 }
               // Set the datum
-              Area[a_t][a_s] = atof(mxmlGetText(mxmlGetFirstChild(node),0));
+              Area[a_t][a_s] = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
               a++;
             }
 
@@ -194,7 +211,7 @@ void readXML()
               if (a >= ((Spaces * (Spaces-1))/2) * Times) 
                 error("Too many dist elements");
               // Test for text child element
-              if (!mxmlGetText(mxmlGetFirstChild(node),0))
+              if (!mxmlGetOpaque(mxmlGetFirstChild(node)))
                 error("An dist datum is missing");
               // Read the time attr
               if (!mxmlElementGetAttr(node, "time"))        \
@@ -255,9 +272,9 @@ void readXML()
                 }
               // Set the datum (symetrically)
               Dist[d_t][d_s1][d_s2] = 
-                atof(mxmlGetText(mxmlGetFirstChild(node),0));
+                atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
               Dist[d_t][d_s2][d_s1] = 
-                atof(mxmlGetText(mxmlGetFirstChild(node),0));
+                atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
               d++;
             }
 
