@@ -544,6 +544,30 @@ void free2d1_c(char **ptr, int dimx)
 
 
 /*!
+ * Dimensions an initialized 2-D array of int. Free with free2d_i()
+ */
+
+int** mem2d_i(int dimx, int dimy)
+{
+  int **ptr;
+  ptr = calloc(dimx, sizeof(int *));
+  if (!ptr) error("allocation failure in mem2d_i() pass 1");
+  for(int i = 0; i < dimx; i++) 
+    {
+      ptr[i] = calloc(dimy, sizeof(int));
+      if (!ptr[i]) error("allocation failure in mem2d_i() pass 2");
+    }
+  return ptr;
+}
+
+void free2d_i(int **ptr, int dimx)
+{
+  for(int i = 0; i < dimx; i++)
+    free(ptr[i]);
+  free(ptr);
+}
+
+/*!
  * Dimensions an initialized 2-D array of doubles. Free with free2d_d()
  */
 

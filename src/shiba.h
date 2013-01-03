@@ -27,6 +27,7 @@ typedef struct {
 } shibaConfig;
 
 typedef struct {
+  //int treeNum;
   int nnodes; // including 0 or root node
   int *parent; //up[node]
   //int *ldaughter;
@@ -35,7 +36,7 @@ typedef struct {
   int *depth; //depth[node]
   double *bl; //bl[node]
   //float *tbl;
-  //float *age; //age[node]
+  double *age; //age[node]
   char **taxon; // name of named node - taxon[node][]
   //int ntaxa;  // number of named nodes = total number of names
   //int termtaxa; // number of terminal taxa
@@ -73,6 +74,7 @@ int Phylos;
 int Taxa;
 char **Taxon;
 char **TaxonLabel;
+int **LineagePeriod;
 
 // ------------------------ FUNCTIONS ---------------------------
 
@@ -84,6 +86,8 @@ void error(char *a);
 int* mem1d_i(int dimx);
 double* mem1d_d(int dim);
 
+int** mem2d_i(int dimx, int dimy);
+void free2d_i(int **ptr, int dimx);
 double** mem2d_d(int dimx, int dimy);
 void free2d_d(double **ptr, int dimx);
 char** mem2d1_c(int dimx);
@@ -95,6 +99,7 @@ int*** mem3d_i(int dimx, int dimy, int dimz);
 void free3d_i(int ***ptr, int dimx, int dimy);
 
 phylo parseNewick(char *in);
+void phyloToLineage(phylo p);
 
 /*!
 

@@ -27,6 +27,7 @@ phylo parseNewick(char *in) {
   p.depth = mem1d_i(p.nnodes);
   p.bl = mem1d_d(p.nnodes);
   p.taxon = mem2d1_c(p.nnodes);
+  p.age = mem1d_d(p.nnodes);
 
   // Move through the newick format tree character by character 
   int i = 0;
@@ -159,4 +160,52 @@ phylo parseNewick(char *in) {
 
 
   return p; 
+}
+
+void phyloToLineage(phylo p)
+{
+
+  // Check first for ultrametic tree
+  double ageToRootStem = 0;
+  double tmp;
+  int node;
+
+  for (int i = 0; i < p.nnodes; i++)
+    if (!p.ndaughter[i]) {
+      tmp = 0.0;
+      node = i;
+      while (p.parent[node] != -1) {
+        p.age[node] = tmp;
+        tmp += p.bl[node];
+        node = p.parent[node];
+      }
+      if (!ageToRootStem) ageToRootStem = tmp;
+      else if (tmp != ageToRootStem) error("tree is not ultrametric");
+    }
+  //add stem
+  p.age[0] = ageToRootStem;
+  ageToRootStem += p.bl[0];
+
+  // Is the tree stem longer than the time slices?
+  if (ageToRootStem < RealTime[0]) 
+    error("tree stem not old enough for geo age");
+
+  // Slice the phylo into periods defined by geo
+
+  LineagePeriod = mem2d_i(p.nnodes, Times);
+  
+  double periodOld, periodYng, edgeOld,  edgeYng; 
+  for (int j = 0; j < Times; j++)
+    {
+      for (int i = 0; i < p.nnodes; i++)
+        {
+
+          // expressed in ages
+          periodOld = RealTime[j];
+          periodYng = (j != Times) ? RealTime[j+1] : 0.0 ;
+          edgeOld = p.age[i] + p.bl[i];
+          edgeYng = p.age[i];
+          printf("slc%02d %4.1f -- %4.1f   phy%02d %4.1f -- %4.1f\n", j, periodOld, periodYng, i, edgeOld,  edgeYng);
+        }
+    }
 }

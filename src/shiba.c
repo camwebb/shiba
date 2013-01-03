@@ -8,16 +8,17 @@ int main(int argc, char *argv[])
   // printIndata();
 
   phylo p = parseNewick(Phylo[0]);
+  phyloToLineage(p);
+
 
   // Free memory
 
   free(p.parent);
   free(p.ndaughter);
   free(p.depth);
+  free(p.age);
   free(p.bl);
   free2d1_c(p.taxon, p.nnodes);
-
-
   free2d_d(Area, Times);
   free3d_d(Dist, Times, Spaces);
   free(RealTime);
@@ -26,7 +27,7 @@ int main(int argc, char *argv[])
   free2d1_c(Taxon, Taxa);
   free3d_i(Extant, Taxa, Times);
   free(Cfg.startSpace);
-
+  free2d_i(LineagePeriod, p.nnodes);
 
   return 1;
 }
