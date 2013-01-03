@@ -34,7 +34,9 @@ phylo parseNewick(char *in) {
   int node = -1;
   int parent = -2;
   int nodeCount = 0;
-  while (i < strlen(in))
+  int tmpn;
+
+  while ((i < strlen(in)) && (in[i] != 59))
     {
       // descend a branch, making new node for the parenthesis descended thru
       if (in[i] == 40) // "("
@@ -79,7 +81,6 @@ phylo parseNewick(char *in) {
         {
           // Now, check for new taxa, or new interior name
          
-          char *tmp; int tmpn = 0;
           // Is there nodename here?  I.e., not `:' or `['
           if ((in[i] != 58) && (in[i] != 91))
             {
@@ -99,46 +100,54 @@ phylo parseNewick(char *in) {
                   p.parent[node], p.depth[node]); */
                 }
           
+              char *tmp = NULL; tmpn = 0;
               // check for name, I.e. not `:' nor `['
               while ((in[i] != 58) && (in[i] != 91) && 
-                     (in[i] != 44) && (in[i] != 41) && (in[i] != 40))
+                     (in[i] != 44) && (in[i] != 41) && (in[i] != 40) &&
+                     (in[i] != 59))
                 {
                   if (!tmpn) {
                     asprintf(&tmp, "%c", in[i]); tmpn++;
                   } else {
-                    asprintf(&tmp, "%s%c", tmp, in[i]); tmpn++;
+                    char *tmp2 = tmp;
+                    asprintf(&tmp, "%s%c", tmp2, in[i]); tmpn++;
+                    free(tmp2);
                   }
                   i++;
                 }
               // was there any taxon name?
               asprintf(&p.taxon[node], "%s", tmp);
               // printf("  taxon name %s\n", tmp);
+              free(tmp);
             }
           
           // are there bls?
           if (in[i] == 58)
             {
               i++; // skip over delimiter `:'
-              tmpn = 0;
+              char *tmp = NULL; tmpn = 0;
               // bead bl string, I.e. not `['
               while ((in[i] != 91) &&
-                     (in[i] != 44) && (in[i] != 41) && (in[i] != 40))
+                     (in[i] != 44) && (in[i] != 41) && (in[i] != 40) &&
+                     (in[i] != 59)) // watch out for final `;'
                 {
                   if (!tmpn) {
                     asprintf(&tmp, "%c", in[i]); tmpn++;
                   } else {
-                    asprintf(&tmp, "%s%c", tmp, in[i]); tmpn++;
+                    Sasprintf(tmp, "%s%c", tmp, in[i]); tmpn++;
                   }
                   i++;
                 }
               p.bl[node] = atof(tmp);
               // printf("  taxon bl %f\n", p.bl[node]);
+              free(tmp);
             }
           
           // are there notes?
           if (in[i] == 91)
             // Discard note
-            while ((in[i] != 44) && (in[i] != 41) && (in[i] != 40))
+            while ((in[i] != 44) && (in[i] != 41) && (in[i] != 40) &&
+                   (in[i] != 59))
               i++;
         }
     }
@@ -147,6 +156,7 @@ phylo parseNewick(char *in) {
   for (int n = 0; n < p.nnodes; n++)
       printf("%3d %3d %3d %3d %5.2f %s\n", n, p.parent[n], p.depth[n], 
       p.ndaughter[n], p.bl[n], p.taxon[n]); */
+
 
   return p; 
 }

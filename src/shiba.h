@@ -9,6 +9,13 @@
 #include <string.h>
 #include <time.h>
 
+//Safer asprintf macro
+#define Sasprintf(write_to, ...) {          \
+  char *tmp_string_for_extend = (write_to); \
+  asprintf(&(write_to), __VA_ARGS__);       \
+  free(tmp_string_for_extend);              \
+  }
+
 // ------------------------ STRUCTURES ---------------------------
 
 /*!
@@ -22,8 +29,8 @@ typedef struct {
 typedef struct {
   int nnodes; // including 0 or root node
   int *parent; //up[node]
-  int *ldaughter;
-  int *rsister;
+  //int *ldaughter;
+  //int *rsister;
   int *ndaughter;
   int *depth; //depth[node]
   double *bl; //bl[node]
@@ -80,6 +87,7 @@ double* mem1d_d(int dim);
 double** mem2d_d(int dimx, int dimy);
 void free2d_d(double **ptr, int dimx);
 char** mem2d1_c(int dimx);
+void free2d1_c(char **ptr, int dimx);
 
 double*** mem3d_d(int dimx, int dimy, int dimz);
 void free3d_d(double ***ptr, int dimx, int dimy);

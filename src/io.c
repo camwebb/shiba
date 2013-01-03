@@ -115,7 +115,7 @@ void readXML()
               else 
                 {
                   // scrub whitespace
-                  char *tmp; 
+                  char *tmp; int tmpn = 0;
                   asprintf(&tmp, "%s",
                            mxmlGetOpaque(mxmlGetFirstChild(node)));
                   for (int i = 0; i < strlen(tmp); i++)
@@ -123,10 +123,10 @@ void readXML()
                         (tmp[i] != 10) &&
                         (tmp[i] != 12) &&
                         (tmp[i] != 13)) {
-                      if (!Phylo[p]) {
-                        asprintf(&Phylo[p], "%c", tmp[i]);
+                      if (!tmpn) {
+                        asprintf(&Phylo[p], "%c", tmp[i]); tmpn++;
                       } else { 
-                        asprintf(&Phylo[p], "%s%c", Phylo[p], tmp[i]); 
+                        Sasprintf(Phylo[p], "%s%c", Phylo[p], tmp[i]); tmpn++; 
                       }
                     }
                   free(tmp);
@@ -390,8 +390,15 @@ void readXML()
   if (d != ((Spaces * (Spaces-1))/2) * Times) 
     error("Wrong number of dist elements");
   if (e < 1) error("Need at least one extant taxon");
-  
+
+
+  // free unused mem
   mxmlDelete(tree);
+
+  free2d1_c(PhyloLabel, Phylos);
+  free2d1_c(SpaceLabel, Spaces);
+  free2d1_c(TimeLabel, Times);
+  free2d1_c(TaxonLabel, Taxa);
 
 }
 
@@ -586,7 +593,7 @@ void free3d_d(double ***ptr, int dimx, int dimy)
 {
   for(int i = 0; i < dimx; i++)
     {
-      for(int j = 0; j < dimy; i++)
+      for(int j = 0; j < dimy; j++)
         free(ptr[i][j]);
       free(ptr[i]);
     }
@@ -619,7 +626,7 @@ void free3d_i(int ***ptr, int dimx, int dimy)
 {
   for(int i = 0; i < dimx; i++)
     {
-      for(int j = 0; j < dimy; i++)
+      for(int j = 0; j < dimy; j++)
         free(ptr[i][j]);
       free(ptr[i]);
     }

@@ -2,7 +2,7 @@ CC = gcc
 HDRS	= shiba.h
 OBJS = shiba.o newick.o io.o
 LIBS	= -lm -lmxml -lpthread
-CFLAGS = -Wall -g -O3 -std=gnu11 -D_THREAD_SAFE -D_REENTRANT
+CFLAGS = -Wall -g -std=gnu11 -D_THREAD_SAFE -D_REENTRANT -O0 # -O3
 
 all: shiba
 
