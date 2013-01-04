@@ -467,6 +467,15 @@ void printIndata()
       printf("\n");
     }
 
+  printf("\n## LineageDaughters:\n");
+  for (int i = 0; i < Lineages; i++) {
+    printf("  Lineage %3d:  ", i);
+    //printf("  %3d", LineageNDaughters[i]);
+    for (int j = 0; j < LineageNDaughters[i]; j++)
+      printf("  %3d", LineageDaughters[i][j]);
+    printf("\n");
+  }
+
   printf("\n## Extant:\n");
   printf("  Spaces             :");
   for (int i = 0; i < Spaces; i++) printf("  %3d", i); 
@@ -542,6 +551,32 @@ int* mem1d_i(int dimx)
   ptr = calloc(dimx, sizeof(int));
   if (!ptr) error("allocation failure in mem1d_i()");
   return ptr;
+}
+
+/*! Dimensions a initialized 1-D array of int pointers, ready to 
+ * be allocated using mem1d_i() .
+ * The result will be a `ragged' matrix. To free, use free2d1_i() .
+ * @param dimx The dimensions of the vector
+ * @return A pointer to an array of int pointers
+ */
+
+int** mem2d1_i(int dimx)
+{
+  int **ptr;
+  ptr = calloc(dimx, sizeof(int *));
+  if (!ptr) error("allocation failure in mem2d1_i()");
+  return ptr;
+}
+
+/*! Frees the ragged array allocated by mem2d1_i().
+ * @param dimx The dimensions of the vector
+ */
+
+void free2d1_i(int **ptr, int dimx)
+{
+  for(int i = 0; i < dimx; i++)
+    free(ptr[i]);
+  free(ptr);
 }
 
 /*! \brief Dimensions a initialized 1-D array of character pointers, ready to 

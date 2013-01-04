@@ -45,6 +45,8 @@ int main(int argc, char **argv)
   free3d_i(Extant, Taxa, Times);
   free(Cfg.startSpace);
   free2d_i(LineagePeriod, p.nnodes);
+  free(LineageNDaughters);
+  free2d1_i(LineageDaughters, p.nnodes);
 
   return 1;
 }

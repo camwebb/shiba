@@ -13,7 +13,8 @@ The use of `SHIBA` was described in:
    Malesia.  Chapter 8, pages 191-215 in D. J. Gower, K. G. Johnson,
    J. E. Richardson, B. R. Rosen, L. Rüber, and S. T. Williams,
    editors. _Biotic Evolution and Environmental Change in Southeast
-   Asia_. [Cambridge University Press](http://www.cambridge.org/aus/catalogue/catalogue.asp?isbn=9781139533935).
+   Asia_. [Cambridge University Press](http://www.cambridge.org/aus/catalogue/catalogue.asp?isbn=9781139533935). 
+   [[PDF](http://camwebb.info/files/webb2012_sage.pdf)]
 
 These web pages document both the use of the executable and the C code
 in which `SHIBA` is written.  They are generated from source documents

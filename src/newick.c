@@ -234,7 +234,7 @@ void phyloToLineage(phylo p)
         {
           // expressed in ages
           periodOld = RealTime[j];
-          periodYng = (j != Times) ? RealTime[j+1] : 0.0 ;
+          periodYng = (j < Times-1) ? RealTime[j+1] : 0.0 ;
           edgeOld = p.age[i] + p.bl[i];
           edgeYng = p.age[i];
 
@@ -252,6 +252,26 @@ void phyloToLineage(phylo p)
         }
     }
 
+  // create a parent lineage to daughter lineage array. Needed because some
+  // edges have dissappeared if both beginning and ending within a period.
   
+  LineageDaughters  = mem2d1_i(Lineages);
+  LineageNDaughters = mem1d_i(Lineages);
 
+  for (int i = 0; i < Lineages; i++)
+    for (int t = Times - 1; t > 0; t--) // note stepping until one before stem
+      // if there is a LP at time t
+      if (LineagePeriod[i][t])
+        // is there a LP at time t-1?
+        if (!LineagePeriod[i][t-1]) {
+          // if not, check who is the parent:
+          int node = p.parent[i];
+          while(!LineagePeriod[node][t-1]) node = p.parent[node];
+          /* printf("lin%2d time%2d is daughter of lin%2d time%2d\n",
+             i, t, node, t-1);  */
+          LineageNDaughters[node] += 1;
+          LineageDaughters[node] = (int *) realloc( LineageDaughters[node], 
+                     LineageNDaughters[node] * sizeof(int));
+          LineageDaughters[node][LineageNDaughters[node]-1]=i;
+        }
 }

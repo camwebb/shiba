@@ -70,10 +70,11 @@
     <taxon id="x3">Sp3</taxon>
     <taxon id="x4">Sp4</taxon>
   </taxa>
-  <phylo n="3">
+  <phylo n="4">
     <newick id="p1">((Sp1:3,Sp2:3):9,(Sp3:7,Sp4:7):5):4;</newick>
-    <newick id="p2">(((Sp1:2,Sp2:2):2,Sp3:4):10,Sp4:14):4;</newick>
-    <newick id="p3">(((Sp1:7,Sp2:7):2,Sp3:9):5,Sp4:14):4;</newick>
+    <newick id="p2">((Sp1:4,Sp2:4):6,(Sp3:5,Sp4:5):5):5;</newick>
+    <newick id="p3">(((Sp1:2,Sp2:2):2,Sp3:4):10,Sp4:14):4;</newick>
+    <newick id="p4">(((Sp1:7,Sp2:7):2,Sp3:9):5,Sp4:14):4;</newick>
   </phylo>
   <extantIn> <!-- included fossils -->
     <extant taxon="x1" time="t4" space="s1"/>
