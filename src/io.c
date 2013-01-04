@@ -1,23 +1,27 @@
 /*! \file
- * Input, output, error and memory allocation functions
+ * **Input, output, error and memory allocation functions**
  */
 
 #define _GNU_SOURCE
 #include <mxml.h>
-#include <string.h>
 #include "shiba.h"
 
-/*!
- * Open file and parse XML; 
- * derived from mini-xml website examples
+/*! \brief Open file and parse XML. 
+ *
+ * Derived from mini-xml website examples. 
  */
-
 void readXML()
 {
 
   FILE *fp;
   mxml_node_t *tree;
   mxml_node_t *node;
+
+  char **TimeLabel;  // The ID label in the XML file for the time period
+  char **SpaceLabel; // The ID label in the XML file for the spaces
+  char **PhyloLabel; // The ID label in the XML file for the phylogenies
+  char **TaxonLabel; // The ID label in the XML file for the taxa
+
   // Counters for occurrences of data elements
   int t = 0; int s = 0; int p = 0; int x = 0; 
   int a = 0; int d = 0; int e = 0; int ss = 0;
@@ -80,13 +84,16 @@ void readXML()
               // test for declining times
               if (t > 0)
                 {
-                  //! \todo Remove this constraint, by adding a sorting stage
+                  /*! \todo Remove the constraint of having to have the ages
+                   *  included in the XML file in decreasing order. Will need
+                   *  a sorting stage
+                   */
                   if (RealTime[t] > RealTime[t-1])
                     error("Time sequence is not sorted in declining age");
                 }
-              if (!mxmlElementGetAttr(node, "id"))            \
+              if (!mxmlElementGetAttr(node, "id"))            
                 error("An id attr is missing in periodStart");
-              else asprintf(&TimeLabel[t], "%s", \
+              else asprintf(&TimeLabel[t], "%s", 
                 mxmlElementGetAttr(node, "id"));
               t++;
             }
@@ -95,13 +102,13 @@ void readXML()
           else if (!strcmp(mxmlGetElement(node), "spaceName"))
             {
               if (s >= Spaces) error("Too many spaceName elements");
-              if (!mxmlGetOpaque(mxmlGetFirstChild(node))) \
+              if (!mxmlGetOpaque(mxmlGetFirstChild(node))) 
                 error("A spaceName datum is missing");
-              else asprintf(&SpaceName[s], "%s", \
+              else asprintf(&SpaceName[s], "%s", 
                 mxmlGetOpaque(mxmlGetFirstChild(node)));
-              if (!mxmlElementGetAttr(node, "id"))            \
+              if (!mxmlElementGetAttr(node, "id"))            
                 error("An id attr is missing in spaceName");
-              else asprintf(&SpaceLabel[s], "%s", \
+              else asprintf(&SpaceLabel[s], "%s", 
                 mxmlElementGetAttr(node, "id"));
               s++;
             }
@@ -181,24 +188,20 @@ void readXML()
                     }
                 }
               // Read the space attr
-              if (!mxmlElementGetAttr(node, "space"))        \
+              if (!mxmlElementGetAttr(node, "space")) {       
                 error("A space attr is missing in area");
-              else
-                {
-                  a_s = -1;
-                  for (int i = 0; i < Spaces; i++)
-                    {
-                      if (!strcmp(mxmlElementGetAttr(node, "space"),
-                             SpaceLabel[i])) a_s = i;
-                    }           
-                  if (a_s == -1)
-                    {
-                      fprintf(stderr, 
-                        "XML parse error: //area/@space '%s' not IDREF\n", 
-                        mxmlElementGetAttr(node, "space"));
+              } else {
+                a_s = -1;
+                for (int i = 0; i < Spaces; i++)
+                  if (!strcmp(mxmlElementGetAttr(node, "space"),
+                              SpaceLabel[i])) a_s = i;
+                if (a_s == -1) {
+                  fprintf(stderr, 
+                    "XML parse error: //area/@space '%s' not IDREF\n", 
+                     mxmlElementGetAttr(node, "space"));
                       exit(1);
-                    }
                 }
+              }
               // Set the datum
               Area[a_t][a_s] = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
               a++;
@@ -402,10 +405,8 @@ void readXML()
 
 }
 
-/*!
- * Output matrices for checking by user
+/*! \brief Output matrices for checking by user.
  */
-
 void printIndata()
 {
   printf("# Data as read from %s\n", DataFile);
@@ -444,6 +445,9 @@ void printIndata()
 
   printf("\n## Taxa:\n");
   for (int i = 0; i < Taxa; i++) printf("  %d: %s\n", i, Taxon[i]); 
+
+  printf("\n## Phylos:\n");
+  for (int i = 0; i < Phylos; i++) printf("  %d: %s\n", i, Phylo[i]); 
 
   printf("\n## LineagePeriods:\n");
   printf("  Lineage   :  ");
@@ -495,8 +499,10 @@ void printIndata()
 
 }
 
-/*!
- * Simple error warning, with exit from program, returning 1
+/*! \brief Basic error output and exit function.
+ *
+ * Note that no freeing is done, possibly leading to memory leaks.
+ * @param error_msg the error message
  */
 
 void error(char *error_msg)
@@ -508,9 +514,11 @@ void error(char *error_msg)
 }
 
 
-/*!
- * Dimensions an initialized 1-D array of doubles.
+/*! \brief Dimensions an initialized 1-D array of doubles.
+ *
  * To free, just use free().
+ * @param dimx The dimensions of the vector
+ * @return A pointer to an array of doubles
  */
 
 double* mem1d_d(int dimx)
@@ -521,9 +529,11 @@ double* mem1d_d(int dimx)
   return ptr;
 }
 
-/*!
- * Dimensions an initialized 1-D array of int.
+/*! \brief Dimensions an initialized 1-D array of int.
+ *
  * To free, just use free().
+ * @param dimx The dimensions of the vector
+ * @return A pointer to an array of ints
  */
 
 int* mem1d_i(int dimx)
@@ -534,11 +544,12 @@ int* mem1d_i(int dimx)
   return ptr;
 }
 
-
-/*!
- * Dimensions a initialized 1-D array of character pointers, ready to 
- * be allocated using asprintf.  The result will be a `ragged' matrix.
- * To free, use free2d1_c().
+/*! \brief Dimensions a initialized 1-D array of character pointers, ready to 
+ * be allocated using asprintf.
+ * 
+ * The result will be a `ragged' matrix. To free, use free2d1_c() .
+ * @param dimx The dimensions of the vector
+ * @return A pointer to an array of character pointers
  */
 
 char** mem2d1_c(int dimx)
@@ -552,6 +563,9 @@ char** mem2d1_c(int dimx)
   // SpaceName = (char**) malloc( Spaces * sizeof(char*));
 }
 
+/*! \brief Frees the ragged array allocated by mem2d1_c().
+ * @param dimx The dimensions of the vector
+ */
 
 void free2d1_c(char **ptr, int dimx)
 {
@@ -675,6 +689,7 @@ void free3d_i(int ***ptr, int dimx, int dimy)
   free(ptr);
 }
 
+//! Default help output.
 
 void help()
 {
@@ -687,3 +702,4 @@ void help()
   printf("     -h     Print this help list\n\n");
   exit(0);
 }
+

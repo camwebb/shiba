@@ -1,5 +1,5 @@
 /*! \file
- * Parses newick tree strings
+ * **Parses newick tree strings**
  */
 
 #include "shiba.h"
@@ -245,7 +245,13 @@ void phyloToLineage(phylo p)
               ((edgeYng <= periodYng) || 
                ((edgeYng >= periodYng) && (edgeYng < periodOld))))
             LineagePeriod[i][j] = 1;
-          printf("phy%02d %4.1f -- %4.1f   slc%02d %4.1f -- %4.1f ---> [%d]\n", i, edgeOld, edgeYng, j, periodOld,  periodYng, LineagePeriod[i][j]);
+          /* printf(
+             "phy%02d %4.1f -- %4.1f   slc%02d %4.1f -- %4.1f ---> [%d]\n",
+             i, edgeOld, edgeYng, j, periodOld,  periodYng, 
+             LineagePeriod[i][j]); */
         }
     }
+
+  
+
 }

@@ -1,91 +1,88 @@
-/*!
-  SHIBA main header
+// This software is distributed under the terms of the BSD 2-Clause License
+// (see bottom of this file for full text)
+
+/*! \file
+ * **SHIBA main header**
 */
 
-#define _GNU_SOURCE // to allow the very useful asprintf()
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h> // For getopt
-#include <ctype.h>  // For isprint
-#include <math.h>
-#include <string.h>
-#include <time.h>
+#define _GNU_SOURCE //!< to allow the very useful asprintf()
 
-//Safer asprintf macro
+/*! Safer asprintf macro for extending strings.
+ * From [21st Century C](http://shop.oreilly.com/product/0636920025108.do).
+ */
 #define Sasprintf(write_to, ...) {          \
   char *tmp_string_for_extend = (write_to); \
   asprintf(&(write_to), __VA_ARGS__);       \
   free(tmp_string_for_extend);              \
   }
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h> // for getopt()
+#include <ctype.h>  // for isprint()
+#include <math.h>
+#include <string.h>
+
 // ------------------------ STRUCTURES ---------------------------
 
-/*!
- * The structure that stores the configuration information
- */
-
+//! The structure that stores the configuration information
 typedef struct {
-  int *startSpace;
-} shibaConfig;
+  //! 1/0 defining if stem lineage is allowed to start in each space
+  int *startSpace; 
+} config;
 
+//! A general phylogeny structure returned from pasring Newick
 typedef struct {
-  //int treeNum;
-  int nnodes; // including 0 or root node
-  int *parent; //up[node]
-  //int *ldaughter;
-  //int *rsister;
-  int *ndaughter;
-  int *depth; //depth[node]
-  double *bl; //bl[node]
-  //float *tbl;
-  double *age; //age[node]
-  char **taxon; // name of named node - taxon[node][]
-  //int ntaxa;  // number of named nodes = total number of names
-  //int termtaxa; // number of terminal taxa
-  //char **taxalist; //names of terminal taxa - taxalist[0 to termtaxa-1][]
-  //int *t2n;  //vector of node #s indexed by 0 to termtaxa-1, as taxalist
-  //float **dist; // matrix of all node-to-node distances dist[node1][node2]
-  //int arenotes; // 0 | 1
-  //char **notes;
-  // DA additions
-  //int maxDepth;
-  //int *ntip;
-  //int *nint;
-  //int **tiplist;
-  //int **intlist;
-  //int *upo; // up pass order
+  int nnodes;  //!< Number of nodes in phylogeny, including 0 or root node
+  int *parent; //!< index of parent node
+  int *ndaughter; //!< Number of daughters for each node. Terminals have zero
+  int *depth; //!< Depth in n nodes from root (root has depth of zero)
+  double *bl; //!< Branch length of the proximal edge
+  int ultra;  //!< 0/1 flagging an ultrametric tree.
+  double *age; //!< \brief Age of the node, in units of branch length
+               //!< (valid only for ultrametric trees).
+  char **taxon; //!< Name of the node, NULL for missing names
 } phylo;
-
 
 // ------------------------ VARIABLES ---------------------------
 
-shibaConfig Cfg;
+config Cfg; //!< The main config structure
 
-int Times;  ///< The number of time periods 
-char **TimeLabel; ///< The ID label in the XML file for the time period
-double *RealTime;
-int Spaces; ///< The number of spatial units
-char **SpaceName;
-char **SpaceLabel;
-char **Phylo;
-char **PhyloLabel;
-double **Area ; ///< The areas of spatial time Area[Time][Space]
-double ***Dist ; ///< 
-int    ***Extant; 
-int Phylos;
-int Taxa;
-char **Taxon;
-char **TaxonLabel;
-int Lineages;
-int **LineagePeriod;
-char *DataFile;
-int PhyloToUse;
+int Times;        //!< The number of time periods 
+double *RealTime; //!< The _age_ of the start of the period
+
+int Spaces;       //!< The number of spatial units
+char **SpaceName; //!< The names of the spatial area
+
+int Phylos;       //!< The number of phylogenies
+char **Phylo;     //!< The phylogeny strings
+
+int Taxa;         //!< The number of terminal taxa
+char **Taxon;     //!< Terminal taxa names
+
+double **Area ;   //!< The areas of spates at each time: Area[Time][Space]
+double ***Dist ;  //!< The distances among spaces at each time 
+int    ***Extant; //!< \brief 0/1 indcating the existance of a taxon or fossil
+                  //!< during a particular time period.  Care is needed in
+                  //!< assigning fossils to periods, due to reconciliation
+                  //!< stage.
+
+int Lineages;     //!< The number of lineages = phylo.nnodes
+int **LineagePeriod; //!< The 0/1 existence of a lineage in a time period.
+
+char *DataFile;   //!< Name of the data file. Default: `shibaInput.xml`
+int PhyloToUse;   //!< Index number of the phylogeny currently in use.
+int PrintData;    //!< Switch 0/1 to control output of raw data.
 
 // ------------------------ FUNCTIONS ---------------------------
+// (documentation precedes the function definitions)
 
+void readArgs(int argc, char **argv);
 void readXML();
 void printIndata();
-
+phylo parseNewick(char *in);
+void phyloToLineage(phylo p);
+void help();
 void error(char *a);
 
 int* mem1d_i(int dimx);
@@ -103,16 +100,38 @@ void free3d_d(double ***ptr, int dimx, int dimy);
 int*** mem3d_i(int dimx, int dimy, int dimz);
 void free3d_i(int ***ptr, int dimx, int dimy);
 
-phylo parseNewick(char *in);
-void phyloToLineage(phylo p);
-void readArgs(int argc, char **argv);
-void help();
 
-/*!
+/* TODO: Allow speciation and dying out that still results in correct censored 
+ *       tree
+ * TODO: Test no of simulated occurrences, and adjust pDisp and pMort
+ *       to optimize
+ */
 
- \todo Allow speciation and dying out that still results in correct censored 
-       tree
 
- \todo Test no of simulated occurrences, and adjust pDisp and pMort
-       to optimize
-*/
+/* Copyright (c) 2013, Campbell Webb
+   All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+   * Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in
+     the documentation and/or other materials provided with the
+     distribution.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+   FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+   COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+   INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+   (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+   SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+   OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
