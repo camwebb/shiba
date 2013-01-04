@@ -274,4 +274,17 @@ void phyloToLineage(phylo p)
                      LineageNDaughters[node] * sizeof(int));
           LineageDaughters[node][LineageNDaughters[node]-1]=i;
         }
+
+  // Convert Extant (by taxa) to LineageExtant (by lineage)
+  LineageExtant = mem3d_i(Lineages, Times, Spaces);
+  int i;
+  for (int x = 0; x < Taxa; x++) {
+    for (i = 0; i < p.nnodes; i++)
+      if (p.taxon[i])
+        if (!strcmp(Taxon[x], p.taxon[i])) break;
+    for (int t = 0; t < Times; t++)
+      for (int s = 0; s < Spaces; s++)
+        if (Extant[x][t][s])
+          LineageExtant[i][t][s] = 1;
+  }
 }

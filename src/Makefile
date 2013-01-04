@@ -1,6 +1,6 @@
 CC = gcc 
 HDRS	= shiba.h
-OBJS = main.o newick.o io.o
+OBJS = main.o newick.o io.o shiba.o
 LIBS	= -lm -lmxml -lpthread
 CFLAGS = -Wall -g -std=gnu11 -D_THREAD_SAFE -D_REENTRANT -O0 # -O3
 
@@ -10,6 +10,8 @@ shiba: $(OBJS)
 	$(CC) $(CFLAGS) -o shiba $(OBJS) $(LIBS)
 
 main.o: main.c $(HDRS)
+
+shiba.o: shiba.c $(HDRS)
 
 newick.o: newick.c $(HDRS)
 

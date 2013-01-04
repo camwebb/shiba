@@ -65,12 +65,13 @@ double ***Dist ;  //!< The distances among spaces at each time
 int    ***Extant; //!< \brief 0/1 indcating the existance of a taxon or fossil
                   //!< during a particular time period.  Care is needed in
                   //!< assigning fossils to periods, due to reconciliation
-                  //!< stage.
+                  //!< stage. [x][t][s]
 
-int Lineages;     //!< The number of lineages = phylo.nnodes
-int **LineagePeriod; //!< The 0/1 existence of a lineage in a time period.
-int **LineageDaughters; //!< The daughters of each lineage.
-int *LineageNDaughters; //!< The number of daughters of each lineage.
+int    Lineages;     //!< The number of lineages = phylo.nnodes
+int  **LineagePeriod; //!< The 0/1 existence of a lineage in a time period.
+int  **LineageDaughters; //!< The daughters of each lineage.
+int   *LineageNDaughters; //!< The number of daughters of each lineage.
+int ***LineageExtant; //!< Whether each lineage is extant. [l][t][s]
 
 char *DataFile;   //!< Name of the data file. Default: `shibaInput.xml`
 int PhyloToUse;   //!< Index number of the phylogeny currently in use.
@@ -104,6 +105,9 @@ void free3d_d(double ***ptr, int dimx, int dimy);
 int*** mem3d_i(int dimx, int dimy, int dimz);
 void free3d_i(int ***ptr, int dimx, int dimy);
 
+void shiba();
+double findMaxArea();
+double findMaxDist();
 
 /* TODO: Allow speciation and dying out that still results in correct censored 
  *       tree

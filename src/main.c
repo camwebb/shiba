@@ -27,6 +27,7 @@ int main(int argc, char **argv)
 
   if (PrintData) printIndata();
 
+  shiba();
 
   // Free memory
 

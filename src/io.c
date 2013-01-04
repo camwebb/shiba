@@ -476,7 +476,7 @@ void printIndata()
     printf("\n");
   }
 
-  printf("\n## Extant:\n");
+  printf("\n## ExtantTaxa:\n");
   printf("  Spaces             :");
   for (int i = 0; i < Spaces; i++) printf("  %3d", i); 
   printf("\n");
@@ -491,6 +491,26 @@ void printIndata()
             {
               printf("  Time %3d, Taxon %3d:", t, i);
               for (int j = 0; j < Spaces; j++) printf("  %3d", Extant[i][t][j]);
+              printf("\n");
+            }
+        }
+    }
+
+  printf("\n## LineageExtant:\n");
+  printf("  Spaces               :");
+  for (int i = 0; i < Spaces; i++) printf("  %3d", i); 
+  printf("\n");
+  for (int t = 0; t < Times; t++)
+    {
+      for (int i = 0; i < Lineages; i++)
+        {
+          int isOne = 0;
+          for (int j = 0; j < Spaces; j++)
+            if (LineageExtant[i][t][j]) isOne++;
+          if (isOne)
+            {
+              printf("  Time %3d, Lineage %3d:", t, i);
+              for (int j = 0; j < Spaces; j++) printf("  %3d", LineageExtant[i][t][j]);
               printf("\n");
             }
         }
