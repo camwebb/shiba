@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shibaInput>
+  <!-- 
+  Example input
+
+      :  Sp1   Sp2 Sp3   Sp4       Three areas:
+  0 ..:...|.....|...|.....|..      Area1 Area2 Area2 
+      :   |     |   |     |  
+      :   +~~+~~+   |     |  
+  5 ..:......|......|.....|..
+      :      |      +~~+~~+  
+      :      |         |
+ 10 ..:......|.........|.....
+      :      |         |     
+      :      +~~~~+~~~~+
+      :           |
+ 15 ..:...........|..........           
+
+  -->
+  <time n="4">
+    <periodStart id="t1">15</periodStart>
+    <periodStart id="t2">10</periodStart>
+    <periodStart id="t3">5</periodStart>
+    <periodStart id="t4">0</periodStart>
+  </time>
+  <space n="3">
+    <spaceName id="s1">Area1</spaceName>
+    <spaceName id="s2">Area2</spaceName> 
+    <spaceName id="s3">Area3</spaceName> 
+  </space>
+  <areas>
+    <area time="t1" space="s1">10</area>
+    <area time="t1" space="s2">10</area>
+    <area time="t1" space="s3">10</area>
+
+    <area time="t2" space="s1">10</area>
+    <area time="t2" space="s2">10</area>
+    <area time="t2" space="s3">10</area>
+
+    <area time="t3" space="s1">10</area>
+    <area time="t3" space="s2">10</area>
+    <area time="t3" space="s3">10</area>
+
+    <area time="t4" space="s1">10</area>
+    <area time="t4" space="s2">10</area>
+    <area time="t4" space="s3">10</area>
+
+  </areas>
+  <distances>
+    <dist time="t1" from="s1" to="s2">100</dist>
+    <dist time="t1" from="s1" to="s3">100</dist>
+    <dist time="t1" from="s2" to="s3">100</dist>
+
+    <dist time="t2" from="s1" to="s2">100</dist>
+    <dist time="t2" from="s1" to="s3">100</dist>
+    <dist time="t2" from="s2" to="s3">100</dist>
+
+    <dist time="t3" from="s1" to="s2">100</dist>
+    <dist time="t3" from="s1" to="s3">100</dist>
+    <dist time="t3" from="s2" to="s3">100</dist>
+
+    <dist time="t4" from="s1" to="s2">100</dist>
+    <dist time="t4" from="s1" to="s3">100</dist>
+    <dist time="t4" from="s2" to="s3">100</dist>
+  </distances>
+  <taxa n="4">
+    <taxon id="x1">Sp1</taxon>
+    <taxon id="x2">Sp2</taxon>
+    <taxon id="x3">Sp3</taxon>
+    <taxon id="x4">Sp4</taxon>
+  </taxa>
+  <phylo n="2">
+    <newick id="p1">((Sp1:3,Sp2:3):9,(Sp3:7,Sp4:7):5):4;</newick>
+    <newick id="p2">(((Sp1:2,Sp2:2):2,Sp3:4):10,Sp4:14):4;</newick>
+  </phylo>
+  <extantIn> <!-- included fossils -->
+    <extant taxon="x1" time="t4" space="s1"/>
+    <extant taxon="x2" time="t4" space="s1"/>
+    <extant taxon="x3" time="t4" space="s2"/>
+    <extant taxon="x4" time="t4" space="s3"/>
+  </extantIn>
+  <config>
+    <startSpaces>
+      <allowed space="s1"/> 
+      <allowed space="s2"/> 
+      <allowed space="s3"/> 
+    </startSpaces>
+  </config>
+</shibaInput>

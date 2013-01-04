@@ -22,7 +22,7 @@ void readXML()
   int t = 0; int s = 0; int p = 0; int x = 0; 
   int a = 0; int d = 0; int e = 0; int ss = 0;
 
-  fp = fopen("infile.xml", "r");
+  fp = fopen(DataFile, "r");
   tree = mxmlLoadFile(NULL, fp, MXML_OPAQUE_CALLBACK);
   fclose(fp);
 
@@ -208,7 +208,7 @@ void readXML()
           else if (!strcmp(mxmlGetElement(node), "dist"))
             {
               int d_t; int d_s1; int d_s2;
-              if (a >= ((Spaces * (Spaces-1))/2) * Times) 
+              if (a > ((Spaces * (Spaces-1))/2) * Times) 
                 error("Too many dist elements");
               // Test for text child element
               if (!mxmlGetOpaque(mxmlGetFirstChild(node)))
@@ -408,7 +408,7 @@ void readXML()
 
 void printIndata()
 {
-  printf("# Data as read from infile.xml\n");
+  printf("# Data as read from %s\n", DataFile);
 
   printf("\n## Spaces:\n");
   for (int i = 0; i < Spaces; i++) printf("  %3d: %s\n", i, SpaceName[i]); 
@@ -444,6 +444,24 @@ void printIndata()
 
   printf("\n## Taxa:\n");
   for (int i = 0; i < Taxa; i++) printf("  %d: %s\n", i, Taxon[i]); 
+
+  printf("\n## LineagePeriods:\n");
+  printf("  Lineage   :  ");
+  for (int i = 0; i < Lineages; i++)
+    {
+      if ((i % 5) == 0) printf("|");
+      else printf(" ");
+    }
+  printf("\n");
+  for (int t = 0; t < Times; t++)
+    {
+      printf("  Period %3d:  ", t);
+      for (int i = 0; i < Lineages; i++)
+        {
+          printf("%1d", LineagePeriod[i][t]);
+        }
+      printf("\n");
+    }
 
   printf("\n## Extant:\n");
   printf("  Spaces             :");
@@ -658,3 +676,14 @@ void free3d_i(int ***ptr, int dimx, int dimy)
 }
 
 
+void help()
+{
+  printf("\n  SHIBA (Simulated Historical Island Biogeography Analysis)\n");
+  printf("  (c) Cam Webb 2013\n");
+  printf("  Usage: shiba [ -h -f FILE -p INT ]\n");
+  printf("  Options:\n");
+  printf("     -f     Use this file as input. Default file: shibaInput.xml\n");
+  printf("     -p     Use this phylogeny (0...n). Default: 0\n");
+  printf("     -h     Print this help list\n\n");
+  exit(0);
+}

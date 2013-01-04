@@ -5,6 +5,8 @@
 #define _GNU_SOURCE // to allow the very useful asprintf()
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h> // For getopt
+#include <ctype.h>  // For isprint
 #include <math.h>
 #include <string.h>
 #include <time.h>
@@ -74,7 +76,10 @@ int Phylos;
 int Taxa;
 char **Taxon;
 char **TaxonLabel;
+int Lineages;
 int **LineagePeriod;
+char *DataFile;
+int PhyloToUse;
 
 // ------------------------ FUNCTIONS ---------------------------
 
@@ -100,6 +105,8 @@ void free3d_i(int ***ptr, int dimx, int dimy);
 
 phylo parseNewick(char *in);
 void phyloToLineage(phylo p);
+void readArgs(int argc, char **argv);
+void help();
 
 /*!
 

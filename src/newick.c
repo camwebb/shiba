@@ -162,6 +162,38 @@ phylo parseNewick(char *in) {
   return p; 
 }
 
+/*!
+ * **Reconciles the phylogeny edges with the geo time periods**
+ *
+ * For example, imagine three past time periods (A, B, C) and the future (Z),
+ * and several phylogeny edges (a-k):
+ *
+ *      Z :   a     b   d     e   g     h    j     
+ *      ..:...|.....|...|.....|...|.....|....|..... NOW
+ *        :   |     |   |     |   +--+--+    |
+ *      C :   +--+--+   |     |      |i      |
+ *        :      |c     |     |      +----+--+
+ *      ..:......|......|.....|...........|........
+ *        :      |      +--+--+           |k
+ *      B :      |         |f             |
+ *      ..:......|.........|..............|........
+ *      A :      |         |              | 
+ *
+ * These would be encoded with reference to the time periods as:
+ *
+ *               a b c    d e f    g h i j k
+ *               -----    -----    ---------
+ *           Z | 1 1 0    1 1 0    1 1 x 1 0
+ *           C | 0 0 1    1 1 0    0 0 x 0 1
+ *           B | 0 0 1    0 0 1    0 0 x 0 1
+ *           A | 0 0 1    0 0 1    0 0 x 0 1
+ *
+ * Note that we need to push the branching events `forward,' so that
+ * there is only ever one root stem passing through the beginning of
+ * the first time period.
+ */
+
+
 void phyloToLineage(phylo p)
 {
 
@@ -170,6 +202,7 @@ void phyloToLineage(phylo p)
   double tmp;
   int node;
 
+  Lineages = p.nnodes;
   for (int i = 0; i < p.nnodes; i++)
     if (!p.ndaughter[i]) {
       tmp = 0.0;
@@ -187,7 +220,7 @@ void phyloToLineage(phylo p)
   ageToRootStem += p.bl[0];
 
   // Is the tree stem longer than the time slices?
-  if (ageToRootStem < RealTime[0]) 
+  if (ageToRootStem < RealTime[0])
     error("tree stem not old enough for geo age");
 
   // Slice the phylo into periods defined by geo
@@ -195,17 +228,24 @@ void phyloToLineage(phylo p)
   LineagePeriod = mem2d_i(p.nnodes, Times);
   
   double periodOld, periodYng, edgeOld,  edgeYng; 
-  for (int j = 0; j < Times; j++)
+  for (int i = 0; i < p.nnodes; i++)
     {
-      for (int i = 0; i < p.nnodes; i++)
+      for (int j = 0; j < Times; j++)
         {
-
           // expressed in ages
           periodOld = RealTime[j];
           periodYng = (j != Times) ? RealTime[j+1] : 0.0 ;
           edgeOld = p.age[i] + p.bl[i];
           edgeYng = p.age[i];
-          printf("slc%02d %4.1f -- %4.1f   phy%02d %4.1f -- %4.1f\n", j, periodOld, periodYng, i, edgeOld,  edgeYng);
+
+          // Rules:
+          // if the edge passes through the period period beginning,
+          //   and either spans the period of end in the period
+          if ((edgeOld >= periodOld) && 
+              ((edgeYng <= periodYng) || 
+               ((edgeYng >= periodYng) && (edgeYng < periodOld))))
+            LineagePeriod[i][j] = 1;
+          printf("phy%02d %4.1f -- %4.1f   slc%02d %4.1f -- %4.1f ---> [%d]\n", i, edgeOld, edgeYng, j, periodOld,  periodYng, LineagePeriod[i][j]);
         }
     }
 }
