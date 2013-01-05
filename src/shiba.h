@@ -22,6 +22,7 @@
 #include <ctype.h>  // for isprint()
 #include <math.h>
 #include <string.h>
+#include <time.h>   // for time()
 
 // ------------------------ STRUCTURES ---------------------------
 
@@ -29,6 +30,14 @@
 typedef struct {
   //! 1/0 defining if stem lineage is allowed to start in each space
   int *startSpace; 
+  int nStartSpaces; //<! The number of starting spaces
+  int maxRuns;
+  int stopAfterSuccess;
+  double probSurv;
+  double probDispA;
+  double probDispB;
+  double shapeDisp;
+  int verbose;
 } config;
 
 //! A general phylogeny structure returned from pasring Newick
@@ -72,10 +81,24 @@ int  **LineagePeriod; //!< The 0/1 existence of a lineage in a time period.
 int  **LineageDaughters; //!< The daughters of each lineage.
 int   *LineageNDaughters; //!< The number of daughters of each lineage.
 int ***LineageExtant; //!< Whether each lineage is extant. [l][t][s]
+int    LinExtantN;    //!< The number of lineages extant at present
 
 char *DataFile;   //!< Name of the data file. Default: `shibaInput.xml`
 int PhyloToUse;   //!< Index number of the phylogeny currently in use.
 int PrintData;    //!< Switch 0/1 to control output of raw data.
+
+// #### these variables should be renamed and their scope restricted:
+// The spatial location of each lineage at each time 1 or 0
+int ***locn; //[MAXLINEAGES][TIME][SPACE];
+int **record; // [MAXLINEAGES][SPACE]; remember this records node position - not final position
+long int success;
+long int topres1000;
+long int topresent;
+double maxdist;
+double maxarea;
+double obsocc;
+double occrunning;
+
 
 // ------------------------ FUNCTIONS ---------------------------
 // (documentation precedes the function definitions)
@@ -108,6 +131,11 @@ void free3d_i(int ***ptr, int dimx, int dimy);
 void shiba();
 double findMaxArea();
 double findMaxDist();
+double obsOccurrence();
+void biogeo();
+void printSuccessAll();
+double pDisp(int t, int a, int b);
+double pSurv(int t, int a);
 
 /* TODO: Allow speciation and dying out that still results in correct censored 
  *       tree

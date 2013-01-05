@@ -52,6 +52,36 @@ void readXML()
   Taxa = atoi(mxmlElementGetAttr(node, "n"));
   if (!Taxa) error("taxa/@n not found in input");
 
+  // --- single config options
+
+  node = mxmlGetParent(mxmlFindPath(tree, "*/config/nStartSpaces")); 
+  Cfg.nStartSpaces = atoi(mxmlGetOpaque(mxmlGetFirstChild(node)));
+  if (!Cfg.nStartSpaces) error("//config/nStartSpaces not found in input");
+
+  node = mxmlGetParent(mxmlFindPath(tree, "*/config/maxRuns")); 
+  Cfg.maxRuns = atoi(mxmlGetOpaque(mxmlGetFirstChild(node)));
+  if (!Cfg.maxRuns) error("//config/maxRuns not found in input");
+
+  node = mxmlGetParent(mxmlFindPath(tree, "*/config/stopAfterSuccess")); 
+  Cfg.stopAfterSuccess = atoi(mxmlGetOpaque(mxmlGetFirstChild(node)));
+  if (!Cfg.stopAfterSuccess) error("//stopAfterSuccess not found in input");
+
+  node = mxmlGetParent(mxmlFindPath(tree, "*/config/probSurv")); 
+  Cfg.probSurv = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
+  if (!Cfg.probSurv) error("//config/probSurv not found in input");
+  
+  node = mxmlGetParent(mxmlFindPath(tree, "*/config/probDispA")); 
+  Cfg.probDispA = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
+  if (!Cfg.probDispA) error("//config/probDispA not found in input");
+
+  node = mxmlGetParent(mxmlFindPath(tree, "*/config/probDispB")); 
+  Cfg.probDispB = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
+  if (!Cfg.probDispB) error("//config/probDispB not found in input");
+
+  node = mxmlGetParent(mxmlFindPath(tree, "*/config/shapeDisp")); 
+  Cfg.shapeDisp = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
+  if (!Cfg.shapeDisp) error("//config/shapeDisp not found in input");
+
   // ------------- Dimension arrays in the heap -----------------------------
 
   Area       = mem2d_d(Times, Spaces);
@@ -523,6 +553,15 @@ void printIndata()
   printf("  Allowed :");
   for (int j = 0; j < Spaces; j++) printf("  %3d", Cfg.startSpace[j]);
   printf("\n");
+
+  printf("\n## Config:\n");
+  printf("  nStartSpaces     : %10d\n", Cfg.nStartSpaces);
+  printf("  maxRuns          : %10d\n", Cfg.maxRuns);
+  printf("  stopAfterSuccess : %10d\n", Cfg.stopAfterSuccess);
+  printf("  probSurv         : %10.2f\n", Cfg.probSurv);
+  printf("  probDispA        : %10.2f\n", Cfg.probDispA);
+  printf("  probDispB        : %10.2f\n", Cfg.probDispB);
+  printf("  shapeDisp        : %10.2f\n", Cfg.shapeDisp);
 
   printf("\n");
 

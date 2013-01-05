@@ -13,6 +13,7 @@ int main(int argc, char **argv)
   PhyloToUse = 0;
   DataFile = "shibaInput.xml";
   PrintData = 0;
+  Cfg.verbose = 0;
 
   // Read arguments
   readArgs(argc, argv);
@@ -64,7 +65,7 @@ void readArgs(int argc, char **argv)
   int c;
   opterr = 0;
      
-  while ((c = getopt (argc, argv, "f:hp:l")) != -1)
+  while ((c = getopt (argc, argv, "f:hp:lv:")) != -1)
     switch (c)
       {
       case 'f':
@@ -75,6 +76,9 @@ void readArgs(int argc, char **argv)
         break;
       case 'p':
         PhyloToUse = atoi(optarg);
+        break;
+      case 'v':
+        Cfg.verbose = atoi(optarg);
         break;
       case 'h':
         help();

@@ -78,15 +78,23 @@
   </phylo>
   <extantIn> <!-- included fossils -->
     <extant taxon="x1" time="t4" space="s1"/>
+    <extant taxon="x1" time="t4" space="s2"/>
     <extant taxon="x2" time="t4" space="s1"/>
     <extant taxon="x3" time="t4" space="s2"/>
     <extant taxon="x4" time="t4" space="s3"/>
   </extantIn>
   <config>
+    <nStartSpaces>1</nStartSpaces>
     <startSpaces>
       <allowed space="s1"/> 
       <allowed space="s2"/> 
       <allowed space="s3"/> 
     </startSpaces>
+    <maxRuns>1000000000</maxRuns>
+    <stopAfterSuccess>1000</stopAfterSuccess>
+    <probSurv>1.0</probSurv>
+    <probDispA>0.2</probDispA>
+    <probDispB>10.0</probDispB>
+    <shapeDisp>1.0</shapeDisp>
   </config>
 </shibaInput>
