@@ -1,5 +1,5 @@
 /*! \file
- * **Biogeographical routines **
+ * **Biogeographical routines**
  */
 
 #include "shiba.h"
@@ -22,7 +22,7 @@ void shiba()
   // clear counter variables
   long int r = 0; // runs
 
-  printf("\n");
+  printf("\n# SHIBA (Simulated Historical Island Biogeography Analysis)\n\n");
 
   // keep going until...
   while ((success < Cfg.stopAfterSuccess) && (r < Cfg.maxRuns)) {
@@ -31,7 +31,7 @@ void shiba()
 
     // Reporting (and adjustment) every 1000 runs:
     if (!(r % 1000)) {
-      fprintf(stderr, "\rrun %8ld; to present %8ld; success %8ld", 
+      fprintf(stderr,"\r> runs: %9ld;    to present: %8ld;    successes: %5ld", 
               r - (r % 1000), (topresent - (topresent % 1000)), success);
       fflush(NULL);  // Flush the buffer
     }
@@ -39,7 +39,7 @@ void shiba()
 
   // Final reporting:
   fprintf(stderr, "\n\n"); fflush(NULL);
-  printf("## Success : %ld (in %ld runs)\n\n", success, r );
+  printf("## Successes : %ld (in %ld runs)\n\n", success, r );
   printSuccessAll();
 
   free3d_i(locn , Lineages, Times);
@@ -312,17 +312,17 @@ void printArray(int time)
 
 void printSuccessAll()
 {
-  printf("## Number of runs the base of the lineage was in a space (* = extant distrib):\n\n");
+  printf("## Number of runs in which the base of each lineage was in each space:\n   (*= extant distrib)\n\n");
   // printf("lin  bor   wsu   ngu   phi   luz\n");
-  printf("  Space       |  ");
+  printf("    Space       |  ");
   for (int k = 0; k < Spaces; k++) printf(" %3d ", k);
   printf("\n");
-  printf("  ------------+--");
+  printf("    ------------+--");
   for (int k = 0; k < Spaces; k++) printf("-----");
   printf("\n");
       
   for (int i = 0; i < Lineages; i++) {
-    printf("  Lineage %3d |  ", i);
+    printf("    Lineage %3d |  ", i);
     for (int k = 0; k < Spaces; k++) {
       if (LineageExtant[i][Times-1][k])
         printf(" %3d*", record[i][k]);

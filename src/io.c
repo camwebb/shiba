@@ -818,13 +818,16 @@ void free3d_i(int ***ptr, int dimx, int dimy)
 
 void help()
 {
+  char *version = VERSION;
   printf("\n  SHIBA (Simulated Historical Island Biogeography Analysis)\n");
-  printf("  (c) Cam Webb 2013\n");
-  printf("  Usage: shiba [ -h -f FILE -p INT ]\n");
+  printf("  (c) Campbell Webb 2013; Version %s\n", version);
+  printf("  Usage: shiba [ -f FILE -h -l -p INT -v ]\n");
   printf("  Options:\n");
-  printf("     -f     Use this file as input. Default file: shibaInput.xml\n");
-  printf("     -p     Use this phylogeny (0...n). Default: 0\n");
-  printf("     -h     Print this help list\n\n");
+  printf("    -f FILE  Use this file as input. Default file: shibaInput.xml\n");
+  printf("    -h      Print this help list\n");
+  printf("    -l      Print input data summary\n");
+  printf("    -p      Use this phylogeny (0...n). Default: 0\n");
+  printf("    -v      Print highly verbose event descriptions\n\n");
   exit(0);
 }
 

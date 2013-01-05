@@ -28,10 +28,10 @@ int main(int argc, char **argv)
 
   if (PrintData) printIndata();
 
+  // main runs
   shiba();
 
   // Free memory
-
   free(p.parent);
   free(p.ndaughter);
   free(p.depth);

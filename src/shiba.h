@@ -23,6 +23,7 @@
 #include <math.h>
 #include <string.h>
 #include <time.h>   // for time()
+#include "version.h"
 
 // ------------------------ STRUCTURES ---------------------------
 

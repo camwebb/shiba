@@ -49,16 +49,16 @@
   </areas>
   <distances>
     <dist time="t1" from="s1" to="s2">100</dist>
-    <dist time="t1" from="s1" to="s3">100</dist>
-    <dist time="t1" from="s2" to="s3">100</dist>
+    <dist time="t1" from="s1" to="s3">400</dist>
+    <dist time="t1" from="s2" to="s3">400</dist>
 
     <dist time="t2" from="s1" to="s2">100</dist>
-    <dist time="t2" from="s1" to="s3">100</dist>
-    <dist time="t2" from="s2" to="s3">100</dist>
+    <dist time="t2" from="s1" to="s3">300</dist>
+    <dist time="t2" from="s2" to="s3">300</dist>
 
     <dist time="t3" from="s1" to="s2">100</dist>
-    <dist time="t3" from="s1" to="s3">100</dist>
-    <dist time="t3" from="s2" to="s3">100</dist>
+    <dist time="t3" from="s1" to="s3">200</dist>
+    <dist time="t3" from="s2" to="s3">200</dist>
 
     <dist time="t4" from="s1" to="s2">100</dist>
     <dist time="t4" from="s1" to="s3">100</dist>
