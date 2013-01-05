@@ -14,12 +14,12 @@ void shiba()
   success = 0;
   topres1000 = 0;
   topresent = 0;
-  occrunning = 0.0;
+  occ1000 = 0.0;
   maxarea = findMaxArea();
   maxdist = findMaxDist();
 
-  printf("Maxarea: %f\n", maxarea);
-  printf("Maxdist: %f\n", maxdist);
+  // printf("Maxarea: %f\n", maxarea);
+  // printf("Maxdist: %f\n", maxdist);
 
   printf("SETTINGS\n");
   printf("| surv = %5.3f |\n", Cfg.probSurv);
@@ -36,8 +36,7 @@ void shiba()
   // keep going until...
   while ((success < Cfg.stopAfterSuccess) && (r < Cfg.maxRuns))
     {
-      
-      // Run the main loop for X start areas
+
       biogeo();
       r++;
 
@@ -45,27 +44,28 @@ void shiba()
       if (!(r % 1000))
 		{
 		  // adjust base
-		  // if ((occrunning / (double) topres1000) > obsocc) dispp2 += 0.05;
-		  // if ((occrunning / (double) topres1000) < obsocc) dispp2 -= 0.05;
+		  // if ((occ1000 / (double) topres1000) > obsocc) dispp2 += 0.05;
+		  // if ((occ1000 / (double) topres1000) < obsocc) dispp2 -= 0.05;
 
 		  // adjust modifier
 		  // 2009-09-13 drop:
-		  //   if ((occrunning / (double) topres1000) > obsocc) dispp -= 0.05;
-		  //   if ((occrunning / (double) topres1000) < obsocc) dispp += 0.05;
+		  //   if ((occ1000 / (double) topres1000) > obsocc) dispp -= 0.05;
+		  //   if ((occ1000 / (double) topres1000) < obsocc) dispp += 0.05;
 		  //   if (dispp > 1.0) dispp = 1.0;
 		  //   if (dispp < 0.0) dispp = 0.0;
 
 		  // Adjust surv
 		  //if (topres1000 > lasttp1000) survp += 0.05;
-		  //if ((occrunning / (double) topres1000) < obsocc) dispp2 -= 0.05;
+		  //if ((occ1000 / (double) topres1000) < obsocc) dispp2 -= 0.05;
 
-		  fprintf(stderr, 
+ 		  /* fprintf(stderr, 
              "run %8ld; to present %8ld; success %8ld; occ %5.3f; disp %5.2f", 
-				  r, (topresent- (topresent % 1000)), success, 
-				  occrunning / (double) topres1000, Cfg.probDispA) ;
+				  r, (topresent - (topresent % 1000)), success, 
+				  occ1000 / topres1000, Cfg.probDispA) ;
 		  fflush(NULL);  // Flush the buffer
-          
-		  occrunning = 0.0;
+          */
+
+		  occ1000 = 0.0;
 		  topres1000 = 0;
           
 		}
@@ -75,7 +75,7 @@ void shiba()
   fprintf(stderr, "\n"); fflush(NULL);
   printf("success/failure = %ld/%ld\n",          \
 		 success, r - success);
-  printSuccessAll();
+  // printSuccessAll();
 
 }
 
@@ -123,133 +123,163 @@ double obsOccurrence()
 void biogeo()
 {
 
-  int l, s, t;
+  //! \page pseudo Pseudocode
+  //! ## Main biogeographic loop
+  //! * For each run...
+
   int i, rnd;
   int places, linck, diffs;
   int occcnt;
   double tmpocccnt;
 
-  // clear
-  for (l = 0; l < Lineages; l++) {
-    for (t = 0; t < Times; t++) {
-      for (s = 0; s < Spaces; s++) {
+  // clear 
+  for (int l = 0; l < Lineages; l++)
+    for (int t = 0; t < Times; t++)
+      for (int s = 0; s < Spaces; s++)
 		locn[l][t][s] = 0;
-      } } }
 
-  // establish starting point
+  //! \page pseudo Pseudocode 
+  //! ### Establish starting positions for Lineage 0 
+  //! * Until the allowed number of starting spaces (`Cfg.nStartSpaces`)
+  //!   for lineage 0 have been chosen...
+
   i = 0;
-  while (i < Cfg.nStartSpaces)
-    {
-      rnd = (int) ((double) Spaces * (double) random() / (double) (RAND_MAX+1.0));
-	  printf("%d\n", rnd);
-      if ((locn[0][0][rnd] == 0) && \
-		  (Area[0][rnd] != 0) && \
-		  (Cfg.startSpace[rnd] == 1))
-		{
-		  locn[0][0][rnd] = 1;
-		  i++;
-		}
+  while (i < Cfg.nStartSpaces) {
+    rnd = (int)((double) Spaces * (double) random() /(double)(RAND_MAX+1.0));
+    printf("%d\n", rnd);
+
+    //! \page pseudo Pseudocode
+    //! * Pick a random space. 
+    //! * If i) space has not already been chosen, ii) area is > 0, i.e., 
+    //!   there is land, and iii) it is an allowed start spot, 
+    //!   set that start space for lineage 0.
+
+    if ((locn[0][0][rnd]) && (Area[0][rnd] > 0.0) && (Cfg.startSpace[rnd])) {
+      locn[0][0][rnd] = 1;
+      i++;
     }
-  printf("%d %d %d %d\n", locn[0][0][0],locn[0][0][1],  locn[0][0][2], locn[0][0][3]);
+  }
 
-  
-  for ( t = 0; t < Times-1; t++)  // from T=0 to the penultimate period
-    {
-      // print array at start
-      // if (Cfg.verbose) printArray(t);
- 
-      // check for each lineage in spacetime
-      for (l = 0; l < Lineages; l++)
-		{
-		  linck = 0;
-		  if (LineagePeriod[l][t]) // reduce the lineage set to examine to
-			// just those lineages that are alive at t
-			{
-			  for (s = 0; s < Spaces; s++)
-				{
+  // DELETE ME
+  printf("%d %d %d\n", locn[0][0][0],locn[0][0][1],  locn[0][0][2]);
 
-				  // test for fossils: if there is a fossil in a place and
-				  // no lineage in that place, this causes a failure
-				  // if ((fossil[l][t][s] == 1) && (locn[l][t][s] == 0))
-				  //   {
-				  //     // printf("fossil failure\n");
-				  //     return;
-				  //   }
+  //! \page pseudo Pseudocode
+  //! ### Main loop from time 0 to present
+  //! * For each period (`t`) up until the penultimate one (because actions
+  //!   cause changes in state at `t+1`)...
+  for (int t = 0; t < Times-1; t++)  { 
+    // print array at start
+    // if (Cfg.verbose) printArray(t);
 
-				  // where there is a lineage in a space at a time...
-				  if (locn[l][t][s] == 1)
-					{
+    //! \page pseudo Pseudocode
+    //! * For each lineage... (`l`)
+    for (int l = 0; l < Lineages; l++) {
 
-					  // dispersal?
-					  for (i = 0; i < Spaces ; i++)
-						{
-						  if ( ( ((double) random() / (double)(RAND_MAX+1.0)) \
-								 < pDisp(t,s,i) ) && (i != s) && (Area[t][i] != 0))
-							{
-							  locn[l][t+1][i] = 1;
-							  if (Cfg.verbose==1) printf("                                L%d DISPERSES FROM S%d TO S%d\n",l,s,i);
-							  linck++;
-							}
-						}
-		      
-					  // survival in place  - Add size dept surv here
-					  if ( ((double) random() / (double)(RAND_MAX+1.0)) \
-						   < pSurv(t,s))
-						{
-						  locn[l][t+1][s] = 1;
-						  linck++;
-						}
-					  else if (Cfg.verbose==1) printf( \
-												  "                                L%d GOES LOCALLY EXTINCT IN S%d\n",l,s);
+      linck = 0; // the number of surviving lineages from one period to next
 
-					}
-				}
-			  // check if this lineage (or daughter lineages) survive
-			  if (linck == 0)
-				{
-				  if (Cfg.verbose==1) printf("                                L%d HAS DIED OUT\n",l);
-				  if (Cfg.verbose==1) printf("\n-------------------------------------------------\n\n");
-				  return;
-				}
-	    
+      //! \page pseudo Pseudocode
+      //! * Exclude those lineages not alive at period `t`
+      if (LineagePeriod[l][t]) {
+        
+        //! \page pseudo Pseudocode
+        //! * For each space... (`s`)
+        for (s = 0; s < Spaces; s++) {
 
-			  // is it about to split?
-			  if (LineagePeriod[l][t+1] == 0)
-				{
-				  // reallocate occurences to new taxa
-				  // is the future lineage in one place? sympatric:
-				  places = 0;
-				  for (s = 0; s < Spaces; s++)
-					{
-					  places += locn[l][t+1][s];
-					}
-				  if (places == 1)
-					{
-					  if (Cfg.verbose==1) printf("                                SYMPATRIC SPECIATION\n");
-					  for (s = 0; s < Spaces; s++)
-						{
-						  if (locn[l][t+1][s] == 1)
-							{
-							  // kill it:
-							  locn[l][t+1][s] = 0;
-							  // make daughters
-							  locn[daughters[l][0]][t+1][s] = 1;
-							  locn[daughters[l][1]][t+1][s] = 1;
-							}
-						}
-					}
-				  // or allopatric:
-				  // Very simple - splits as in vicariant behaviour
-				  else
-					{
-					  if (Cfg.verbose==1) printf("                                ALLOPATRIC SPECIATION\n");
-					  // for (s = 0; s < Spaces; s++) printf("%d", locn[l][t+1][s]);
-					  // printf("\n");
-					  // pick one to be one species
-					  i = -1;
-					  while (i == -1)
-						{
-						  rnd = (int) ( (double) Spaces * (double) random() / (double) (RAND_MAX+1.0));
+          //! \page pseudo Pseudocode
+          //! * (Optionally test for fossils: if there is a fossil in
+          //!   a place and no lineage in that place, this causes 
+          //!   a failure)
+
+          //! \page pseudo Pseudocode
+          //! * Where there is a lineage in a space at a  time (set either
+          //!   from initialization or from the previous run)...
+          if (locn[l][t][s]) {
+
+            //! \page pseudo Pseudocode
+            //! * Test for **dispersal** to each other space (that is
+            //!   not the same one and has Area > 0). 
+            //!   If a randomly chosen 0...1 is less than the
+            //!   distance-dependent prob of dispersal, set the (potential) 
+            //!   lineage in that space in `t+1`
+            for (i = 0; i < Spaces ; i++) {
+              if ( ( ((double) random() / (double)(RAND_MAX+1.0))
+                     < pDisp(t,s,i) ) && (i != s) && (Area[t][i] > 0.0)) {
+                locn[l][t+1][i] = 1;
+
+                if (Cfg.verbose==1) printf("                                L%d DISPERSES FROM S%d TO S%d\n",l,s,i);
+                linck++;
+              }
+            }
+            
+            //! \page pseudo Pseudocode
+            //! #### Survival and dispersal
+            //! * Test for **survival in place**.
+            //!   If a randomly chosen 0...1 is less than the
+            //!   area-dependent prob of survival, set the (potential) lineage
+            //!   as alive in 'own' space in `t+1`
+            if (((double) random() / (double)(RAND_MAX+1.0)) < pSurv(t,s)) {
+              locn[l][t+1][s] = 1;
+              linck++;
+            }
+            else if (Cfg.verbose==1) printf(                            \
+                                            "                                L%d GOES LOCALLY EXTINCT IN S%d\n",l,s);
+            
+          }
+        }
+
+        //! \page pseudo Pseudocode
+        //! * (If no existences of this lineage make it to `t+1`, end this run
+        //!   because the simulation cannot not make a match to the existing
+        //!   distribution)
+        if (linck) {
+          if (Cfg.verbose==1) printf("                                L%d HAS DIED OUT\n",l);
+          if (Cfg.verbose==1) printf("\n-------------------------------------------------\n\n");
+          return;
+        }
+
+
+        //! \page pseudo Pseudocode
+        //! #### Switch from parent to daughter lineages 'if it is time'
+        //! * Test for existence of lineage in `t+1`. If it is to die...
+        if (!LineagePeriod[l][t+1]) {
+
+          //! \page pseudo Pseudocode
+          //! * Calculate how many spaces it will be in
+          places = 0;
+          for (s = 0; s < Spaces; s++) {
+            places += locn[l][t+1][s];
+          }
+
+          //! \page pseudo Pseudocode
+          //! * If it is only in one place, then speciation must be
+          //!   **sympatric**, i.e., two or more daughter lineages exist 
+          //!   together in the single space at `t+1`.
+          if (places == 1) {
+            if (Cfg.verbose==1) printf("                                SYMPATRIC SPECIATION\n");
+            // locate it again (this is a wasteful loop, could be found in
+            // previous loop
+            for (s = 0; s < Spaces; s++)
+              if (locn[l][t+1][s]) {
+                // kill it:
+                locn[l][t+1][s] = 0;
+                // make daughters
+                for (int z = 0; z < LineageDaughtersN[l]; z++)
+                  locn[LineageDaughters[l][z]][t+1][s] = 1;
+              }
+          }
+
+          //! \page pseudo Pseudocode
+          //! * If it is in several places, then speciation could be 
+          //!   **sympatric** or **allopatric**.
+          else {
+            if (Cfg.verbose==1) printf("                                ALLOPATRIC SPECIATION\n");
+            // for (s = 0; s < Spaces; s++) printf("%d", locn[l][t+1][s]);
+            // printf("\n");
+            // pick one to be one species
+            i = -1;
+            while (i == -1)
+              {
+                rnd = (int) ( (double) Spaces * (double) random() / (double) (RAND_MAX+1.0));
 						  // printf("%d ", rnd);
 						  if (locn[l][t+1][rnd] == 1) i = rnd;
 						}
@@ -297,11 +327,11 @@ void biogeo()
 			  occcnt += locn[l][Times-1][s];
 			}
 		  tmpocccnt += (double) occcnt / (double) Spaces;
-		  //  printf("run %f; LinExtantN %d; occcnt %d; tmpocccnt %f\n", occrunning, LinExtantN, occcnt, tmpocccnt);
+		  //  printf("run %f; LinExtantN %d; occcnt %d; tmpocccnt %f\n", occ1000, LinExtantN, occcnt, tmpocccnt);
 		}
     }
 
-  occrunning += tmpocccnt / (double) LinExtantN;
+  occ1000 += tmpocccnt / (double) LinExtantN;
 
   // An exactly matching present distribution; record positions of ancestral
   // nodes
@@ -402,28 +432,28 @@ void biogeo()
 /*   return 1; */
 /* } */
 
-int printSuccessAll()
-{
-  int i, k;
-  printf("[N runs the base of each each lineage was in a place]:[final extant distrib]\n");
-  printf("lin  bor   wsu   ngu   phi   luz\n");
-  for (i = 0; i < Lineages; i++)
-    {
-      printf("%2d", i);
-      for (k = 0; k < Spaces; k++)
-		{
-		  if (LineagePeriod[i][Times-1])
-			{
-			  printf(" %3d:%d", record[i][k], extant[i][k]);
-			}
-		  else  printf(" %3d: ", record[i][k]);
-		}
-      printf("\n");
-    }
+/* int printSuccessAll() */
+/* { */
+/*   int i, k; */
+/*   printf("[N runs the base of each each lineage was in a place]:[final extant distrib]\n"); */
+/*   printf("lin  bor   wsu   ngu   phi   luz\n"); */
+/*   for (i = 0; i < Lineages; i++) */
+/*     { */
+/*       printf("%2d", i); */
+/*       for (k = 0; k < Spaces; k++) */
+/* 		{ */
+/* 		  if (LineagePeriod[i][Times-1]) */
+/* 			{ */
+/* 			  printf(" %3d:%d", record[i][k], extant[i][k]); */
+/* 			} */
+/* 		  else  printf(" %3d: ", record[i][k]); */
+/* 		} */
+/*       printf("\n"); */
+/*     } */
 
   
-  return 1;
-}
+/*   return 1; */
+/* } */
 
 double pDisp(int t, int a, int b)
 {

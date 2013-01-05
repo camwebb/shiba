@@ -256,7 +256,7 @@ void phyloToLineage(phylo p)
   // edges have dissappeared if both beginning and ending within a period.
   
   LineageDaughters  = mem2d1_i(Lineages);
-  LineageNDaughters = mem1d_i(Lineages);
+  LineageDaughtersN = mem1d_i(Lineages);
 
   for (int i = 0; i < Lineages; i++)
     for (int t = Times - 1; t > 0; t--) // note stepping until one before stem
@@ -269,10 +269,10 @@ void phyloToLineage(phylo p)
           while(!LineagePeriod[node][t-1]) node = p.parent[node];
           /* printf("lin%2d time%2d is daughter of lin%2d time%2d\n",
              i, t, node, t-1);  */
-          LineageNDaughters[node] += 1;
+          LineageDaughtersN[node] += 1;
           LineageDaughters[node] = (int *) realloc( LineageDaughters[node], 
-                     LineageNDaughters[node] * sizeof(int));
-          LineageDaughters[node][LineageNDaughters[node]-1]=i;
+                     LineageDaughtersN[node] * sizeof(int));
+          LineageDaughters[node][LineageDaughtersN[node]-1]=i;
         }
 
   // Convert Extant (by taxa) to LineageExtant (by lineage)

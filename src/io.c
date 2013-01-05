@@ -501,7 +501,7 @@ void printIndata()
   for (int i = 0; i < Lineages; i++) {
     printf("  Lineage %3d:  ", i);
     //printf("  %3d", LineageNDaughters[i]);
-    for (int j = 0; j < LineageNDaughters[i]; j++)
+    for (int j = 0; j < LineageDaughtersN[i]; j++)
       printf("  %3d", LineageDaughters[i][j]);
     printf("\n");
   }

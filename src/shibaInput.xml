@@ -90,7 +90,7 @@
       <allowed space="s2"/> 
       <allowed space="s3"/> 
     </startSpaces>
-    <maxRuns>1000000000</maxRuns>
+    <maxRuns>100</maxRuns>
     <stopAfterSuccess>1000</stopAfterSuccess>
     <probSurv>1.0</probSurv>
     <probDispA>0.2</probDispA>

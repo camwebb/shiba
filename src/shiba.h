@@ -79,7 +79,7 @@ int    ***Extant; //!< \brief 0/1 indcating the existance of a taxon or fossil
 int    Lineages;     //!< The number of lineages = phylo.nnodes
 int  **LineagePeriod; //!< The 0/1 existence of a lineage in a time period.
 int  **LineageDaughters; //!< The daughters of each lineage.
-int   *LineageNDaughters; //!< The number of daughters of each lineage.
+int   *LineageDaughtersN; //!< The number of daughters of each lineage.
 int ***LineageExtant; //!< Whether each lineage is extant. [l][t][s]
 int    LinExtantN;    //!< The number of lineages extant at present
 
@@ -97,7 +97,7 @@ long int topresent;
 double maxdist;
 double maxarea;
 double obsocc;
-double occrunning;
+double occ1000;
 
 
 // ------------------------ FUNCTIONS ---------------------------
