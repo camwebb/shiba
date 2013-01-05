@@ -21,11 +21,11 @@ void shiba()
   // printf("Maxarea: %f\n", maxarea);
   // printf("Maxdist: %f\n", maxdist);
 
-  printf("SETTINGS\n");
-  printf("| surv = %5.3f |\n", Cfg.probSurv);
+  //printf("SETTINGS\n");
+  //printf("| surv = %5.3f |\n", Cfg.probSurv);
   obsocc = obsOccurrence();
-  printf("| occ  = %5.3f |\n",obsocc);
-  printf("+--------------+\n");
+  //printf("| occ  = %5.3f |\n",obsocc);
+  //printf("+--------------+\n");
 
   // initialize srandom with time
   srandom(time(NULL));
@@ -73,9 +73,8 @@ void shiba()
 
   // Final reporting:
   fprintf(stderr, "\n"); fflush(NULL);
-  printf("success/failure = %ld/%ld\n",          \
-		 success, r - success);
-  // printSuccessAll();
+  printf("success / runs = %ld/%'ld\n", success, r );
+  printSuccessAll();
 
 }
 
@@ -127,11 +126,6 @@ void biogeo()
   //! ## Main biogeographic loop
   //! * For each run...
 
-  int i, rnd;
-  int places, linck, diffs;
-  int occcnt;
-  double tmpocccnt;
-
   // clear 
   for (int l = 0; l < Lineages; l++)
     for (int t = 0; t < Times; t++)
@@ -143,25 +137,25 @@ void biogeo()
   //! * Until the allowed number of starting spaces (`Cfg.nStartSpaces`)
   //!   for lineage 0 have been chosen...
 
-  i = 0;
-  while (i < Cfg.nStartSpaces) {
-    rnd = (int)((double) Spaces * (double) random() /(double)(RAND_MAX+1.0));
-    printf("%d\n", rnd);
+  int ss = 0;
+  while (ss < Cfg.nStartSpaces) {
+    int rnd = (int)((double) Spaces * (double) random() /
+                    (double)(RAND_MAX+1.0));
 
     //! \page pseudo Pseudocode
     //! * Pick a random space. 
+    //!
     //! * If i) space has not already been chosen, ii) area is > 0, i.e., 
     //!   there is land, and iii) it is an allowed start spot, 
     //!   set that start space for lineage 0.
 
-    if ((locn[0][0][rnd]) && (Area[0][rnd] > 0.0) && (Cfg.startSpace[rnd])) {
+    if ((!locn[0][0][rnd]) && 
+        (Area[0][rnd] > 0.0) && 
+        (Cfg.startSpace[rnd])) {
       locn[0][0][rnd] = 1;
-      i++;
+      ss++;
     }
   }
-
-  // DELETE ME
-  printf("%d %d %d\n", locn[0][0][0],locn[0][0][1],  locn[0][0][2]);
 
   //! \page pseudo Pseudocode
   //! ### Main loop from time 0 to present
@@ -169,21 +163,21 @@ void biogeo()
   //!   cause changes in state at `t+1`)...
   for (int t = 0; t < Times-1; t++)  { 
     // print array at start
-    // if (Cfg.verbose) printArray(t);
-
+    if (Cfg.verbose==1) printArray(t);
+    
     //! \page pseudo Pseudocode
     //! * For each lineage... (`l`)
     for (int l = 0; l < Lineages; l++) {
 
-      linck = 0; // the number of surviving lineages from one period to next
-
       //! \page pseudo Pseudocode
       //! * Exclude those lineages not alive at period `t`
       if (LineagePeriod[l][t]) {
+
+        int linck = 0; // the number of surv lineages from one period to next
         
         //! \page pseudo Pseudocode
         //! * For each space... (`s`)
-        for (s = 0; s < Spaces; s++) {
+        for (int s = 0; s < Spaces; s++) {
 
           //! \page pseudo Pseudocode
           //! * (Optionally test for fossils: if there is a fossil in
@@ -201,12 +195,12 @@ void biogeo()
             //!   If a randomly chosen 0...1 is less than the
             //!   distance-dependent prob of dispersal, set the (potential) 
             //!   lineage in that space in `t+1`
-            for (i = 0; i < Spaces ; i++) {
+            for (int i = 0; i < Spaces ; i++) {
               if ( ( ((double) random() / (double)(RAND_MAX+1.0))
                      < pDisp(t,s,i) ) && (i != s) && (Area[t][i] > 0.0)) {
                 locn[l][t+1][i] = 1;
-
-                if (Cfg.verbose==1) printf("                                L%d DISPERSES FROM S%d TO S%d\n",l,s,i);
+                
+                if (Cfg.verbose==1) printf("               l%d disperses from s%d to s%d\n",l,s,i);
                 linck++;
               }
             }
@@ -221,8 +215,8 @@ void biogeo()
               locn[l][t+1][s] = 1;
               linck++;
             }
-            else if (Cfg.verbose==1) printf(                            \
-                                            "                                L%d GOES LOCALLY EXTINCT IN S%d\n",l,s);
+            else if (Cfg.verbose==1) printf(
+              "               l%d goes locally extinct in s%d\n", l , s);
             
           }
         }
@@ -231,9 +225,9 @@ void biogeo()
         //! * (If no existences of this lineage make it to `t+1`, end this run
         //!   because the simulation cannot not make a match to the existing
         //!   distribution)
-        if (linck) {
-          if (Cfg.verbose==1) printf("                                L%d HAS DIED OUT\n",l);
-          if (Cfg.verbose==1) printf("\n-------------------------------------------------\n\n");
+        if (!linck) {
+          if (Cfg.verbose==1) printf("               l%d has died out\n",l);
+          if (Cfg.verbose==1) printf("----------\n");
           return;
         }
 
@@ -244,142 +238,138 @@ void biogeo()
         if (!LineagePeriod[l][t+1]) {
 
           //! \page pseudo Pseudocode
-          //! * Calculate how many spaces it will be in
-          places = 0;
-          for (s = 0; s < Spaces; s++) {
-            places += locn[l][t+1][s];
-          }
-
-          //! \page pseudo Pseudocode
-          //! * If it is only in one place, then speciation must be
+          //! * Calculate how many spaces (`z`) it would have been in.
+          //!   (If it is only in one place, then speciation must be
           //!   **sympatric**, i.e., two or more daughter lineages exist 
           //!   together in the single space at `t+1`.
-          if (places == 1) {
-            if (Cfg.verbose==1) printf("                                SYMPATRIC SPECIATION\n");
-            // locate it again (this is a wasteful loop, could be found in
-            // previous loop
-            for (s = 0; s < Spaces; s++)
-              if (locn[l][t+1][s]) {
-                // kill it:
-                locn[l][t+1][s] = 0;
-                // make daughters
-                for (int z = 0; z < LineageDaughtersN[l]; z++)
-                  locn[LineageDaughters[l][z]][t+1][s] = 1;
-              }
-          }
+          //!   If it is in several places, then speciation could be 
+          //!   **sympatric** or **allopatric**.)
 
+          int places = 0;      //number of spaces occupied by daughters of `l`
+          int placemapping[Spaces]; // mapping from 0..places to 'real' spaces
+          for (int s = 0; s < Spaces; s++)
+            if (locn[l][t+1][s]) {
+              placemapping[places] = s;  
+              places++;
+            }
+          int placeck[places]; // has the place got a lineage in it? 
+          for (int h = 0; h < places; h++) placeck[h] = 0;
+          int fullplaces = 0;       // number of places filled
+          
           //! \page pseudo Pseudocode
-          //! * If it is in several places, then speciation could be 
-          //!   **sympatric** or **allopatric**.
-          else {
-            if (Cfg.verbose==1) printf("                                ALLOPATRIC SPECIATION\n");
-            // for (s = 0; s < Spaces; s++) printf("%d", locn[l][t+1][s]);
-            // printf("\n");
-            // pick one to be one species
-            i = -1;
-            while (i == -1)
-              {
-                rnd = (int) ( (double) Spaces * (double) random() / (double) (RAND_MAX+1.0));
-						  // printf("%d ", rnd);
-						  if (locn[l][t+1][rnd] == 1) i = rnd;
-						}
-		      
-					  for (s = 0; s < Spaces; s++)
-						{
-						  if (locn[l][t+1][s] == 1)
-							{
-							  // kill
-							  locn[l][t+1][s] = 0;
+          //! * For each daughter lineage (0...`LineageDaughtersN[l]`)
+          
+          for (int q = 0; q < LineageDaughtersN[l]; q++) {
+            int placed = 0; // has this daughter been placed?
+            while (!placed) {
+              
+              //! \page pseudo Pseudocode
+              //! * Pick a random number (0...`z`). If that place has not been 
+              //!   filled, use that place for the new lineage. If that place 
+              //!   has been filled, and all places have been filled just use 
+              //!   that place for the new lineage, but if all places have 
+              //!   not been filled, try again.  This algorithm generates
+              //!   sympatry with `places=1`, allopatry with `l = 2` and 
+              //!   `places=2` and a mixture with other combinations.
+              int rnd = (int) ( (double) places * (double) random() / 
+                                (double) (RAND_MAX+1.0));
+              if (placeck[rnd]) {
+                if (fullplaces >= places) {
+                  locn[LineageDaughters[l][q]][t+1][placemapping[rnd]] = 1;
+                  placed = 1;
+                  if (Cfg.verbose==1) printf(
+                    "               l%d ends; l%d begins in s%d\n", l, 
+                    LineageDaughters[l][q], placemapping[rnd]);
+                }
+              } else {
+                locn[LineageDaughters[l][q]][t+1][placemapping[rnd]] = 1;
+                placeck[rnd] = 1;
+                placed = 1;
+                fullplaces++;
+                if (Cfg.verbose==1) printf(
+                  "               l%d ends; l%d begins in s%d\n", 
+                  l, LineageDaughters[l][q], placemapping[rnd]);
 
-							  //switch
-							  if (s == i) locn[daughters[l][0]][t+1][s] = 1;
-							  else locn[daughters[l][1]][t+1][s] = 1;
-							}
-						}
-					}
-				}
-			}
-		}
+              }
+            }
+          }
+        }
+      }
     }
+    //! \page pseudo Pseudocode
+    //! * (End lineage loop `l`)
+  }
+  //! \page pseudo Pseudocode
+  //! * (End time loop `t`)
+  //!
+  //! * If the loop did not bail out due to a dying lineage, we have a
+  //!   fully simulated lineage.
 
-  // All lineages made it to the present
   topresent++;
   topres1000++;
 
   // final layout
-  /* if (Cfg.verbose==1)
+  if (Cfg.verbose==1)
     {
       printArray(Times-1);
-      printExtant(Lineages);
-      } */
-
-  // check for success
-  diffs = 0;
-  tmpocccnt = 0.0;
-  for (l = 0; l < Lineages; l++)
-    {
-      if (LineagePeriod[l][Times-1])
-		{
-		  occcnt = 0;
-		  for (s = 0; s < Spaces; s++)
-			{
-			  if (locn[l][Times-1][s] != LineageExtant[l][Times-1][s]) diffs++;
-			  occcnt += locn[l][Times-1][s];
-			}
-		  tmpocccnt += (double) occcnt / (double) Spaces;
-		  //  printf("run %f; LinExtantN %d; occcnt %d; tmpocccnt %f\n", occ1000, LinExtantN, occcnt, tmpocccnt);
-		}
+      //printExtant(Lineages);
     }
 
+  //! \page pseudo Pseudocode
+  //! #### Check for conformation of simulated taxa distribution to extant
+  //! * Loop through lineages and spaces at present and count the
+  //!   number of differences between simulated and onserved distribution
+  
+  int diffs = 0;  // the count of differences between sim and obs
+  double tmpocccnt = 0.0;
+  for (int l = 0; l < Lineages; l++) {
+    if (LineagePeriod[l][Times-1]) {
+      int occcnt = 0;
+      for (int s = 0; s < Spaces; s++) {
+        if (locn[l][Times-1][s] != LineageExtant[l][Times-1][s]) diffs++;
+        occcnt += locn[l][Times-1][s];
+      }
+      tmpocccnt += (double) occcnt / (double) Spaces;
+      //  printf("run %f; LinExtantN %d; occcnt %d; tmpocccnt %f\n", occ1000, LinExtantN, occcnt, tmpocccnt);
+    }
+  }
+  
   occ1000 += tmpocccnt / (double) LinExtantN;
 
-  // An exactly matching present distribution; record positions of ancestral
-  // nodes
-  if (diffs == 0)
-    {
-      success++;
-
-      for (l = 0; l < Lineages; l++)
-		{
-		  for (t = 0; t < Times; t++)
-			{
-			  if (LineagePeriod[l][t])
-				{
-				  for (s = 0; s < Spaces; s++)
-					{
-					  record[l][s] += locn[l][t][s];
-					}
-				  break;
-				}
-			}
-		}
-	  /*       if (Cfg.verbose==0)  */
-	  /* 	{ */
-	  /* 	  fprintf(stderr, "\r%3d",success); fflush(NULL); */
-	  /* 	} */
-
-      // if (Cfg.verbose==2) printSuccess();
+  //! \page pseudo Pseudocode
+  //! * If there is no difference in simulated and observed distribution,
+  //!   we record the route taken through space-time 
+  if (!diffs) {
+    success++;
+    for (int l = 0; l < Lineages; l++) {
+      for (int t = 0; t < Times; t++) {
+        if (LineagePeriod[l][t]) {
+          for (int s = 0; s < Spaces; s++)
+            record[l][s] += locn[l][t][s];
+          break;
+        }
+      }
     }
 
-  if (Cfg.verbose==1) printf("\n-------------------------------------------------\n\n");
+    if (Cfg.verbose==0)
+  	  fprintf(stderr, "\r%3ld",success); fflush(NULL);
+  
+    if (Cfg.verbose==2) printSuccess();
+  }
+
+  if (Cfg.verbose==1) printf("-----------\n");
     
 }
 
-/* int printArray(int time) */
-/* { */
-/*   int i,x; */
-/*   for (i = 0; i < Lineages; i++) */
-/*     { */
-/*       if (LineagePeriod[i][time] == 1) */
-/* 		{ */
-/* 		  printf("    T%2d L%2d  ", realtime[time], i); */
-/* 		  for (x = 0; x < Spaces; x++) printf("%d", locn[i][time][x]); */
-/* 		  printf("\n"); */
-/* 		} */
-/*     } */
-
-/*   return 1; */
-/* } */
+void printArray(int time)
+{
+  for (int i = 0; i < Lineages; i++)
+    if (LineagePeriod[i][time]) {
+      printf("t%d l%d : ", time, i);
+      for (int x = 0; x < Spaces; x++) printf("%d", locn[i][time][x]);
+      printf("\n");
+    }
+}
 
 /* int printExtant(int lins) */
 /* { */
@@ -398,62 +388,63 @@ void biogeo()
 /*   return 1; */
 /* } */
 
-/* int printSuccess() */
-/* { */
-/*   int i, j, k; */
-/*   printf("int locn[Lineages][Times][Spaces] = { \\\n"); */
-/*   for (i = 0; i < Lineages; i++) */
-/*     { */
-/*       printf("{ \\\n"); */
-/*       for (j = 0; j < Times; j++) */
-/* 		{ */
-/* 		  printf("  {%d", locn[i][j][0]); */
-/* 		  for (k = 1; k < Spaces; k++) */
-/* 			{ */
-/* 			  printf(", %d", locn[i][j][k]); */
-/* 			} */
-/* 		  if (j < Times-1) printf("}, \\\n"); */
-/* 		  else printf("} "); */
-/* 		} */
-/*       if (i < Lineages-1) printf("}, \\\n"); */
-/*       else printf("} \\\n"); */
-/*     } */
-/*   printf("};\n\n\n"); */
+void printSuccess()
+{
+  printf("int locn[Lineages][Times][Spaces] = { \\\n");
+  for (int i = 0; i < Lineages; i++)
+    {
+      printf("{ \\\n");
+      for (int j = 0; j < Times; j++)
+		{
+		  printf("  {%d", locn[i][j][0]);
+		  for (int k = 1; k < Spaces; k++)
+			{
+			  printf(", %d", locn[i][j][k]);
+			}
+		  if (j < Times-1) printf("}, \\\n");
+		  else printf("} ");
+		}
+      if (i < Lineages-1) printf("}, \\\n");
+      else printf("} \\\n");
+    }
+  printf("};\n\n\n");
 
-/*   /\*   printf("YES (%d%d %d%d %d%d) %d%d %d%d %d%d %d%d\n", \ *\/ */
-/*   /\* 	 locn[0][1][0],  locn[0][1][1], \ *\/ */
-/*   /\* 	 locn[1][6][0],  locn[1][6][1], \ *\/ */
-/*   /\* 	 locn[2][9][0],  locn[2][9][1], \ *\/ */
-/*   /\* 	 locn[3][Times-1][0], locn[3][Times-1][1], \ *\/ */
-/*   /\* 	 locn[4][Times-1][0], locn[4][Times-1][1], \ *\/ */
-/*   /\* 	 locn[5][Times-1][0], locn[5][Times-1][1], \ *\/ */
-/*   /\* 	 locn[6][Times-1][0], locn[6][Times-1][1] ); *\/ */
+  /*   printf("YES (%d%d %d%d %d%d) %d%d %d%d %d%d %d%d\n", \ */
+  /* 	 locn[0][1][0],  locn[0][1][1], \ */
+  /* 	 locn[1][6][0],  locn[1][6][1], \ */
+  /* 	 locn[2][9][0],  locn[2][9][1], \ */
+  /* 	 locn[3][Times-1][0], locn[3][Times-1][1], \ */
+  /* 	 locn[4][Times-1][0], locn[4][Times-1][1], \ */
+  /* 	 locn[5][Times-1][0], locn[5][Times-1][1], \ */
+  /* 	 locn[6][Times-1][0], locn[6][Times-1][1] ); */
+}
 
-/*   return 1; */
-/* } */
+void printSuccessAll()
+{
+  printf("## Number of runs the base of the lineage was in a space (* = extant distrib)\n\n");
+  // printf("lin  bor   wsu   ngu   phi   luz\n");
+  printf("  Space       |  ");
+  for (int k = 0; k < Spaces; k++) printf(" %3d ", k);
+  printf("\n");
+  printf("  ------------+--");
+  for (int k = 0; k < Spaces; k++) printf("-----");
+  printf("\n");
+      
+  for (int i = 0; i < Lineages; i++) {
+    printf("  Lineage %3d |  ", i);
+    for (int k = 0; k < Spaces; k++) {
+      if (LineageExtant[i][Times-1][k])
+        printf(" %3d*", record[i][k]);
+      else  printf(" %3d ", record[i][k]);
+    }
+    printf("\n");
+  }
+  printf("\n");
+    
 
-/* int printSuccessAll() */
-/* { */
-/*   int i, k; */
-/*   printf("[N runs the base of each each lineage was in a place]:[final extant distrib]\n"); */
-/*   printf("lin  bor   wsu   ngu   phi   luz\n"); */
-/*   for (i = 0; i < Lineages; i++) */
-/*     { */
-/*       printf("%2d", i); */
-/*       for (k = 0; k < Spaces; k++) */
-/* 		{ */
-/* 		  if (LineagePeriod[i][Times-1]) */
-/* 			{ */
-/* 			  printf(" %3d:%d", record[i][k], extant[i][k]); */
-/* 			} */
-/* 		  else  printf(" %3d: ", record[i][k]); */
-/* 		} */
-/*       printf("\n"); */
-/*     } */
 
   
-/*   return 1; */
-/* } */
+}
 
 double pDisp(int t, int a, int b)
 {

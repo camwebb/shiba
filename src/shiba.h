@@ -136,6 +136,9 @@ void biogeo();
 void printSuccessAll();
 double pDisp(int t, int a, int b);
 double pSurv(int t, int a);
+void printArray(int t);
+void printSuccess();
+void printSuccessAll();
 
 /* TODO: Allow speciation and dying out that still results in correct censored 
  *       tree
