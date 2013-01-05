@@ -12,20 +12,9 @@ void shiba()
   locn = mem3d_i(Lineages, Times, Spaces);
   record = mem2d_i(Lineages, Spaces);
   success = 0;
-  topres1000 = 0;
   topresent = 0;
-  occ1000 = 0.0;
   maxarea = findMaxArea();
   maxdist = findMaxDist();
-
-  // printf("Maxarea: %f\n", maxarea);
-  // printf("Maxdist: %f\n", maxdist);
-
-  //printf("SETTINGS\n");
-  //printf("| surv = %5.3f |\n", Cfg.probSurv);
-  obsocc = obsOccurrence();
-  //printf("| occ  = %5.3f |\n",obsocc);
-  //printf("+--------------+\n");
 
   // initialize srandom with time
   srandom(time(NULL));
@@ -33,48 +22,29 @@ void shiba()
   // clear counter variables
   long int r = 0; // runs
 
+  printf("\n");
+
   // keep going until...
-  while ((success < Cfg.stopAfterSuccess) && (r < Cfg.maxRuns))
-    {
+  while ((success < Cfg.stopAfterSuccess) && (r < Cfg.maxRuns)) {
+    biogeo();
+    r++;
 
-      biogeo();
-      r++;
-
-      // Reporting and adjustment every 1000 runs:
-      if (!(r % 1000))
-		{
-		  // adjust base
-		  // if ((occ1000 / (double) topres1000) > obsocc) dispp2 += 0.05;
-		  // if ((occ1000 / (double) topres1000) < obsocc) dispp2 -= 0.05;
-
-		  // adjust modifier
-		  // 2009-09-13 drop:
-		  //   if ((occ1000 / (double) topres1000) > obsocc) dispp -= 0.05;
-		  //   if ((occ1000 / (double) topres1000) < obsocc) dispp += 0.05;
-		  //   if (dispp > 1.0) dispp = 1.0;
-		  //   if (dispp < 0.0) dispp = 0.0;
-
-		  // Adjust surv
-		  //if (topres1000 > lasttp1000) survp += 0.05;
-		  //if ((occ1000 / (double) topres1000) < obsocc) dispp2 -= 0.05;
-
- 		  /* fprintf(stderr, 
-             "run %8ld; to present %8ld; success %8ld; occ %5.3f; disp %5.2f", 
-				  r, (topresent - (topresent % 1000)), success, 
-				  occ1000 / topres1000, Cfg.probDispA) ;
-		  fflush(NULL);  // Flush the buffer
-          */
-
-		  occ1000 = 0.0;
-		  topres1000 = 0;
-          
-		}
+    // Reporting (and adjustment) every 1000 runs:
+    if (!(r % 1000)) {
+      fprintf(stderr, "\rrun %8ld; to present %8ld; success %8ld", 
+              r - (r % 1000), (topresent - (topresent % 1000)), success);
+      fflush(NULL);  // Flush the buffer
     }
+  }
 
   // Final reporting:
-  fprintf(stderr, "\n"); fflush(NULL);
-  printf("success / runs = %ld/%'ld\n", success, r );
+  fprintf(stderr, "\n\n"); fflush(NULL);
+  printf("## Success : %ld (in %ld runs)\n\n", success, r );
   printSuccessAll();
+
+  free3d_i(locn , Lineages, Times);
+  free2d_i(record, Lineages);
+
 
 }
 
@@ -99,24 +69,6 @@ double findMaxDist()
       for (int b = 0; b < Spaces; b++) 
 		if (Dist[t][a][b] > max) max = Dist[t][a][b];
   return max;
-}
-
-double obsOccurrence()
-{
-  int areaCnt;
-  double tmptot = 0.0;
-  for (int i = 0; i < Lineages; i++)
-    // for lineages that are extant at present:
-    if (LineagePeriod[i][Times-1]) {
-      areaCnt = 0;
-      for (int j = 0; j < Spaces; j++)
-        // if this lineage present in space j
-        if (LineageExtant[i][Times-1][j]) 
-          areaCnt++;
-      LinExtantN++; // the number of lineages at pres
-      tmptot += (double) areaCnt / (double) Spaces;
-    }
-  return (double) tmptot / (double) LinExtantN;
 }
 
 void biogeo()
@@ -306,7 +258,6 @@ void biogeo()
   //!   fully simulated lineage.
 
   topresent++;
-  topres1000++;
 
   // final layout
   if (Cfg.verbose==1)
@@ -321,21 +272,14 @@ void biogeo()
   //!   number of differences between simulated and onserved distribution
   
   int diffs = 0;  // the count of differences between sim and obs
-  double tmpocccnt = 0.0;
   for (int l = 0; l < Lineages; l++) {
     if (LineagePeriod[l][Times-1]) {
-      int occcnt = 0;
       for (int s = 0; s < Spaces; s++) {
         if (locn[l][Times-1][s] != LineageExtant[l][Times-1][s]) diffs++;
-        occcnt += locn[l][Times-1][s];
       }
-      tmpocccnt += (double) occcnt / (double) Spaces;
-      //  printf("run %f; LinExtantN %d; occcnt %d; tmpocccnt %f\n", occ1000, LinExtantN, occcnt, tmpocccnt);
     }
   }
   
-  occ1000 += tmpocccnt / (double) LinExtantN;
-
   //! \page pseudo Pseudocode
   //! * If there is no difference in simulated and observed distribution,
   //!   we record the route taken through space-time 
@@ -350,11 +294,6 @@ void biogeo()
         }
       }
     }
-
-    if (Cfg.verbose==0)
-  	  fprintf(stderr, "\r%3ld",success); fflush(NULL);
-  
-    if (Cfg.verbose==2) printSuccess();
   }
 
   if (Cfg.verbose==1) printf("-----------\n");
@@ -371,57 +310,9 @@ void printArray(int time)
     }
 }
 
-/* int printExtant(int lins) */
-/* { */
-/*   int i,x; */
-/*   printf("CUR\n"); */
-/*   for (i = 0; i < lins; i++) */
-/*     { */
-/*       if (LineagePeriod[i][Times-1] == 1) */
-/* 		{ */
-/* 		  printf("    T%2d L%2d  ", realtime[Times-1], i); */
-/* 		  for (x = 0; x < Spaces; x++) printf("%d", extant[i][x]); */
-/* 		  printf("\n"); */
-/* 		} */
-/*     } */
-
-/*   return 1; */
-/* } */
-
-void printSuccess()
-{
-  printf("int locn[Lineages][Times][Spaces] = { \\\n");
-  for (int i = 0; i < Lineages; i++)
-    {
-      printf("{ \\\n");
-      for (int j = 0; j < Times; j++)
-		{
-		  printf("  {%d", locn[i][j][0]);
-		  for (int k = 1; k < Spaces; k++)
-			{
-			  printf(", %d", locn[i][j][k]);
-			}
-		  if (j < Times-1) printf("}, \\\n");
-		  else printf("} ");
-		}
-      if (i < Lineages-1) printf("}, \\\n");
-      else printf("} \\\n");
-    }
-  printf("};\n\n\n");
-
-  /*   printf("YES (%d%d %d%d %d%d) %d%d %d%d %d%d %d%d\n", \ */
-  /* 	 locn[0][1][0],  locn[0][1][1], \ */
-  /* 	 locn[1][6][0],  locn[1][6][1], \ */
-  /* 	 locn[2][9][0],  locn[2][9][1], \ */
-  /* 	 locn[3][Times-1][0], locn[3][Times-1][1], \ */
-  /* 	 locn[4][Times-1][0], locn[4][Times-1][1], \ */
-  /* 	 locn[5][Times-1][0], locn[5][Times-1][1], \ */
-  /* 	 locn[6][Times-1][0], locn[6][Times-1][1] ); */
-}
-
 void printSuccessAll()
 {
-  printf("## Number of runs the base of the lineage was in a space (* = extant distrib)\n\n");
+  printf("## Number of runs the base of the lineage was in a space (* = extant distrib):\n\n");
   // printf("lin  bor   wsu   ngu   phi   luz\n");
   printf("  Space       |  ");
   for (int k = 0; k < Spaces; k++) printf(" %3d ", k);
@@ -440,10 +331,6 @@ void printSuccessAll()
     printf("\n");
   }
   printf("\n");
-    
-
-
-  
 }
 
 double pDisp(int t, int a, int b)
@@ -461,38 +348,8 @@ double pDisp(int t, int a, int b)
 
 double pSurv(int t, int a)
 {
-  // The prob of surviving in a location, per unit time, is
-  //   P_SURV * 0.1 * 10^(area * modifier)
-  // printf("==%f==\n", powf((double) 10, ( (double) area[t][a] / (double) maxarea)) * 0.1 * (double) P_SURV);
-
-  // s = 0.7;
-  double s = (log10f( ( ( Area[t][a] / maxarea) * 99999 )+1) / 5) * Cfg.probSurv;
-  // s = (log10f( ( ( (double) area[t][a] / (double) maxarea) * 99 )+1) / 2) * (double) survp;
-  // s = powf((double) 10, ( (double) area[t][a] / (double) maxarea)) * 0.1 * (double) P_SURV;
-  // if (Cfg.verbose==1) printf("s = %f\n", s);
-  // printf("s = %f\n", s);
+  double s = (log10f((( Area[t][a] / maxarea) * 99 )+1) / 2 ) * Cfg.probSurv;
   return s;
 }
-
-
-/* int printMembers() */
-/* { */
-/*   int i, j; */
-/*   for (i=0;i < lineageCnt; i++) */
-/*     { */
-/*       // for terminals */
-/*       if (daughters[i][0] == 0) */
-/* 		{ */
-/* 		  printf("%d_%d", topresent, i); */
-/* 		  for (j = 0; j < Spaces; j++) */
-/* 			{ */
-/* 			  printf(" %d", locn[i][Times-1][j]); */
-/* 			} */
-/* 		  printf("\n"); */
-/* 		} */
-/*     } */
-/*   return 1; */
-/* } */
-
 
 

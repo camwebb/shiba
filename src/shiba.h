@@ -92,12 +92,10 @@ int PrintData;    //!< Switch 0/1 to control output of raw data.
 int ***locn; //[MAXLINEAGES][TIME][SPACE];
 int **record; // [MAXLINEAGES][SPACE]; remember this records node position - not final position
 long int success;
-long int topres1000;
 long int topresent;
 double maxdist;
 double maxarea;
-double obsocc;
-double occ1000;
+
 
 
 // ------------------------ FUNCTIONS ---------------------------
@@ -131,14 +129,11 @@ void free3d_i(int ***ptr, int dimx, int dimy);
 void shiba();
 double findMaxArea();
 double findMaxDist();
-double obsOccurrence();
 void biogeo();
 void printSuccessAll();
 double pDisp(int t, int a, int b);
 double pSurv(int t, int a);
 void printArray(int t);
-void printSuccess();
-void printSuccessAll();
 
 /* TODO: Allow speciation and dying out that still results in correct censored 
  *       tree

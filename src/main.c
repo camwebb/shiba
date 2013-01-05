@@ -49,6 +49,7 @@ int main(int argc, char **argv)
   free2d_i(LineagePeriod, p.nnodes);
   free(LineageDaughtersN);
   free2d1_i(LineageDaughters, p.nnodes);
+  free3d_i(LineageExtant, Lineages, Times);
 
   return 1;
 }
@@ -65,7 +66,7 @@ void readArgs(int argc, char **argv)
   int c;
   opterr = 0;
      
-  while ((c = getopt (argc, argv, "f:hp:lv:")) != -1)
+  while ((c = getopt (argc, argv, "f:hp:lv")) != -1)
     switch (c)
       {
       case 'f':
@@ -78,7 +79,7 @@ void readArgs(int argc, char **argv)
         PhyloToUse = atoi(optarg);
         break;
       case 'v':
-        Cfg.verbose = atoi(optarg);
+        Cfg.verbose = 1;
         break;
       case 'h':
         help();

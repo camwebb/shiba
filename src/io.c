@@ -554,6 +554,37 @@ void printIndata()
   for (int j = 0; j < Spaces; j++) printf("  %3d", Cfg.startSpace[j]);
   printf("\n");
 
+  printf("\n## Dispersal Function:\n");
+  printf("     0.0                      0.5                      1.0\n");
+  printf(
+   "      +----+----+----+----+----+----+----+----+----+----+-> y (pDisp)\n");
+  for (int i = 0; i <= 10; i++) {
+    double d = Cfg.probDispA * powf( Cfg.probDispB, -1.0 * Cfg.shapeDisp * 
+                                     ((double) i / 10.0));
+    if (!(i % 2)) printf("  %3.1f +", (double) i / 10.0);
+    else printf("      |");
+    for (int j = 0; j < ((int) (d * 50.0)); j++) printf("*");
+    printf("\n");
+  }
+  printf("      |\n");
+  printf("      v x (proportion of max distance)\n");
+
+
+  printf("\n## Survival Function:\n");
+  printf("     0.0                      0.5                      1.0\n");
+  printf(
+   "      +----+----+----+----+----+----+----+----+----+----+-> y (pSurv)\n");
+  for (int i = 0; i <= 10; i++) {
+    double s = (log10f(( ( (double) i / 10.0 ) * 99 )+1) / 2 ) * Cfg.probSurv;
+    if (!(i % 2)) printf("  %3.1f +", (double) i / 10.0);
+    else printf("      |");
+    for (int j = 0; j < ((int) (s * 50.0)); j++) printf("*");
+    printf("\n");
+  }
+  printf("      |\n");
+  printf("      v x (proportion of total land area)\n");
+
+
   printf("\n## Config:\n");
   printf("  nStartSpaces     : %10d\n", Cfg.nStartSpaces);
   printf("  maxRuns          : %10d\n", Cfg.maxRuns);
