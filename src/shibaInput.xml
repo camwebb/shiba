@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <shibaInput>
   <!-- 
+  Example input:                     Inter-space
+                                      distance      
+ Distrib: A  BC  BC     A  BC  BC     <~~~~~~~>
 
-  Example input
-
-      :  Sp1   Sp2 Sp3   Sp4       Three areas:
-  0 ..:...|.....|...|.....|..      Area1 Area2 Area2 
-      :   |     |   |     |  
-      :   +~~+~~+   |     |  
-  5 ..:......|......|.....|..
-      :      |      +~~+~~+  
-      :      |         |
- 10 ..:......|.........|.....
-      :      |         |     
-      :      +~~~~+~~~~+
-      :           |
- 15 ..:...........|..........           
-
+      : Sp1 Sp2 Sp3   Sp1 Sp2 Sp3            
+  0 ..:..|...|...|.....|...|...|..    A      BC 
+      :  |   |   |     |   |   |
+ 10 ..:..|...|...|.....|...+~+~+..    A     B C
+      :  |   |   |     |     |
+ 20 ..:..|...+~+~+.....+~~+~~*....    A     B C
+      :  |     |          |     
+ 30 ..:..+~~+~~*..........|.......    A B     C
+      :     |             |
+ 40 ..:.....|.............|.......    AB      C
+         phylo1        phylo2
+ Result:
+        * in ABC    * only in BC 
   -->
   <time n="5">
     <periodStart id="t1">40</periodStart>
@@ -26,9 +27,9 @@
     <periodStart id="t5">0</periodStart>
   </time>
   <space n="3">
-    <spaceName id="s1">Borneo</spaceName>
-    <spaceName id="s2">SulawesiW</spaceName> 
-    <spaceName id="s3">SulawesiE</spaceName> 
+    <spaceName id="s1">AreaA</spaceName>
+    <spaceName id="s2">AreaB</spaceName> 
+    <spaceName id="s3">AreaC</spaceName> 
   </space>
   <areas>
     <area time="t1" space="s1">10</area>
