@@ -4,7 +4,7 @@
 
 #include "shiba.h"
 
-void shiba()
+void shiba(phylo phy)
 {
 
   // these are global variables passed between functions. 
@@ -40,7 +40,7 @@ void shiba()
   // Final reporting:
   fprintf(stderr, "\n\n"); fflush(NULL);
   printf("## Successes : %ld (in %ld runs)\n\n", success, r );
-  printSuccessAll();
+  printSuccessAll(phy);
 
   free3d_i(locn , Lineages, Times);
   free2d_i(record, Lineages);
@@ -310,7 +310,7 @@ void printArray(int time)
     }
 }
 
-void printSuccessAll()
+void printSuccessAll(phylo p)
 {
   printf("## Number of runs in which the base of each lineage was in each space:\n   (*= extant distrib)\n\n");
   // printf("lin  bor   wsu   ngu   phi   luz\n");
@@ -328,6 +328,10 @@ void printSuccessAll()
         printf(" %3d*", record[i][k]);
       else  printf(" %3d ", record[i][k]);
     }
+    printf("  --> ");
+    if(p.taxon[i]) printf("%s", p.taxon[i]);
+    for(int l = 0; l < LineageDaughtersN[i]; l++)
+      printf("l%d ", LineageDaughters[i][l]);
     printf("\n");
   }
   printf("\n");

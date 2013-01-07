@@ -127,11 +127,11 @@ void free3d_d(double ***ptr, int dimx, int dimy);
 int*** mem3d_i(int dimx, int dimy, int dimz);
 void free3d_i(int ***ptr, int dimx, int dimy);
 
-void shiba();
+void shiba(phylo p);
 double findMaxArea();
 double findMaxDist();
 void biogeo();
-void printSuccessAll();
+void printSuccessAll(phylo p);
 double pDisp(int t, int a, int b);
 double pSurv(int t, int a);
 void printArray(int t);
