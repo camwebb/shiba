@@ -6,14 +6,18 @@
 
 //! The main program controller
 
+
 int main(int argc, char **argv)
 {
+
   phylo p;
   // Set defaults for global variables
   PhyloToUse = 0;
   DataFile = "shibaInput.xml";
   PrintData = 0;
   Cfg.verbose = 0;
+  Cfg.probSurv = -1.0;
+  Cfg.probDispA = -1.0; 
 
   // Read arguments
   readArgs(argc, argv);
@@ -66,7 +70,7 @@ void readArgs(int argc, char **argv)
   int c;
   opterr = 0;
      
-  while ((c = getopt (argc, argv, "f:hp:lv")) != -1)
+  while ((c = getopt (argc, argv, "f:hp:lvd:s:")) != -1)
     switch (c)
       {
       case 'f':
@@ -78,6 +82,18 @@ void readArgs(int argc, char **argv)
       case 'p':
         PhyloToUse = atoi(optarg);
         break;
+      case 'd':
+        if ((atof(optarg) > 0.0) && (atof(optarg) <= 1.0)) {
+          Cfg.probDispA = atof(optarg);
+          break;
+        }
+        else error("Dispersal parameter on command line not acceptable"); 
+      case 's':
+        if ((atof(optarg) > 0.0) && (atof(optarg) <= 1.0)) {
+          Cfg.probSurv = atof(optarg);
+          break;
+        }
+        else error("Survival parameter on command line not acceptable"); 
       case 'v':
         Cfg.verbose = 1;
         break;

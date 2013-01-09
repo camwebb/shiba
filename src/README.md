@@ -105,13 +105,15 @@ suggest [trang](http://www.thaiopensource.com/relaxng/trang.html) and
 
 \page usage Usage
 
-    Usage: shiba [ -f FILE -h -l -p INT -v ]
+    Usage: shiba [ -dfhlpsv ]
     Options:
+      -d NUM   Use this value as the prob. of dispersal modifier
       -f FILE  Use this file as input. Default file: shibaInput.xml
-      -h      Print this help list
-      -l      Print input data summary
-      -p      Use this phylogeny (0...n). Default: 0
-      -v      Print highly verbose event descriptions
+      -h       Print this help list
+      -l       Print input data summary
+      -p INT   Use this phylogeny (0...n). Default: 0
+      -s NUM   Use this value as the prob. of survival modifier
+      -v       Print highly verbose event descriptions
 
 (more to come...)
 

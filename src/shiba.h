@@ -56,7 +56,8 @@ typedef struct {
 
 // ------------------------ VARIABLES ---------------------------
 
-config Cfg; //!< The main config structure
+//! The main config structure
+config Cfg;
 
 int Times;        //!< The number of time periods 
 double *RealTime; //!< The _age_ of the start of the period

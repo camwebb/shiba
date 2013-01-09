@@ -66,13 +66,17 @@ void readXML()
   Cfg.stopAfterSuccess = atoi(mxmlGetOpaque(mxmlGetFirstChild(node)));
   if (!Cfg.stopAfterSuccess) error("//stopAfterSuccess not found in input");
 
-  node = mxmlGetParent(mxmlFindPath(tree, "*/config/probSurv")); 
-  Cfg.probSurv = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
-  if (!Cfg.probSurv) error("//config/probSurv not found in input");
-  
-  node = mxmlGetParent(mxmlFindPath(tree, "*/config/probDispA")); 
-  Cfg.probDispA = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
-  if (!Cfg.probDispA) error("//config/probDispA not found in input");
+  if (Cfg.probSurv == -1.0) {
+    node = mxmlGetParent(mxmlFindPath(tree, "*/config/probSurv")); 
+    Cfg.probSurv = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
+    if (!Cfg.probSurv) error("//config/probSurv not found in input");
+  }
+
+  if (Cfg.probDispA == -1.0) {
+    node = mxmlGetParent(mxmlFindPath(tree, "*/config/probDispA")); 
+    Cfg.probDispA = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
+    if (!Cfg.probDispA) error("//config/probDispA not found in input");
+  }
 
   node = mxmlGetParent(mxmlFindPath(tree, "*/config/probDispB")); 
   Cfg.probDispB = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
@@ -821,13 +825,15 @@ void help()
   char *version = VERSION;
   printf("\n  SHIBA (Simulated Historical Island Biogeography Analysis)\n");
   printf("  (c) Campbell Webb 2013; Version %s\n", version);
-  printf("  Usage: shiba [ -f FILE -h -l -p INT -v ]\n");
+  printf("  Usage: shiba [ -dfhlpsv ]\n");
   printf("  Options:\n");
+  printf("    -d NUM   Use this value as the prob. of dispersal modifier\n");
   printf("    -f FILE  Use this file as input. Default file: shibaInput.xml\n");
-  printf("    -h      Print this help list\n");
-  printf("    -l      Print input data summary\n");
-  printf("    -p      Use this phylogeny (0...n). Default: 0\n");
-  printf("    -v      Print highly verbose event descriptions\n\n");
+  printf("    -h       Print this help list\n");
+  printf("    -l       Print input data summary\n");
+  printf("    -p INT   Use this phylogeny (0...n). Default: 0\n");
+  printf("    -s NUM   Use this value as the prob. of survival modifier\n");
+  printf("    -v       Print highly verbose event descriptions\n\n");
   exit(0);
 }
 
