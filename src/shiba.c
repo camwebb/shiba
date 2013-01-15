@@ -6,6 +6,12 @@
 
 void shiba(phylo phy)
 {
+  // pthreads preparation:
+  pthread_t *thread = (pthread_t *) malloc(RUN_BATCH * sizeof(pthread_t));
+  pthread_attr_t attr;
+  void *status; // for pthread_join
+  pthread_attr_init(&attr);
+  pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 
   // these are global variables passed between functions. 
   // Shrink the scope if poss, and rename
@@ -18,32 +24,40 @@ void shiba(phylo phy)
   // initialize srandom with time
   srandom(time(NULL));
 
-  // clear counter variables
-  long int r = 0; // runs
-
   printf("\n# SHIBA (Simulated Historical Island Biogeography Analysis)\n\n");
+  
+  long int batch;
+  // run in batches of RUN_BATCH 
+  for (batch = 0; batch < (long int)(Cfg.maxRuns/RUN_BATCH);batch++) {
+    // start threads
+    for (long int i = 0; i < RUN_BATCH ; i++)
+      pthread_create(&thread[i], &attr, biogeo, NULL);
 
-  // keep going until...
-  while ((success < Cfg.stopAfterSuccess) && (r < Cfg.maxRuns)) {
-    biogeo();
-    r++;
+    // collect:
+    for (long int i = 0; i < RUN_BATCH ; i++)
+      pthread_join(thread[i], &status);
 
-    // Reporting (and adjustment) every 1000 runs:
-    if (!(r % 1000)) {
-      fprintf(stderr,"\r> runs: %9ld;    to present: %8ld;    successes: %5ld", 
-              r - (r % 1000), (topresent - (topresent % 1000)), success);
-      fflush(NULL);  // Flush the buffer
-    }
+    // Reporting (and adjustment)
+    fprintf(stderr,"\r> runs: %9ld;    to present: %8ld;    successes: %5ld", 
+            batch * RUN_BATCH , topresent , success);
+    fflush(NULL);  // Flush the buffer
+
+    // check for successes
+    if (success >= Cfg.stopAfterSuccess) break;
   }
 
   // Final reporting:
   fprintf(stderr, "\n\n"); fflush(NULL);
-  printf("## Successes : %ld (in %ld runs)\n\n", success, r );
+  printf("## Successes : %ld (in %ld runs)\n\n", success, batch * RUN_BATCH );
   printSuccessAll(phy);
 
   // free3d_i(locn , Lineages, Times);
   free2d_i(record, Lineages);
 
+  free(thread); free(status);
+  pthread_attr_destroy(&attr);
+  pthread_mutex_destroy(&mymutex);
+  pthread_exit(NULL);
 
 }
 
@@ -70,7 +84,7 @@ double findMaxDist()
   return max;
 }
 
-void biogeo()
+void *biogeo()
 {
 
   int ***locn = mem3d_i(Lineages, Times, Spaces);
@@ -79,11 +93,11 @@ void biogeo()
   //! ## Main biogeographic loop
   //! * For each run...
 
-  // clear 
-  for (int l = 0; l < Lineages; l++)
-    for (int t = 0; t < Times; t++)
-      for (int s = 0; s < Spaces; s++)
-		locn[l][t][s] = 0;
+  // clear DELETE ME
+  //for (int l = 0; l < Lineages; l++)
+  //  for (int t = 0; t < Times; t++)
+  //    for (int s = 0; s < Spaces; s++)
+  //	locn[l][t][s] = 0;
 
   //! \page pseudo Pseudocode 
   //! ### Establish starting positions for Lineage 0 
@@ -187,7 +201,8 @@ void biogeo()
         if (!linck) {
           if (Cfg.verbose==1) printf("               l%d has died out\n",l);
           if (Cfg.verbose==1) printf("----------\n");
-          return;
+          pthread_exit(NULL);
+          //return;
         }
 
 
@@ -264,8 +279,6 @@ void biogeo()
   //! * If the loop did not bail out due to a dying lineage, we have a
   //!   fully simulated lineage.
 
-  topresent++;
-
   // final layout
   if (Cfg.verbose==1)
     {
@@ -296,6 +309,11 @@ void biogeo()
   //! \page pseudo Pseudocode
   //! * If there is no difference in simulated and observed distribution,
   //!   we record the route taken through space-time 
+
+  // lock mutex
+  pthread_mutex_lock(&mymutex);
+  topresent++;
+
   if (!diffs) {
     success++;
     for (int l = 0; l < Lineages; l++) {
@@ -308,11 +326,12 @@ void biogeo()
       }
     }
   }
+  pthread_mutex_unlock(&mymutex);
 
   if (Cfg.verbose==1) printf("-----------\n");
 
   free3d_i(locn, Lineages, Times);
-    
+  pthread_exit(NULL);
 }
 
 

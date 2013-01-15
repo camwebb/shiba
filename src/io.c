@@ -61,6 +61,7 @@ void readXML()
   node = mxmlGetParent(mxmlFindPath(tree, "*/config/maxRuns")); 
   Cfg.maxRuns = atoi(mxmlGetOpaque(mxmlGetFirstChild(node)));
   if (!Cfg.maxRuns) error("//config/maxRuns not found in input");
+  if (Cfg.maxRuns < RUN_BATCH) error("maxRuns must be more than specified");
 
   node = mxmlGetParent(mxmlFindPath(tree, "*/config/stopAfterSuccess")); 
   Cfg.stopAfterSuccess = atoi(mxmlGetOpaque(mxmlGetFirstChild(node)));

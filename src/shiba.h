@@ -6,6 +6,7 @@
 */
 
 #define _GNU_SOURCE //!< to allow the very useful asprintf()
+#define RUN_BATCH 1000 //!< the number of threads to run in parallel
 
 /*! Safer asprintf macro for extending strings.
  * From [21st Century C](http://shop.oreilly.com/product/0636920025108.do).
@@ -98,7 +99,7 @@ long int success;
 long int topresent;
 double maxdist;
 double maxarea;
-
+pthread_mutex_t mymutex;
 
 
 // ------------------------ FUNCTIONS ---------------------------
@@ -132,7 +133,7 @@ void free3d_i(int ***ptr, int dimx, int dimy);
 void shiba(phylo p);
 double findMaxArea();
 double findMaxDist();
-void biogeo();
+void *biogeo();
 void printSuccessAll(phylo p);
 double pDisp(int t, int a, int b);
 double pSurv(int t, int a);
