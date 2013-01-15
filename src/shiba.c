@@ -9,7 +9,6 @@ void shiba(phylo phy)
 
   // these are global variables passed between functions. 
   // Shrink the scope if poss, and rename
-  locn = mem3d_i(Lineages, Times, Spaces);
   record = mem2d_i(Lineages, Spaces);
   success = 0;
   topresent = 0;
@@ -42,7 +41,7 @@ void shiba(phylo phy)
   printf("## Successes : %ld (in %ld runs)\n\n", success, r );
   printSuccessAll(phy);
 
-  free3d_i(locn , Lineages, Times);
+  // free3d_i(locn , Lineages, Times);
   free2d_i(record, Lineages);
 
 
@@ -73,6 +72,8 @@ double findMaxDist()
 
 void biogeo()
 {
+
+  int ***locn = mem3d_i(Lineages, Times, Spaces);
 
   //! \page pseudo Pseudocode
   //! ## Main biogeographic loop
@@ -115,8 +116,14 @@ void biogeo()
   //!   cause changes in state at `t+1`)...
   for (int t = 0; t < Times-1; t++)  { 
     // print array at start
-    if (Cfg.verbose==1) printArray(t);
-    
+    if (Cfg.verbose==1) 
+      for (int i = 0; i < Lineages; i++)
+        if (LineagePeriod[i][t]) {
+          printf("t%d l%d : ", t, i);
+          for (int x = 0; x < Spaces; x++) printf("%d", locn[i][t][x]);
+          printf("\n");
+        }
+  
     //! \page pseudo Pseudocode
     //! * For each lineage... (`l`)
     for (int l = 0; l < Lineages; l++) {
@@ -262,7 +269,13 @@ void biogeo()
   // final layout
   if (Cfg.verbose==1)
     {
-      printArray(Times-1);
+      for (int i = 0; i < Lineages; i++)
+        if (LineagePeriod[i][Times-1]) {
+          printf("t%d l%d : ", Times-1, i);
+          for (int x = 0; x < Spaces; x++) printf("%d", locn[i][Times-1][x]);
+          printf("\n");
+        }
+
       //printExtant(Lineages);
     }
 
@@ -297,18 +310,11 @@ void biogeo()
   }
 
   if (Cfg.verbose==1) printf("-----------\n");
+
+  free3d_i(locn, Lineages, Times);
     
 }
 
-void printArray(int time)
-{
-  for (int i = 0; i < Lineages; i++)
-    if (LineagePeriod[i][time]) {
-      printf("t%d l%d : ", time, i);
-      for (int x = 0; x < Spaces; x++) printf("%d", locn[i][time][x]);
-      printf("\n");
-    }
-}
 
 void printSuccessAll(phylo p)
 {

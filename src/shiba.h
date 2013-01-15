@@ -21,6 +21,7 @@
 #include <unistd.h> // for getopt()
 #include <ctype.h>  // for isprint()
 #include <math.h>
+#include <pthread.h>
 #include <string.h>
 #include <time.h>   // for time()
 #include "version.h"
@@ -91,7 +92,7 @@ int PrintData;    //!< Switch 0/1 to control output of raw data.
 
 // #### these variables should be renamed and their scope restricted:
 // The spatial location of each lineage at each time 1 or 0
-int ***locn; //[MAXLINEAGES][TIME][SPACE];
+//int ***locn; //[MAXLINEAGES][TIME][SPACE]; DELETE ME
 int **record; // [MAXLINEAGES][SPACE]; remember this records node position - not final position
 long int success;
 long int topresent;
