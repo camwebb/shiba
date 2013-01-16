@@ -53,6 +53,29 @@ led to Ree et al. (2005) and to [LAGRANGE](http://code.google.com/p/lagrange/).
 
 (Coming soon. For the moment, please see [Webb & Ree 2012](http://camwebb.info/files/webb2012_sage.pdf))
 
+### Survival function 
+
+We use the logarithm function as the basic survival function for an
+island \f$i\f$ with area \f$A_i\f$: \f$log(A_i)\f$
+
+We standardize this by using proportions of total land area: \f$log(\frac{A_i}{A_{total}})\f$
+
+The curve can be forced through `(0,0)` and `(1,1)`: \f$log(\frac{A_i
+\times 9}{A_{total}} + 1)\f$
+
+Increasingly steeper a `(0,0)` are \f$log(\frac{A_i \times 99}{A_{total}}
++ 1) / 2\f$ and \f$log(\frac{A_i \times 999}{A_{total}} + 1) / 3\f$
+
+Generalizing, the basic survival curve is:
+
+> \f$log(\frac{A_i \times (10^b - 1)}{A_{total}} + 1) / b\f$
+
+Finally, a further parameter, \f$p_{surv}\f$ sets the survival for
+\f$A_{total}\f$:
+
+> Survival probablility \f$= p_{surv} \times log(\frac{A_i \times (10^b - 1)}{A_{total}} + 1) / b\f$
+
+
 \page install Installation
 
 `SHIBA` code is hosted at [github](https://github.com/camwebb/shiba)

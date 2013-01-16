@@ -10,21 +10,24 @@
       :  |   |   |     |   |   |
  10 ..:..|...|...|.....|...+~+~+..    A     B C
       :  |   |   |     |     |
- 20 ..:..|...+~+~+.....+~~+~~*....    A     B C
+ 20 ..:..|...|...|.....+~~+~~*....    A    B  C
+      :  |   |   |        |
+ 30 ..:..|...+~+~+........|.......    A  B    C
       :  |     |          |     
- 30 ..:..+~~+~~*..........|.......    A B     C
+ 40 ..:..+~~+~~*..........|.......    A B     C
       :     |             |
- 40 ..:.....|.............|.......    AB      C
+ 50 ..:.....|.............|.......    AB      C
          phylo1        phylo2
  Result:
         * in ABC    * only in BC 
   -->
-  <time n="5">
-    <periodStart id="t1">40</periodStart>
-    <periodStart id="t2">30</periodStart>
-    <periodStart id="t3">20</periodStart>
-    <periodStart id="t4">10</periodStart>
-    <periodStart id="t5">0</periodStart>
+  <time n="6">
+    <periodStart id="t1">50</periodStart>
+    <periodStart id="t2">40</periodStart>
+    <periodStart id="t3">30</periodStart>
+    <periodStart id="t4">20</periodStart>
+    <periodStart id="t5">10</periodStart>
+    <periodStart id="t6">0</periodStart>
   </time>
   <space n="3">
     <spaceName id="s1">AreaA</spaceName>
@@ -52,27 +55,35 @@
     <area time="t5" space="s2">4</area>
     <area time="t5" space="s3">4</area>
 
+    <area time="t6" space="s1">10</area>
+    <area time="t6" space="s2">4</area>
+    <area time="t6" space="s3">4</area>
+
   </areas>
   <distances>
     <dist time="t1" from="s1" to="s2">0</dist>
     <dist time="t1" from="s1" to="s3">2000</dist>
     <dist time="t1" from="s2" to="s3">2000</dist>
 
-    <dist time="t2" from="s1" to="s2">100</dist>
+    <dist time="t2" from="s1" to="s2">200</dist>
     <dist time="t2" from="s1" to="s3">2000</dist>
-    <dist time="t2" from="s2" to="s3">1900</dist>
+    <dist time="t2" from="s2" to="s3">1800</dist>
 
-    <dist time="t3" from="s1" to="s2">1800</dist>
+    <dist time="t3" from="s1" to="s2">400</dist>
     <dist time="t3" from="s1" to="s3">2000</dist>
-    <dist time="t3" from="s2" to="s3">200</dist>
+    <dist time="t3" from="s2" to="s3">1600</dist>
 
-    <dist time="t4" from="s1" to="s2">1900</dist>
+    <dist time="t4" from="s1" to="s2">1600</dist>
     <dist time="t4" from="s1" to="s3">2000</dist>
-    <dist time="t4" from="s2" to="s3">100</dist>
+    <dist time="t4" from="s2" to="s3">400</dist>
 
-    <dist time="t5" from="s1" to="s2">2000</dist>
+    <dist time="t5" from="s1" to="s2">1800</dist>
     <dist time="t5" from="s1" to="s3">2000</dist>
-    <dist time="t5" from="s2" to="s3">0</dist>
+    <dist time="t5" from="s2" to="s3">200</dist>
+
+    <dist time="t6" from="s1" to="s2">2000</dist>
+    <dist time="t6" from="s1" to="s3">2000</dist>
+    <dist time="t6" from="s2" to="s3">0</dist>
   </distances>
   <taxa n="3">
     <taxon id="x1">Sp1</taxon>
@@ -80,15 +91,15 @@
     <taxon id="x3">Sp3</taxon>
   </taxa>
   <phylo n="2">
-    <newick id="p1">(Sp1:30,(Sp2:20,Sp3:20):10):10;</newick>
-    <newick id="p2">(Sp1:20,(Sp2:10,Sp3:10):10):20;</newick>
+    <newick id="p1">(Sp1:40,(Sp2:30,Sp3:30):10):10;</newick>
+    <newick id="p2">(Sp1:20,(Sp2:10,Sp3:10):10):30;</newick>
   </phylo>
   <extantIn> <!-- included fossils -->
-    <extant taxon="x1" time="t5" space="s1"/>
-    <extant taxon="x2" time="t5" space="s2"/>
-    <extant taxon="x2" time="t5" space="s3"/>
-    <extant taxon="x3" time="t5" space="s2"/>
-    <extant taxon="x3" time="t5" space="s3"/>
+    <extant taxon="x1" time="t6" space="s1"/>
+    <extant taxon="x2" time="t6" space="s2"/>
+    <extant taxon="x2" time="t6" space="s3"/>
+    <extant taxon="x3" time="t6" space="s2"/>
+    <extant taxon="x3" time="t6" space="s3"/>
   </extantIn>
   <config>
     <nStartSpaces>1</nStartSpaces>
@@ -98,7 +109,7 @@
       <allowed space="s3"/> 
     </startSpaces>
     <maxRuns>10000000</maxRuns>
-    <stopAfterSuccess>10</stopAfterSuccess>
+    <stopAfterSuccess>100</stopAfterSuccess>
     <probSurv>1.0</probSurv>
     <probDispA>0.8</probDispA>
     <probDispB>10.0</probDispB>

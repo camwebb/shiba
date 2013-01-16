@@ -57,8 +57,13 @@ void shiba(phylo phy)
   free(thread); free(status);
   pthread_attr_destroy(&attr);
   pthread_mutex_destroy(&mymutex);
-  pthread_exit(NULL);
 
+  //! \page prog Programming Notes
+  //! ## Memory leaks
+  //! `pthreads` itself leaves a few unfreed but not leaking mallocs behind. 
+  //! Running `valgrind --leak-check=full --show-reachable=yes` gives some 
+  //! 'still reachable' bytes lost. This is not a problem. 
+  //! See <http://stackoverflow.com/questions/3844678/pthread-exit-vs-return>
 }
 
 double findMaxArea()
@@ -92,12 +97,6 @@ void *biogeo()
   //! \page pseudo Pseudocode
   //! ## Main biogeographic loop
   //! * For each run...
-
-  // clear DELETE ME
-  //for (int l = 0; l < Lineages; l++)
-  //  for (int t = 0; t < Times; t++)
-  //    for (int s = 0; s < Spaces; s++)
-  //	locn[l][t][s] = 0;
 
   //! \page pseudo Pseudocode 
   //! ### Establish starting positions for Lineage 0 
