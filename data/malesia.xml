@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <shibaInput>
+  <!-- Data based on digitization of maps in: Hall, R. 2001. Cenozoic
+       reconstructions of SE Asia and the SW Pacific: changing
+       patterns of land and sea. In Metcalfe, I., Smith, J.M.B.,
+       Morwood, M. & Davidson, I.D. Faunal and Floral Migrations and
+       Evolution in SE Asia-Australasia.  A.A. Balkema (Swets &
+       Zeitlinger Publishers) Lisse, 35-56. -->
   <time n="12">
     <periodStart id="t55">55</periodStart>
     <periodStart id="t50">50</periodStart>
