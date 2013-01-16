@@ -110,9 +110,9 @@
     </startSpaces>
     <maxRuns>10000000</maxRuns>
     <stopAfterSuccess>100</stopAfterSuccess>
-    <probSurv>1.0</probSurv>
-    <probDispA>0.8</probDispA>
-    <probDispB>10.0</probDispB>
-    <shapeDisp>1.0</shapeDisp>
+    <probSurvA>1.0</probSurvA>
+    <probSurvB>2.0</probSurvB>
+    <probDispA>1.0</probDispA>
+    <probDispB>2.0</probDispB>
   </config>
 </shibaInput>

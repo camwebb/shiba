@@ -67,10 +67,10 @@ void readXML()
   Cfg.stopAfterSuccess = atoi(mxmlGetOpaque(mxmlGetFirstChild(node)));
   if (!Cfg.stopAfterSuccess) error("//stopAfterSuccess not found in input");
 
-  if (Cfg.probSurv == -1.0) {
-    node = mxmlGetParent(mxmlFindPath(tree, "*/config/probSurv")); 
-    Cfg.probSurv = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
-    if (!Cfg.probSurv) error("//config/probSurv not found in input");
+  if (Cfg.probSurvA == -1.0) {
+    node = mxmlGetParent(mxmlFindPath(tree, "*/config/probSurvA")); 
+    Cfg.probSurvA = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
+    if (!Cfg.probSurvA) error("//config/probSurvA not found in input");
   }
 
   if (Cfg.probDispA == -1.0) {
@@ -79,13 +79,13 @@ void readXML()
     if (!Cfg.probDispA) error("//config/probDispA not found in input");
   }
 
+  node = mxmlGetParent(mxmlFindPath(tree, "*/config/probSurvB")); 
+  Cfg.probSurvB = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
+  if (!Cfg.probSurvB) error("//config/probSurvB not found in input");
+
   node = mxmlGetParent(mxmlFindPath(tree, "*/config/probDispB")); 
   Cfg.probDispB = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
   if (!Cfg.probDispB) error("//config/probDispB not found in input");
-
-  node = mxmlGetParent(mxmlFindPath(tree, "*/config/shapeDisp")); 
-  Cfg.shapeDisp = atof(mxmlGetOpaque(mxmlGetFirstChild(node)));
-  if (!Cfg.shapeDisp) error("//config/shapeDisp not found in input");
 
   // ------------- Dimension arrays in the heap -----------------------------
 
@@ -564,8 +564,7 @@ void printIndata()
   printf(
    "      +----+----+----+----+----+----+----+----+----+----+-> y (pDisp)\n");
   for (int i = 0; i <= 10; i++) {
-    double d = Cfg.probDispA * powf( Cfg.probDispB, -1.0 * Cfg.shapeDisp * 
-                                     ((double) i / 10.0));
+    double d = pDispersal((double) i / 10.0);
     if (!(i % 2)) printf("  %3.1f +", (double) i / 10.0);
     else printf("      |");
     for (int j = 0; j < ((int) (d * 50.0)); j++) printf("*");
@@ -580,7 +579,7 @@ void printIndata()
   printf(
    "      +----+----+----+----+----+----+----+----+----+----+-> y (pSurv)\n");
   for (int i = 0; i <= 10; i++) {
-    double s = (log10f(( ( (double) i / 10.0 ) * 99 )+1) / 2 ) * Cfg.probSurv;
+    double s = pSurvival((double) i / 10.0 );
     if (!(i % 2)) printf("  %3.1f +", (double) i / 10.0);
     else printf("      |");
     for (int j = 0; j < ((int) (s * 50.0)); j++) printf("*");
@@ -594,10 +593,10 @@ void printIndata()
   printf("  nStartSpaces     : %10d\n", Cfg.nStartSpaces);
   printf("  maxRuns          : %10d\n", Cfg.maxRuns);
   printf("  stopAfterSuccess : %10d\n", Cfg.stopAfterSuccess);
-  printf("  probSurv         : %10.2f\n", Cfg.probSurv);
+  printf("  probSurvA        : %10.2f\n", Cfg.probSurvA);
+  printf("  probSurvB        : %10.2f\n", Cfg.probSurvB);
   printf("  probDispA        : %10.2f\n", Cfg.probDispA);
   printf("  probDispB        : %10.2f\n", Cfg.probDispB);
-  printf("  shapeDisp        : %10.2f\n", Cfg.shapeDisp);
 
   printf("\n");
 
@@ -828,12 +827,12 @@ void help()
   printf("  (c) Campbell Webb 2013; Version %s\n", version);
   printf("  Usage: shiba [ -dfhlpsv ]\n");
   printf("  Options:\n");
-  printf("    -d NUM   Use this value as the prob. of dispersal modifier\n");
+  printf("    -d NUM   Use this value as the prob. of dispersal (probDispA)\n");
   printf("    -f FILE  Use this file as input. Default file: shibaInput.xml\n");
   printf("    -h       Print this help list\n");
   printf("    -l       Print input data summary\n");
   printf("    -p INT   Use this phylogeny (0...n). Default: 0\n");
-  printf("    -s NUM   Use this value as the prob. of survival modifier\n");
+  printf("    -s NUM   Use this value as the prob. of survival (probSurvA)\n");
   printf("    -v       Print highly verbose event descriptions\n\n");
   exit(0);
 }

@@ -81,6 +81,8 @@ phylo parseNewick(char *in) {
       else
         {
           // Now, check for new taxa, or new interior name
+
+          //! \todo deal with quoted labels
          
           // Is there nodename here?  I.e., not `:' or `['
           if ((in[i] != 58) && (in[i] != 91))

@@ -16,7 +16,7 @@ int main(int argc, char **argv)
   DataFile = "shibaInput.xml";
   PrintData = 0;
   Cfg.verbose = 0;
-  Cfg.probSurv = -1.0;
+  Cfg.probSurvA = -1.0;
   Cfg.probDispA = -1.0; 
 
   // Read arguments
@@ -90,7 +90,7 @@ void readArgs(int argc, char **argv)
         else error("Dispersal parameter on command line not acceptable"); 
       case 's':
         if ((atof(optarg) > 0.0) && (atof(optarg) <= 1.0)) {
-          Cfg.probSurv = atof(optarg);
+          Cfg.probSurvA = atof(optarg);
           break;
         }
         else error("Survival parameter on command line not acceptable"); 

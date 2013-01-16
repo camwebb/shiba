@@ -61,9 +61,9 @@ start =
          },
          element maxRuns { xsd:integer },
          element stopAfterSuccess { xsd:integer },
-         element probSurv { xsd:decimal },
+         element probSurvA { xsd:decimal },
+         element probSurvB { xsd:decimal },
          element probDispA { xsd:decimal },
-         element probDispB { xsd:decimal },
-         element shapeDisp { xsd:decimal }
+         element probDispB { xsd:decimal }
       }
    }

@@ -21,6 +21,16 @@ void shiba(phylo phy)
   maxarea = findMaxArea();
   maxdist = findMaxDist();
 
+  // set disp, surv functions
+  PSurv = mem2d_d(Times, Spaces);
+  PDisp = mem3d_d(Times, Spaces, Spaces);
+  for (int t = 0; t < Times; t++)
+    for (int s = 0; s < Spaces; s++) {
+      PSurv[t][s] = pSurvival(Area[t][s] /  maxarea);
+      for (int s2 = 0; s2 < Spaces; s2++) 
+        PDisp[t][s][s2] = pDispersal(Dist[t][s][s2] /  maxdist);
+    }
+  
   // initialize srandom with time
   srandom(time(NULL));
 
@@ -169,7 +179,7 @@ void *biogeo()
             //!   lineage in that space in `t+1`
             for (int i = 0; i < Spaces ; i++) {
               if ( ( ((double) random() / (double)(RAND_MAX+1.0))
-                     < pDisp(t,s,i) ) && (i != s) && (Area[t][i] > 0.0)) {
+                     < PDisp[t][s][i] ) && (i != s) && (Area[t][i] > 0.0)) {
                 locn[l][t+1][i] = 1;
                 
                 if (Cfg.verbose==1) printf("               l%d disperses from s%d to s%d\n",l,s,i);
@@ -183,7 +193,7 @@ void *biogeo()
             //!   If a randomly chosen 0...1 is less than the
             //!   area-dependent prob of survival, set the (potential) lineage
             //!   as alive in 'own' space in `t+1`
-            if (((double) random() / (double)(RAND_MAX+1.0)) < pSurv(t,s)) {
+            if (((double) random() / (double)(RAND_MAX+1.0)) < PSurv[t][s]) {
               locn[l][t+1][s] = 1;
               linck++;
             }
@@ -362,23 +372,13 @@ void printSuccessAll(phylo p)
   printf("\n");
 }
 
-double pDisp(int t, int a, int b)
-{
-  //! \todo Rename probDispA to probDisp and  probDispB to shapeDispA and shapeDisp to shapeDispB
-  // The prob of dispersal between locations, per unit time, is
-  //   P_DISP * 10^(area * modifier)
-  double d = Cfg.probDispA * powf( Cfg.probDispB, -1.0 * Cfg.shapeDisp * 
-            ( Dist[t][a][b] / maxdist));
-  // if (Cfg.verbose==1) printf("d = %f\n", d);
-  // return (double) expf(S_DISP * dist[time][a][b] ) * P_DISP;
-  // printf("%f:  %f\n", dist[t][a][b], d);
-  return d;
+double pDispersal(double x) {
+  return Cfg.probDispA * powf( 10.0, -1.0 * Cfg.probDispB * x ) ;
 }
 
-double pSurv(int t, int a)
-{
-  double s = (log10f((( Area[t][a] / maxarea) * 99 )+1) / 2 ) * Cfg.probSurv;
-  return s;
+double pSurvival(double x) {  
+  return Cfg.probSurvA * (log10f(( x * ( powf(10, Cfg.probSurvB) -1.0 )) +1.0 ) 
+                           / Cfg.probSurvB );
 }
 
 

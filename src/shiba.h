@@ -36,10 +36,10 @@ typedef struct {
   int nStartSpaces; //<! The number of starting spaces
   int maxRuns;
   int stopAfterSuccess;
-  double probSurv;
+  double probSurvA;
+  double probSurvB;
   double probDispA;
   double probDispB;
-  double shapeDisp;
   int verbose;
 } config;
 
@@ -75,6 +75,8 @@ char **Taxon;     //!< Terminal taxa names
 
 double **Area ;   //!< The areas of spates at each time: Area[Time][Space]
 double ***Dist ;  //!< The distances among spaces at each time 
+double **PSurv;   //!< The prob of survival PSurv[Time][Space]
+double ***PDisp;   //!< The prob of dispersal PDisp[Time][Space]
 int    ***Extant; //!< \brief 0/1 indcating the existance of a taxon or fossil
                   //!< during a particular time period.  Care is needed in
                   //!< assigning fossils to periods, due to reconciliation
@@ -135,8 +137,8 @@ double findMaxArea();
 double findMaxDist();
 void *biogeo();
 void printSuccessAll(phylo p);
-double pDisp(int t, int a, int b);
-double pSurv(int t, int a);
+double pDispersal(double x);
+double pSurvival(double x);
 void printArray(int t);
 
 /* TODO: Allow speciation and dying out that still results in correct censored 
