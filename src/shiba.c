@@ -201,6 +201,7 @@ void *biogeo()
         if (!linck) {
           if (Cfg.verbose==1) printf("               l%d has died out\n",l);
           if (Cfg.verbose==1) printf("----------\n");
+          free3d_i(locn, Lineages, Times);
           pthread_exit(NULL);
           //return;
         }
