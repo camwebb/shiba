@@ -1,0 +1,1788 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shibaInput>
+  <time n="12">
+    <periodStart id="t55">55</periodStart>
+    <periodStart id="t50">50</periodStart>
+    <periodStart id="t45">45</periodStart>
+    <periodStart id="t40">40</periodStart>
+    <periodStart id="t35">35</periodStart>
+    <periodStart id="t30">30</periodStart>
+    <periodStart id="t25">25</periodStart>
+    <periodStart id="t20">20</periodStart>
+    <periodStart id="t15">15</periodStart>
+    <periodStart id="t10">10</periodStart>
+    <periodStart id="t5">5</periodStart>
+    <periodStart id="t0">0</periodStart>
+  </time>
+  <space n="11">
+    <spaceName id="borneo">Borneo</spaceName>
+    <spaceName id="wsulaw">W Sulawesi</spaceName>
+    <spaceName id="esulaw">E Sulawesi</spaceName>
+    <spaceName id="birdhd">Birdshead</spaceName>
+    <spaceName id="halmah">Halmahera</spaceName>
+    <spaceName id="cnewgn">Central New Guinea</spaceName>
+    <spaceName id="sepiko">Sepik Ophiolite</spaceName>
+    <spaceName id="papuao">Papua Ophiolite</spaceName>
+    <spaceName id="ephili">E Philippines</spaceName>
+    <spaceName id="luzonp">Luzon</spaceName>
+    <spaceName id="caroli">Carolina Islands</spaceName>
+  </space>
+  <areas>
+    <area time="t55" space="borneo">10</area>
+    <area time="t55" space="wsulaw">2</area>
+    <area time="t55" space="esulaw">2</area>
+    <area time="t55" space="birdhd">3</area>
+    <area time="t55" space="halmah">1</area>
+    <area time="t55" space="cnewgn">12</area>
+    <area time="t55" space="sepiko">3</area>
+    <area time="t55" space="papuao">1</area>
+    <area time="t55" space="ephili">0</area>
+    <area time="t55" space="luzonp">0</area>
+    <area time="t55" space="caroli">0</area>
+
+    <area time="t50" space="borneo">10</area>
+    <area time="t50" space="wsulaw">2</area>
+    <area time="t50" space="esulaw">2</area>
+    <area time="t50" space="birdhd">3</area>
+    <area time="t50" space="halmah">1</area>
+    <area time="t50" space="cnewgn">12</area>
+    <area time="t50" space="sepiko">3</area>
+    <area time="t50" space="papuao">1</area>
+    <area time="t50" space="ephili">0</area>
+    <area time="t50" space="luzonp">0</area>
+    <area time="t50" space="caroli">0</area>
+
+    <area time="t45" space="borneo">10</area>
+    <area time="t45" space="wsulaw">2</area>
+    <area time="t45" space="esulaw">2</area>
+    <area time="t45" space="birdhd">3</area>
+    <area time="t45" space="halmah">1</area>
+    <area time="t45" space="cnewgn">12</area>
+    <area time="t45" space="sepiko">3</area>
+    <area time="t45" space="papuao">1</area>
+    <area time="t45" space="ephili">2</area>
+    <area time="t45" space="luzonp">2</area>
+    <area time="t45" space="caroli">0</area>
+
+    <area time="t40" space="borneo">10</area>
+    <area time="t40" space="wsulaw">2</area>
+    <area time="t40" space="esulaw">2</area>
+    <area time="t40" space="birdhd">3</area>
+    <area time="t40" space="halmah">1</area>
+    <area time="t40" space="cnewgn">12</area>
+    <area time="t40" space="sepiko">3</area>
+    <area time="t40" space="papuao">1</area>
+    <area time="t40" space="ephili">2</area>
+    <area time="t40" space="luzonp">2</area>
+    <area time="t40" space="caroli">0</area>
+
+    <area time="t35" space="borneo">10</area>
+    <area time="t35" space="wsulaw">2</area>
+    <area time="t35" space="esulaw">2</area>
+    <area time="t35" space="birdhd">3</area>
+    <area time="t35" space="halmah">1</area>
+    <area time="t35" space="cnewgn">12</area>
+    <area time="t35" space="sepiko">3</area>
+    <area time="t35" space="papuao">1</area>
+    <area time="t35" space="ephili">3</area>
+    <area time="t35" space="luzonp">2</area>
+    <area time="t35" space="caroli">3</area>
+
+    <area time="t30" space="borneo">10</area>
+    <area time="t30" space="wsulaw">2</area>
+    <area time="t30" space="esulaw">2</area>
+    <area time="t30" space="birdhd">3</area>
+    <area time="t30" space="halmah">1</area>
+    <area time="t30" space="cnewgn">12</area>
+    <area time="t30" space="sepiko">3</area>
+    <area time="t30" space="papuao">1</area>
+    <area time="t30" space="ephili">3</area>
+    <area time="t30" space="luzonp">2</area>
+    <area time="t30" space="caroli">3</area>
+
+    <area time="t25" space="borneo">12</area>
+    <area time="t25" space="wsulaw">2</area>
+    <area time="t25" space="esulaw">2</area>
+    <area time="t25" space="birdhd">3</area>
+    <area time="t25" space="halmah">1</area>
+    <area time="t25" space="cnewgn">12</area>
+    <area time="t25" space="sepiko">3</area>
+    <area time="t25" space="papuao">1</area>
+    <area time="t25" space="ephili">3</area>
+    <area time="t25" space="luzonp">2</area>
+    <area time="t25" space="caroli">3</area>
+
+    <area time="t20" space="borneo">12</area>
+    <area time="t20" space="wsulaw">2</area>
+    <area time="t20" space="esulaw">2</area>
+    <area time="t20" space="birdhd">3</area>
+    <area time="t20" space="halmah">1</area>
+    <area time="t20" space="cnewgn">12</area>
+    <area time="t20" space="sepiko">3</area>
+    <area time="t20" space="papuao">1</area>
+    <area time="t20" space="ephili">3</area>
+    <area time="t20" space="luzonp">2</area>
+    <area time="t20" space="caroli">3</area>
+
+    <area time="t15" space="borneo">15</area>
+    <area time="t15" space="wsulaw">2</area>
+    <area time="t15" space="esulaw">2</area>
+    <area time="t15" space="birdhd">3</area>
+    <area time="t15" space="halmah">1</area>
+    <area time="t15" space="cnewgn">12</area>
+    <area time="t15" space="sepiko">3</area>
+    <area time="t15" space="papuao">1</area>
+    <area time="t15" space="ephili">3</area>
+    <area time="t15" space="luzonp">2</area>
+    <area time="t15" space="caroli">3</area>
+
+    <area time="t10" space="borneo">15</area>
+    <area time="t10" space="wsulaw">2</area>
+    <area time="t10" space="esulaw">2</area>
+    <area time="t10" space="birdhd">3</area>
+    <area time="t10" space="halmah">1</area>
+    <area time="t10" space="cnewgn">12</area>
+    <area time="t10" space="sepiko">3</area>
+    <area time="t10" space="papuao">1</area>
+    <area time="t10" space="ephili">3</area>
+    <area time="t10" space="luzonp">2</area>
+    <area time="t10" space="caroli">3</area>
+
+    <area time="t5" space="borneo">15</area>
+    <area time="t5" space="wsulaw">2</area>
+    <area time="t5" space="esulaw">2</area>
+    <area time="t5" space="birdhd">3</area>
+    <area time="t5" space="halmah">1</area>
+    <area time="t5" space="cnewgn">12</area>
+    <area time="t5" space="sepiko">3</area>
+    <area time="t5" space="papuao">1</area>
+    <area time="t5" space="ephili">3</area>
+    <area time="t5" space="luzonp">2</area>
+    <area time="t5" space="caroli">3</area>
+
+    <area time="t0" space="borneo">15</area>
+    <area time="t0" space="wsulaw">2</area>
+    <area time="t0" space="esulaw">2</area>
+    <area time="t0" space="birdhd">3</area>
+    <area time="t0" space="halmah">1</area>
+    <area time="t0" space="cnewgn">12</area>
+    <area time="t0" space="sepiko">3</area>
+    <area time="t0" space="papuao">1</area>
+    <area time="t0" space="ephili">3</area>
+    <area time="t0" space="luzonp">2</area>
+    <area time="t0" space="caroli">3</area>
+  </areas>
+  <distances>
+    <dist time="t55" from="borneo" to="borneo">0</dist>
+    <dist time="t55" from="borneo" to="wsulaw">773</dist>
+    <dist time="t55" from="borneo" to="esulaw">1522</dist>
+    <dist time="t55" from="borneo" to="birdhd">2186</dist>
+    <dist time="t55" from="borneo" to="halmah">3491</dist>
+    <dist time="t55" from="borneo" to="cnewgn">2690</dist>
+    <dist time="t55" from="borneo" to="sepiko">2531</dist>
+    <dist time="t55" from="borneo" to="papuao">3216</dist>
+    <dist time="t55" from="borneo" to="ephili">0</dist>
+    <dist time="t55" from="borneo" to="luzonp">0</dist>
+    <dist time="t55" from="borneo" to="caroli">0</dist>
+
+    <dist time="t55" from="wsulaw" to="borneo">773</dist>
+    <dist time="t55" from="wsulaw" to="wsulaw">0</dist>
+    <dist time="t55" from="wsulaw" to="esulaw">1353</dist>
+    <dist time="t55" from="wsulaw" to="birdhd">1535</dist>
+    <dist time="t55" from="wsulaw" to="halmah">2756</dist>
+    <dist time="t55" from="wsulaw" to="cnewgn">1965</dist>
+    <dist time="t55" from="wsulaw" to="sepiko">1782</dist>
+    <dist time="t55" from="wsulaw" to="papuao">2459</dist>
+    <dist time="t55" from="wsulaw" to="ephili">0</dist>
+    <dist time="t55" from="wsulaw" to="luzonp">0</dist>
+    <dist time="t55" from="wsulaw" to="caroli">0</dist>
+
+    <dist time="t55" from="esulaw" to="borneo">1522</dist>
+    <dist time="t55" from="esulaw" to="wsulaw">1353</dist>
+    <dist time="t55" from="esulaw" to="esulaw">0</dist>
+    <dist time="t55" from="esulaw" to="birdhd">1284</dist>
+    <dist time="t55" from="esulaw" to="halmah">3461</dist>
+    <dist time="t55" from="esulaw" to="cnewgn">1912</dist>
+    <dist time="t55" from="esulaw" to="sepiko">1921</dist>
+    <dist time="t55" from="esulaw" to="papuao">2533</dist>
+    <dist time="t55" from="esulaw" to="ephili">0</dist>
+    <dist time="t55" from="esulaw" to="luzonp">0</dist>
+    <dist time="t55" from="esulaw" to="caroli">0</dist>
+
+    <dist time="t55" from="birdhd" to="borneo">2186</dist>
+    <dist time="t55" from="birdhd" to="wsulaw">1535</dist>
+    <dist time="t55" from="birdhd" to="esulaw">1284</dist>
+    <dist time="t55" from="birdhd" to="birdhd">0</dist>
+    <dist time="t55" from="birdhd" to="halmah">2302</dist>
+    <dist time="t55" from="birdhd" to="cnewgn">628</dist>
+    <dist time="t55" from="birdhd" to="sepiko">667</dist>
+    <dist time="t55" from="birdhd" to="papuao">1249</dist>
+    <dist time="t55" from="birdhd" to="ephili">0</dist>
+    <dist time="t55" from="birdhd" to="luzonp">0</dist>
+    <dist time="t55" from="birdhd" to="caroli">0</dist>
+
+    <dist time="t55" from="halmah" to="borneo">3491</dist>
+    <dist time="t55" from="halmah" to="wsulaw">2756</dist>
+    <dist time="t55" from="halmah" to="esulaw">3461</dist>
+    <dist time="t55" from="halmah" to="birdhd">2302</dist>
+    <dist time="t55" from="halmah" to="halmah">0</dist>
+    <dist time="t55" from="halmah" to="cnewgn">1811</dist>
+    <dist time="t55" from="halmah" to="sepiko">1647</dist>
+    <dist time="t55" from="halmah" to="papuao">1408</dist>
+    <dist time="t55" from="halmah" to="ephili">0</dist>
+    <dist time="t55" from="halmah" to="luzonp">0</dist>
+    <dist time="t55" from="halmah" to="caroli">0</dist>
+
+    <dist time="t55" from="cnewgn" to="borneo">2690</dist>
+    <dist time="t55" from="cnewgn" to="wsulaw">1965</dist>
+    <dist time="t55" from="cnewgn" to="esulaw">1912</dist>
+    <dist time="t55" from="cnewgn" to="birdhd">628</dist>
+    <dist time="t55" from="cnewgn" to="halmah">1811</dist>
+    <dist time="t55" from="cnewgn" to="cnewgn">0</dist>
+    <dist time="t55" from="cnewgn" to="sepiko">277</dist>
+    <dist time="t55" from="cnewgn" to="papuao">622</dist>
+    <dist time="t55" from="cnewgn" to="ephili">0</dist>
+    <dist time="t55" from="cnewgn" to="luzonp">0</dist>
+    <dist time="t55" from="cnewgn" to="caroli">0</dist>
+
+    <dist time="t55" from="sepiko" to="borneo">2531</dist>
+    <dist time="t55" from="sepiko" to="wsulaw">1782</dist>
+    <dist time="t55" from="sepiko" to="esulaw">1921</dist>
+    <dist time="t55" from="sepiko" to="birdhd">667</dist>
+    <dist time="t55" from="sepiko" to="halmah">1647</dist>
+    <dist time="t55" from="sepiko" to="cnewgn">277</dist>
+    <dist time="t55" from="sepiko" to="sepiko">0</dist>
+    <dist time="t55" from="sepiko" to="papuao">690</dist>
+    <dist time="t55" from="sepiko" to="ephili">0</dist>
+    <dist time="t55" from="sepiko" to="luzonp">0</dist>
+    <dist time="t55" from="sepiko" to="caroli">0</dist>
+
+    <dist time="t55" from="papuao" to="borneo">3216</dist>
+    <dist time="t55" from="papuao" to="wsulaw">2459</dist>
+    <dist time="t55" from="papuao" to="esulaw">2533</dist>
+    <dist time="t55" from="papuao" to="birdhd">1249</dist>
+    <dist time="t55" from="papuao" to="halmah">1408</dist>
+    <dist time="t55" from="papuao" to="cnewgn">622</dist>
+    <dist time="t55" from="papuao" to="sepiko">690</dist>
+    <dist time="t55" from="papuao" to="papuao">0</dist>
+    <dist time="t55" from="papuao" to="ephili">0</dist>
+    <dist time="t55" from="papuao" to="luzonp">0</dist>
+    <dist time="t55" from="papuao" to="caroli">0</dist>
+
+    <dist time="t55" from="ephili" to="borneo">0</dist>
+    <dist time="t55" from="ephili" to="wsulaw">0</dist>
+    <dist time="t55" from="ephili" to="esulaw">0</dist>
+    <dist time="t55" from="ephili" to="birdhd">0</dist>
+    <dist time="t55" from="ephili" to="halmah">0</dist>
+    <dist time="t55" from="ephili" to="cnewgn">0</dist>
+    <dist time="t55" from="ephili" to="sepiko">0</dist>
+    <dist time="t55" from="ephili" to="papuao">0</dist>
+    <dist time="t55" from="ephili" to="ephili">0</dist>
+    <dist time="t55" from="ephili" to="luzonp">0</dist>
+    <dist time="t55" from="ephili" to="caroli">0</dist>
+
+    <dist time="t55" from="luzonp" to="borneo">0</dist>
+    <dist time="t55" from="luzonp" to="wsulaw">0</dist>
+    <dist time="t55" from="luzonp" to="esulaw">0</dist>
+    <dist time="t55" from="luzonp" to="birdhd">0</dist>
+    <dist time="t55" from="luzonp" to="halmah">0</dist>
+    <dist time="t55" from="luzonp" to="cnewgn">0</dist>
+    <dist time="t55" from="luzonp" to="sepiko">0</dist>
+    <dist time="t55" from="luzonp" to="papuao">0</dist>
+    <dist time="t55" from="luzonp" to="ephili">0</dist>
+    <dist time="t55" from="luzonp" to="luzonp">0</dist>
+    <dist time="t55" from="luzonp" to="caroli">0</dist>
+
+    <dist time="t55" from="caroli" to="borneo">0</dist>
+    <dist time="t55" from="caroli" to="wsulaw">0</dist>
+    <dist time="t55" from="caroli" to="esulaw">0</dist>
+    <dist time="t55" from="caroli" to="birdhd">0</dist>
+    <dist time="t55" from="caroli" to="halmah">0</dist>
+    <dist time="t55" from="caroli" to="cnewgn">0</dist>
+    <dist time="t55" from="caroli" to="sepiko">0</dist>
+    <dist time="t55" from="caroli" to="papuao">0</dist>
+    <dist time="t55" from="caroli" to="ephili">0</dist>
+    <dist time="t55" from="caroli" to="luzonp">0</dist>
+    <dist time="t55" from="caroli" to="caroli">0</dist>
+    <dist time="t50" from="borneo" to="borneo">0</dist>
+    <dist time="t50" from="borneo" to="wsulaw">623</dist>
+    <dist time="t50" from="borneo" to="esulaw">1453</dist>
+    <dist time="t50" from="borneo" to="birdhd">2109</dist>
+    <dist time="t50" from="borneo" to="halmah">3026</dist>
+    <dist time="t50" from="borneo" to="cnewgn">2546</dist>
+    <dist time="t50" from="borneo" to="sepiko">2460</dist>
+    <dist time="t50" from="borneo" to="papuao">2796</dist>
+    <dist time="t50" from="borneo" to="ephili">0</dist>
+    <dist time="t50" from="borneo" to="luzonp">0</dist>
+    <dist time="t50" from="borneo" to="caroli">0</dist>
+
+    <dist time="t50" from="wsulaw" to="borneo">623</dist>
+    <dist time="t50" from="wsulaw" to="wsulaw">0</dist>
+    <dist time="t50" from="wsulaw" to="esulaw">1216</dist>
+    <dist time="t50" from="wsulaw" to="birdhd">1527</dist>
+    <dist time="t50" from="wsulaw" to="halmah">2436</dist>
+    <dist time="t50" from="wsulaw" to="cnewgn">1941</dist>
+    <dist time="t50" from="wsulaw" to="sepiko">1848</dist>
+    <dist time="t50" from="wsulaw" to="papuao">2181</dist>
+    <dist time="t50" from="wsulaw" to="ephili">0</dist>
+    <dist time="t50" from="wsulaw" to="luzonp">0</dist>
+    <dist time="t50" from="wsulaw" to="caroli">0</dist>
+
+    <dist time="t50" from="esulaw" to="borneo">1453</dist>
+    <dist time="t50" from="esulaw" to="wsulaw">1216</dist>
+    <dist time="t50" from="esulaw" to="esulaw">0</dist>
+    <dist time="t50" from="esulaw" to="birdhd">1291</dist>
+    <dist time="t50" from="esulaw" to="halmah">2889</dist>
+    <dist time="t50" from="esulaw" to="cnewgn">1772</dist>
+    <dist time="t50" from="esulaw" to="sepiko">1766</dist>
+    <dist time="t50" from="esulaw" to="papuao">2084</dist>
+    <dist time="t50" from="esulaw" to="ephili">0</dist>
+    <dist time="t50" from="esulaw" to="luzonp">0</dist>
+    <dist time="t50" from="esulaw" to="caroli">0</dist>
+
+    <dist time="t50" from="birdhd" to="borneo">2109</dist>
+    <dist time="t50" from="birdhd" to="wsulaw">1527</dist>
+    <dist time="t50" from="birdhd" to="esulaw">1291</dist>
+    <dist time="t50" from="birdhd" to="birdhd">0</dist>
+    <dist time="t50" from="birdhd" to="halmah">1697</dist>
+    <dist time="t50" from="birdhd" to="cnewgn">492</dist>
+    <dist time="t50" from="birdhd" to="sepiko">476</dist>
+    <dist time="t50" from="birdhd" to="papuao">799</dist>
+    <dist time="t50" from="birdhd" to="ephili">0</dist>
+    <dist time="t50" from="birdhd" to="luzonp">0</dist>
+    <dist time="t50" from="birdhd" to="caroli">0</dist>
+
+    <dist time="t50" from="halmah" to="borneo">3026</dist>
+    <dist time="t50" from="halmah" to="wsulaw">2436</dist>
+    <dist time="t50" from="halmah" to="esulaw">2889</dist>
+    <dist time="t50" from="halmah" to="birdhd">1697</dist>
+    <dist time="t50" from="halmah" to="halmah">0</dist>
+    <dist time="t50" from="halmah" to="cnewgn">1378</dist>
+    <dist time="t50" from="halmah" to="sepiko">1290</dist>
+    <dist time="t50" from="halmah" to="papuao">1168</dist>
+    <dist time="t50" from="halmah" to="ephili">0</dist>
+    <dist time="t50" from="halmah" to="luzonp">0</dist>
+    <dist time="t50" from="halmah" to="caroli">0</dist>
+
+    <dist time="t50" from="cnewgn" to="borneo">2546</dist>
+    <dist time="t50" from="cnewgn" to="wsulaw">1941</dist>
+    <dist time="t50" from="cnewgn" to="esulaw">1772</dist>
+    <dist time="t50" from="cnewgn" to="birdhd">492</dist>
+    <dist time="t50" from="cnewgn" to="halmah">1378</dist>
+    <dist time="t50" from="cnewgn" to="cnewgn">0</dist>
+    <dist time="t50" from="cnewgn" to="sepiko">138</dist>
+    <dist time="t50" from="cnewgn" to="papuao">312</dist>
+    <dist time="t50" from="cnewgn" to="ephili">0</dist>
+    <dist time="t50" from="cnewgn" to="luzonp">0</dist>
+    <dist time="t50" from="cnewgn" to="caroli">0</dist>
+
+    <dist time="t50" from="sepiko" to="borneo">2460</dist>
+    <dist time="t50" from="sepiko" to="wsulaw">1848</dist>
+    <dist time="t50" from="sepiko" to="esulaw">1766</dist>
+    <dist time="t50" from="sepiko" to="birdhd">476</dist>
+    <dist time="t50" from="sepiko" to="halmah">1290</dist>
+    <dist time="t50" from="sepiko" to="cnewgn">138</dist>
+    <dist time="t50" from="sepiko" to="sepiko">0</dist>
+    <dist time="t50" from="sepiko" to="papuao">344</dist>
+    <dist time="t50" from="sepiko" to="ephili">0</dist>
+    <dist time="t50" from="sepiko" to="luzonp">0</dist>
+    <dist time="t50" from="sepiko" to="caroli">0</dist>
+
+    <dist time="t50" from="papuao" to="borneo">2796</dist>
+    <dist time="t50" from="papuao" to="wsulaw">2181</dist>
+    <dist time="t50" from="papuao" to="esulaw">2084</dist>
+    <dist time="t50" from="papuao" to="birdhd">799</dist>
+    <dist time="t50" from="papuao" to="halmah">1168</dist>
+    <dist time="t50" from="papuao" to="cnewgn">312</dist>
+    <dist time="t50" from="papuao" to="sepiko">344</dist>
+    <dist time="t50" from="papuao" to="papuao">0</dist>
+    <dist time="t50" from="papuao" to="ephili">0</dist>
+    <dist time="t50" from="papuao" to="luzonp">0</dist>
+    <dist time="t50" from="papuao" to="caroli">0</dist>
+
+    <dist time="t50" from="ephili" to="borneo">0</dist>
+    <dist time="t50" from="ephili" to="wsulaw">0</dist>
+    <dist time="t50" from="ephili" to="esulaw">0</dist>
+    <dist time="t50" from="ephili" to="birdhd">0</dist>
+    <dist time="t50" from="ephili" to="halmah">0</dist>
+    <dist time="t50" from="ephili" to="cnewgn">0</dist>
+    <dist time="t50" from="ephili" to="sepiko">0</dist>
+    <dist time="t50" from="ephili" to="papuao">0</dist>
+    <dist time="t50" from="ephili" to="ephili">0</dist>
+    <dist time="t50" from="ephili" to="luzonp">0</dist>
+    <dist time="t50" from="ephili" to="caroli">0</dist>
+
+    <dist time="t50" from="luzonp" to="borneo">0</dist>
+    <dist time="t50" from="luzonp" to="wsulaw">0</dist>
+    <dist time="t50" from="luzonp" to="esulaw">0</dist>
+    <dist time="t50" from="luzonp" to="birdhd">0</dist>
+    <dist time="t50" from="luzonp" to="halmah">0</dist>
+    <dist time="t50" from="luzonp" to="cnewgn">0</dist>
+    <dist time="t50" from="luzonp" to="sepiko">0</dist>
+    <dist time="t50" from="luzonp" to="papuao">0</dist>
+    <dist time="t50" from="luzonp" to="ephili">0</dist>
+    <dist time="t50" from="luzonp" to="luzonp">0</dist>
+    <dist time="t50" from="luzonp" to="caroli">0</dist>
+
+    <dist time="t50" from="caroli" to="borneo">0</dist>
+    <dist time="t50" from="caroli" to="wsulaw">0</dist>
+    <dist time="t50" from="caroli" to="esulaw">0</dist>
+    <dist time="t50" from="caroli" to="birdhd">0</dist>
+    <dist time="t50" from="caroli" to="halmah">0</dist>
+    <dist time="t50" from="caroli" to="cnewgn">0</dist>
+    <dist time="t50" from="caroli" to="sepiko">0</dist>
+    <dist time="t50" from="caroli" to="papuao">0</dist>
+    <dist time="t50" from="caroli" to="ephili">0</dist>
+    <dist time="t50" from="caroli" to="luzonp">0</dist>
+    <dist time="t50" from="caroli" to="caroli">0</dist>
+
+    <dist time="t45" from="borneo" to="borneo">0</dist>
+    <dist time="t45" from="borneo" to="wsulaw">489</dist>
+    <dist time="t45" from="borneo" to="esulaw">1383</dist>
+    <dist time="t45" from="borneo" to="birdhd">2033</dist>
+    <dist time="t45" from="borneo" to="halmah">2608</dist>
+    <dist time="t45" from="borneo" to="cnewgn">2406</dist>
+    <dist time="t45" from="borneo" to="sepiko">2406</dist>
+    <dist time="t45" from="borneo" to="papuao">2406</dist>
+    <dist time="t45" from="borneo" to="ephili">1761</dist>
+    <dist time="t45" from="borneo" to="luzonp">1535</dist>
+    <dist time="t45" from="borneo" to="caroli">0</dist>
+
+    <dist time="t45" from="wsulaw" to="borneo">489</dist>
+    <dist time="t45" from="wsulaw" to="wsulaw">0</dist>
+    <dist time="t45" from="wsulaw" to="esulaw">1091</dist>
+    <dist time="t45" from="wsulaw" to="birdhd">1547</dist>
+    <dist time="t45" from="wsulaw" to="halmah">2154</dist>
+    <dist time="t45" from="wsulaw" to="cnewgn">1917</dist>
+    <dist time="t45" from="wsulaw" to="sepiko">1917</dist>
+    <dist time="t45" from="wsulaw" to="papuao">1917</dist>
+    <dist time="t45" from="wsulaw" to="ephili">1378</dist>
+    <dist time="t45" from="wsulaw" to="luzonp">1299</dist>
+    <dist time="t45" from="wsulaw" to="caroli">0</dist>
+
+    <dist time="t45" from="esulaw" to="borneo">1383</dist>
+    <dist time="t45" from="esulaw" to="wsulaw">1091</dist>
+    <dist time="t45" from="esulaw" to="esulaw">0</dist>
+    <dist time="t45" from="esulaw" to="birdhd">1298</dist>
+    <dist time="t45" from="esulaw" to="halmah">2331</dist>
+    <dist time="t45" from="esulaw" to="cnewgn">1632</dist>
+    <dist time="t45" from="esulaw" to="sepiko">1632</dist>
+    <dist time="t45" from="esulaw" to="papuao">1632</dist>
+    <dist time="t45" from="esulaw" to="ephili">1976</dist>
+    <dist time="t45" from="esulaw" to="luzonp">2182</dist>
+    <dist time="t45" from="esulaw" to="caroli">0</dist>
+
+    <dist time="t45" from="birdhd" to="borneo">2033</dist>
+    <dist time="t45" from="birdhd" to="wsulaw">1547</dist>
+    <dist time="t45" from="birdhd" to="esulaw">1298</dist>
+    <dist time="t45" from="birdhd" to="birdhd">0</dist>
+    <dist time="t45" from="birdhd" to="halmah">1096</dist>
+    <dist time="t45" from="birdhd" to="cnewgn">379</dist>
+    <dist time="t45" from="birdhd" to="sepiko">379</dist>
+    <dist time="t45" from="birdhd" to="papuao">379</dist>
+    <dist time="t45" from="birdhd" to="ephili">1223</dist>
+    <dist time="t45" from="birdhd" to="luzonp">1735</dist>
+    <dist time="t45" from="birdhd" to="caroli">0</dist>
+
+    <dist time="t45" from="halmah" to="borneo">2608</dist>
+    <dist time="t45" from="halmah" to="wsulaw">2154</dist>
+    <dist time="t45" from="halmah" to="esulaw">2331</dist>
+    <dist time="t45" from="halmah" to="birdhd">1096</dist>
+    <dist time="t45" from="halmah" to="halmah">0</dist>
+    <dist time="t45" from="halmah" to="cnewgn">948</dist>
+    <dist time="t45" from="halmah" to="sepiko">948</dist>
+    <dist time="t45" from="halmah" to="papuao">948</dist>
+    <dist time="t45" from="halmah" to="ephili">970</dist>
+    <dist time="t45" from="halmah" to="luzonp">1531</dist>
+    <dist time="t45" from="halmah" to="caroli">0</dist>
+
+    <dist time="t45" from="cnewgn" to="borneo">2406</dist>
+    <dist time="t45" from="cnewgn" to="wsulaw">1917</dist>
+    <dist time="t45" from="cnewgn" to="esulaw">1632</dist>
+    <dist time="t45" from="cnewgn" to="birdhd">379</dist>
+    <dist time="t45" from="cnewgn" to="halmah">948</dist>
+    <dist time="t45" from="cnewgn" to="cnewgn">0</dist>
+    <dist time="t45" from="cnewgn" to="sepiko">0</dist>
+    <dist time="t45" from="cnewgn" to="papuao">0</dist>
+    <dist time="t45" from="cnewgn" to="ephili">1383</dist>
+    <dist time="t45" from="cnewgn" to="luzonp">1947</dist>
+    <dist time="t45" from="cnewgn" to="caroli">0</dist>
+
+    <dist time="t45" from="sepiko" to="borneo">2406</dist>
+    <dist time="t45" from="sepiko" to="wsulaw">1917</dist>
+    <dist time="t45" from="sepiko" to="esulaw">1632</dist>
+    <dist time="t45" from="sepiko" to="birdhd">379</dist>
+    <dist time="t45" from="sepiko" to="halmah">948</dist>
+    <dist time="t45" from="sepiko" to="cnewgn">0</dist>
+    <dist time="t45" from="sepiko" to="sepiko">0</dist>
+    <dist time="t45" from="sepiko" to="papuao">0</dist>
+    <dist time="t45" from="sepiko" to="ephili">1383</dist>
+    <dist time="t45" from="sepiko" to="luzonp">1947</dist>
+    <dist time="t45" from="sepiko" to="caroli">0</dist>
+
+    <dist time="t45" from="papuao" to="borneo">2406</dist>
+    <dist time="t45" from="papuao" to="wsulaw">1917</dist>
+    <dist time="t45" from="papuao" to="esulaw">1632</dist>
+    <dist time="t45" from="papuao" to="birdhd">379</dist>
+    <dist time="t45" from="papuao" to="halmah">948</dist>
+    <dist time="t45" from="papuao" to="cnewgn">0</dist>
+    <dist time="t45" from="papuao" to="sepiko">0</dist>
+    <dist time="t45" from="papuao" to="papuao">0</dist>
+    <dist time="t45" from="papuao" to="ephili">1383</dist>
+    <dist time="t45" from="papuao" to="luzonp">1947</dist>
+    <dist time="t45" from="papuao" to="caroli">0</dist>
+
+    <dist time="t45" from="ephili" to="borneo">1761</dist>
+    <dist time="t45" from="ephili" to="wsulaw">1378</dist>
+    <dist time="t45" from="ephili" to="esulaw">1976</dist>
+    <dist time="t45" from="ephili" to="birdhd">1223</dist>
+    <dist time="t45" from="ephili" to="halmah">970</dist>
+    <dist time="t45" from="ephili" to="cnewgn">1383</dist>
+    <dist time="t45" from="ephili" to="sepiko">1383</dist>
+    <dist time="t45" from="ephili" to="papuao">1383</dist>
+    <dist time="t45" from="ephili" to="ephili">0</dist>
+    <dist time="t45" from="ephili" to="luzonp">591</dist>
+    <dist time="t45" from="ephili" to="caroli">0</dist>
+
+    <dist time="t45" from="luzonp" to="borneo">1535</dist>
+    <dist time="t45" from="luzonp" to="wsulaw">1299</dist>
+    <dist time="t45" from="luzonp" to="esulaw">2182</dist>
+    <dist time="t45" from="luzonp" to="birdhd">1735</dist>
+    <dist time="t45" from="luzonp" to="halmah">1531</dist>
+    <dist time="t45" from="luzonp" to="cnewgn">1947</dist>
+    <dist time="t45" from="luzonp" to="sepiko">1947</dist>
+    <dist time="t45" from="luzonp" to="papuao">1947</dist>
+    <dist time="t45" from="luzonp" to="ephili">591</dist>
+    <dist time="t45" from="luzonp" to="luzonp">0</dist>
+    <dist time="t45" from="luzonp" to="caroli">0</dist>
+
+    <dist time="t45" from="caroli" to="borneo">0</dist>
+    <dist time="t45" from="caroli" to="wsulaw">0</dist>
+    <dist time="t45" from="caroli" to="esulaw">0</dist>
+    <dist time="t45" from="caroli" to="birdhd">0</dist>
+    <dist time="t45" from="caroli" to="halmah">0</dist>
+    <dist time="t45" from="caroli" to="cnewgn">0</dist>
+    <dist time="t45" from="caroli" to="sepiko">0</dist>
+    <dist time="t45" from="caroli" to="papuao">0</dist>
+    <dist time="t45" from="caroli" to="ephili">0</dist>
+    <dist time="t45" from="caroli" to="luzonp">0</dist>
+    <dist time="t45" from="caroli" to="caroli">0</dist>
+    <dist time="t40" from="borneo" to="borneo">0</dist>
+    <dist time="t40" from="borneo" to="wsulaw">664</dist>
+    <dist time="t40" from="borneo" to="esulaw">1291</dist>
+    <dist time="t40" from="borneo" to="birdhd">1914</dist>
+    <dist time="t40" from="borneo" to="halmah">2596</dist>
+    <dist time="t40" from="borneo" to="cnewgn">2293</dist>
+    <dist time="t40" from="borneo" to="sepiko">2293</dist>
+    <dist time="t40" from="borneo" to="papuao">2293</dist>
+    <dist time="t40" from="borneo" to="ephili">1783</dist>
+    <dist time="t40" from="borneo" to="luzonp">1491</dist>
+    <dist time="t40" from="borneo" to="caroli">0</dist>
+
+    <dist time="t40" from="wsulaw" to="borneo">664</dist>
+    <dist time="t40" from="wsulaw" to="wsulaw">0</dist>
+    <dist time="t40" from="wsulaw" to="esulaw">928</dist>
+    <dist time="t40" from="wsulaw" to="birdhd">1266</dist>
+    <dist time="t40" from="wsulaw" to="halmah">1960</dist>
+    <dist time="t40" from="wsulaw" to="cnewgn">1633</dist>
+    <dist time="t40" from="wsulaw" to="sepiko">1633</dist>
+    <dist time="t40" from="wsulaw" to="papuao">1633</dist>
+    <dist time="t40" from="wsulaw" to="ephili">1204</dist>
+    <dist time="t40" from="wsulaw" to="luzonp">1203</dist>
+    <dist time="t40" from="wsulaw" to="caroli">0</dist>
+
+    <dist time="t40" from="esulaw" to="borneo">1291</dist>
+    <dist time="t40" from="esulaw" to="wsulaw">928</dist>
+    <dist time="t40" from="esulaw" to="esulaw">0</dist>
+    <dist time="t40" from="esulaw" to="birdhd">1084</dist>
+    <dist time="t40" from="esulaw" to="halmah">2170</dist>
+    <dist time="t40" from="esulaw" to="cnewgn">1482</dist>
+    <dist time="t40" from="esulaw" to="sepiko">1482</dist>
+    <dist time="t40" from="esulaw" to="papuao">1482</dist>
+    <dist time="t40" from="esulaw" to="ephili">1728</dist>
+    <dist time="t40" from="esulaw" to="luzonp">2058</dist>
+    <dist time="t40" from="esulaw" to="caroli">0</dist>
+
+    <dist time="t40" from="birdhd" to="borneo">1914</dist>
+    <dist time="t40" from="birdhd" to="wsulaw">1266</dist>
+    <dist time="t40" from="birdhd" to="esulaw">1084</dist>
+    <dist time="t40" from="birdhd" to="birdhd">0</dist>
+    <dist time="t40" from="birdhd" to="halmah">1133</dist>
+    <dist time="t40" from="birdhd" to="cnewgn">410</dist>
+    <dist time="t40" from="birdhd" to="sepiko">410</dist>
+    <dist time="t40" from="birdhd" to="papuao">410</dist>
+    <dist time="t40" from="birdhd" to="ephili">1049</dist>
+    <dist time="t40" from="birdhd" to="luzonp">1769</dist>
+    <dist time="t40" from="birdhd" to="caroli">0</dist>
+
+    <dist time="t40" from="halmah" to="borneo">2596</dist>
+    <dist time="t40" from="halmah" to="wsulaw">1960</dist>
+    <dist time="t40" from="halmah" to="esulaw">2170</dist>
+    <dist time="t40" from="halmah" to="birdhd">1133</dist>
+    <dist time="t40" from="halmah" to="halmah">0</dist>
+    <dist time="t40" from="halmah" to="cnewgn">858</dist>
+    <dist time="t40" from="halmah" to="sepiko">858</dist>
+    <dist time="t40" from="halmah" to="papuao">858</dist>
+    <dist time="t40" from="halmah" to="ephili">876</dist>
+    <dist time="t40" from="halmah" to="luzonp">1656</dist>
+    <dist time="t40" from="halmah" to="caroli">0</dist>
+
+    <dist time="t40" from="cnewgn" to="borneo">2293</dist>
+    <dist time="t40" from="cnewgn" to="wsulaw">1633</dist>
+    <dist time="t40" from="cnewgn" to="esulaw">1482</dist>
+    <dist time="t40" from="cnewgn" to="birdhd">410</dist>
+    <dist time="t40" from="cnewgn" to="halmah">858</dist>
+    <dist time="t40" from="cnewgn" to="cnewgn">0</dist>
+    <dist time="t40" from="cnewgn" to="sepiko">0</dist>
+    <dist time="t40" from="cnewgn" to="papuao">0</dist>
+    <dist time="t40" from="cnewgn" to="ephili">1107</dist>
+    <dist time="t40" from="cnewgn" to="luzonp">1921</dist>
+    <dist time="t40" from="cnewgn" to="caroli">0</dist>
+
+    <dist time="t40" from="sepiko" to="borneo">2293</dist>
+    <dist time="t40" from="sepiko" to="wsulaw">1633</dist>
+    <dist time="t40" from="sepiko" to="esulaw">1482</dist>
+    <dist time="t40" from="sepiko" to="birdhd">410</dist>
+    <dist time="t40" from="sepiko" to="halmah">858</dist>
+    <dist time="t40" from="sepiko" to="cnewgn">0</dist>
+    <dist time="t40" from="sepiko" to="sepiko">0</dist>
+    <dist time="t40" from="sepiko" to="papuao">0</dist>
+    <dist time="t40" from="sepiko" to="ephili">1107</dist>
+    <dist time="t40" from="sepiko" to="luzonp">1921</dist>
+    <dist time="t40" from="sepiko" to="caroli">0</dist>
+
+    <dist time="t40" from="papuao" to="borneo">2293</dist>
+    <dist time="t40" from="papuao" to="wsulaw">1633</dist>
+    <dist time="t40" from="papuao" to="esulaw">1482</dist>
+    <dist time="t40" from="papuao" to="birdhd">410</dist>
+    <dist time="t40" from="papuao" to="halmah">858</dist>
+    <dist time="t40" from="papuao" to="cnewgn">0</dist>
+    <dist time="t40" from="papuao" to="sepiko">0</dist>
+    <dist time="t40" from="papuao" to="papuao">0</dist>
+    <dist time="t40" from="papuao" to="ephili">1107</dist>
+    <dist time="t40" from="papuao" to="luzonp">1921</dist>
+    <dist time="t40" from="papuao" to="caroli">0</dist>
+
+    <dist time="t40" from="ephili" to="borneo">1783</dist>
+    <dist time="t40" from="ephili" to="wsulaw">1204</dist>
+    <dist time="t40" from="ephili" to="esulaw">1728</dist>
+    <dist time="t40" from="ephili" to="birdhd">1049</dist>
+    <dist time="t40" from="ephili" to="halmah">876</dist>
+    <dist time="t40" from="ephili" to="cnewgn">1107</dist>
+    <dist time="t40" from="ephili" to="sepiko">1107</dist>
+    <dist time="t40" from="ephili" to="papuao">1107</dist>
+    <dist time="t40" from="ephili" to="ephili">0</dist>
+    <dist time="t40" from="ephili" to="luzonp">842</dist>
+    <dist time="t40" from="ephili" to="caroli">0</dist>
+
+    <dist time="t40" from="luzonp" to="borneo">1491</dist>
+    <dist time="t40" from="luzonp" to="wsulaw">1203</dist>
+    <dist time="t40" from="luzonp" to="esulaw">2058</dist>
+    <dist time="t40" from="luzonp" to="birdhd">1769</dist>
+    <dist time="t40" from="luzonp" to="halmah">1656</dist>
+    <dist time="t40" from="luzonp" to="cnewgn">1921</dist>
+    <dist time="t40" from="luzonp" to="sepiko">1921</dist>
+    <dist time="t40" from="luzonp" to="papuao">1921</dist>
+    <dist time="t40" from="luzonp" to="ephili">842</dist>
+    <dist time="t40" from="luzonp" to="luzonp">0</dist>
+    <dist time="t40" from="luzonp" to="caroli">0</dist>
+
+    <dist time="t40" from="caroli" to="borneo">0</dist>
+    <dist time="t40" from="caroli" to="wsulaw">0</dist>
+    <dist time="t40" from="caroli" to="esulaw">0</dist>
+    <dist time="t40" from="caroli" to="birdhd">0</dist>
+    <dist time="t40" from="caroli" to="halmah">0</dist>
+    <dist time="t40" from="caroli" to="cnewgn">0</dist>
+    <dist time="t40" from="caroli" to="sepiko">0</dist>
+    <dist time="t40" from="caroli" to="papuao">0</dist>
+    <dist time="t40" from="caroli" to="ephili">0</dist>
+    <dist time="t40" from="caroli" to="luzonp">0</dist>
+    <dist time="t40" from="caroli" to="caroli">0</dist>
+
+    <dist time="t35" from="borneo" to="borneo">0</dist>
+    <dist time="t35" from="borneo" to="wsulaw">843</dist>
+    <dist time="t35" from="borneo" to="esulaw">1224</dist>
+    <dist time="t35" from="borneo" to="birdhd">1794</dist>
+    <dist time="t35" from="borneo" to="halmah">2584</dist>
+    <dist time="t35" from="borneo" to="cnewgn">2186</dist>
+    <dist time="t35" from="borneo" to="sepiko">2186</dist>
+    <dist time="t35" from="borneo" to="papuao">2186</dist>
+    <dist time="t35" from="borneo" to="ephili">1810</dist>
+    <dist time="t35" from="borneo" to="luzonp">1462</dist>
+    <dist time="t35" from="borneo" to="caroli">3128</dist>
+
+    <dist time="t35" from="wsulaw" to="borneo">843</dist>
+    <dist time="t35" from="wsulaw" to="wsulaw">0</dist>
+    <dist time="t35" from="wsulaw" to="esulaw">770</dist>
+    <dist time="t35" from="wsulaw" to="birdhd">989</dist>
+    <dist time="t35" from="wsulaw" to="halmah">1766</dist>
+    <dist time="t35" from="wsulaw" to="cnewgn">1349</dist>
+    <dist time="t35" from="wsulaw" to="sepiko">1349</dist>
+    <dist time="t35" from="wsulaw" to="papuao">1349</dist>
+    <dist time="t35" from="wsulaw" to="ephili">1031</dist>
+    <dist time="t35" from="wsulaw" to="luzonp">1189</dist>
+    <dist time="t35" from="wsulaw" to="caroli">2411</dist>
+
+    <dist time="t35" from="esulaw" to="borneo">1224</dist>
+    <dist time="t35" from="esulaw" to="wsulaw">770</dist>
+    <dist time="t35" from="esulaw" to="esulaw">0</dist>
+    <dist time="t35" from="esulaw" to="birdhd">866</dist>
+    <dist time="t35" from="esulaw" to="halmah">2009</dist>
+    <dist time="t35" from="esulaw" to="cnewgn">1327</dist>
+    <dist time="t35" from="esulaw" to="sepiko">1327</dist>
+    <dist time="t35" from="esulaw" to="papuao">1327</dist>
+    <dist time="t35" from="esulaw" to="ephili">1485</dist>
+    <dist time="t35" from="esulaw" to="luzonp">1952</dist>
+    <dist time="t35" from="esulaw" to="caroli">2833</dist>
+
+    <dist time="t35" from="birdhd" to="borneo">1794</dist>
+    <dist time="t35" from="birdhd" to="wsulaw">989</dist>
+    <dist time="t35" from="birdhd" to="esulaw">866</dist>
+    <dist time="t35" from="birdhd" to="birdhd">0</dist>
+    <dist time="t35" from="birdhd" to="halmah">1179</dist>
+    <dist time="t35" from="birdhd" to="cnewgn">462</dist>
+    <dist time="t35" from="birdhd" to="sepiko">462</dist>
+    <dist time="t35" from="birdhd" to="papuao">462</dist>
+    <dist time="t35" from="birdhd" to="ephili">894</dist>
+    <dist time="t35" from="birdhd" to="luzonp">1804</dist>
+    <dist time="t35" from="birdhd" to="caroli">2062</dist>
+
+    <dist time="t35" from="halmah" to="borneo">2584</dist>
+    <dist time="t35" from="halmah" to="wsulaw">1766</dist>
+    <dist time="t35" from="halmah" to="esulaw">2009</dist>
+    <dist time="t35" from="halmah" to="birdhd">1179</dist>
+    <dist time="t35" from="halmah" to="halmah">0</dist>
+    <dist time="t35" from="halmah" to="cnewgn">781</dist>
+    <dist time="t35" from="halmah" to="sepiko">781</dist>
+    <dist time="t35" from="halmah" to="papuao">781</dist>
+    <dist time="t35" from="halmah" to="ephili">795</dist>
+    <dist time="t35" from="halmah" to="luzonp">1781</dist>
+    <dist time="t35" from="halmah" to="caroli">923</dist>
+
+    <dist time="t35" from="cnewgn" to="borneo">2186</dist>
+    <dist time="t35" from="cnewgn" to="wsulaw">1349</dist>
+    <dist time="t35" from="cnewgn" to="esulaw">1327</dist>
+    <dist time="t35" from="cnewgn" to="birdhd">462</dist>
+    <dist time="t35" from="cnewgn" to="halmah">781</dist>
+    <dist time="t35" from="cnewgn" to="cnewgn">0</dist>
+    <dist time="t35" from="cnewgn" to="sepiko">0</dist>
+    <dist time="t35" from="cnewgn" to="papuao">0</dist>
+    <dist time="t35" from="cnewgn" to="ephili">830</dist>
+    <dist time="t35" from="cnewgn" to="luzonp">1898</dist>
+    <dist time="t35" from="cnewgn" to="caroli">1699</dist>
+
+    <dist time="t35" from="sepiko" to="borneo">2186</dist>
+    <dist time="t35" from="sepiko" to="wsulaw">1349</dist>
+    <dist time="t35" from="sepiko" to="esulaw">1327</dist>
+    <dist time="t35" from="sepiko" to="birdhd">462</dist>
+    <dist time="t35" from="sepiko" to="halmah">781</dist>
+    <dist time="t35" from="sepiko" to="cnewgn">0</dist>
+    <dist time="t35" from="sepiko" to="sepiko">0</dist>
+    <dist time="t35" from="sepiko" to="papuao">0</dist>
+    <dist time="t35" from="sepiko" to="ephili">830</dist>
+    <dist time="t35" from="sepiko" to="luzonp">1898</dist>
+    <dist time="t35" from="sepiko" to="caroli">1699</dist>
+
+    <dist time="t35" from="papuao" to="borneo">2186</dist>
+    <dist time="t35" from="papuao" to="wsulaw">1349</dist>
+    <dist time="t35" from="papuao" to="esulaw">1327</dist>
+    <dist time="t35" from="papuao" to="birdhd">462</dist>
+    <dist time="t35" from="papuao" to="halmah">781</dist>
+    <dist time="t35" from="papuao" to="cnewgn">0</dist>
+    <dist time="t35" from="papuao" to="sepiko">0</dist>
+    <dist time="t35" from="papuao" to="papuao">0</dist>
+    <dist time="t35" from="papuao" to="ephili">830</dist>
+    <dist time="t35" from="papuao" to="luzonp">1898</dist>
+    <dist time="t35" from="papuao" to="caroli">1699</dist>
+
+    <dist time="t35" from="ephili" to="borneo">1810</dist>
+    <dist time="t35" from="ephili" to="wsulaw">1031</dist>
+    <dist time="t35" from="ephili" to="esulaw">1485</dist>
+    <dist time="t35" from="ephili" to="birdhd">894</dist>
+    <dist time="t35" from="ephili" to="halmah">795</dist>
+    <dist time="t35" from="ephili" to="cnewgn">830</dist>
+    <dist time="t35" from="ephili" to="sepiko">830</dist>
+    <dist time="t35" from="ephili" to="papuao">830</dist>
+    <dist time="t35" from="ephili" to="ephili">0</dist>
+    <dist time="t35" from="ephili" to="luzonp">1093</dist>
+    <dist time="t35" from="ephili" to="caroli">1390</dist>
+
+    <dist time="t35" from="luzonp" to="borneo">1462</dist>
+    <dist time="t35" from="luzonp" to="wsulaw">1189</dist>
+    <dist time="t35" from="luzonp" to="esulaw">1952</dist>
+    <dist time="t35" from="luzonp" to="birdhd">1804</dist>
+    <dist time="t35" from="luzonp" to="halmah">1781</dist>
+    <dist time="t35" from="luzonp" to="cnewgn">1898</dist>
+    <dist time="t35" from="luzonp" to="sepiko">1898</dist>
+    <dist time="t35" from="luzonp" to="papuao">1898</dist>
+    <dist time="t35" from="luzonp" to="ephili">1093</dist>
+    <dist time="t35" from="luzonp" to="luzonp">0</dist>
+    <dist time="t35" from="luzonp" to="caroli">1915</dist>
+
+    <dist time="t35" from="caroli" to="borneo">3128</dist>
+    <dist time="t35" from="caroli" to="wsulaw">2411</dist>
+    <dist time="t35" from="caroli" to="esulaw">2833</dist>
+    <dist time="t35" from="caroli" to="birdhd">2062</dist>
+    <dist time="t35" from="caroli" to="halmah">923</dist>
+    <dist time="t35" from="caroli" to="cnewgn">1699</dist>
+    <dist time="t35" from="caroli" to="sepiko">1699</dist>
+    <dist time="t35" from="caroli" to="papuao">1699</dist>
+    <dist time="t35" from="caroli" to="ephili">1390</dist>
+    <dist time="t35" from="caroli" to="luzonp">1915</dist>
+    <dist time="t35" from="caroli" to="caroli">0</dist>
+
+    <dist time="t30" from="borneo" to="borneo">0</dist>
+    <dist time="t30" from="borneo" to="wsulaw">787</dist>
+    <dist time="t30" from="borneo" to="esulaw">1035</dist>
+    <dist time="t30" from="borneo" to="birdhd">1749</dist>
+    <dist time="t30" from="borneo" to="halmah">2415</dist>
+    <dist time="t30" from="borneo" to="cnewgn">2264</dist>
+    <dist time="t30" from="borneo" to="sepiko">2264</dist>
+    <dist time="t30" from="borneo" to="papuao">2264</dist>
+    <dist time="t30" from="borneo" to="ephili">1712</dist>
+    <dist time="t30" from="borneo" to="luzonp">1462</dist>
+    <dist time="t30" from="borneo" to="caroli">3224</dist>
+
+    <dist time="t30" from="wsulaw" to="borneo">787</dist>
+    <dist time="t30" from="wsulaw" to="wsulaw">0</dist>
+    <dist time="t30" from="wsulaw" to="esulaw">481</dist>
+    <dist time="t30" from="wsulaw" to="birdhd">967</dist>
+    <dist time="t30" from="wsulaw" to="halmah">1660</dist>
+    <dist time="t30" from="wsulaw" to="cnewgn">1478</dist>
+    <dist time="t30" from="wsulaw" to="sepiko">1478</dist>
+    <dist time="t30" from="wsulaw" to="papuao">1478</dist>
+    <dist time="t30" from="wsulaw" to="ephili">997</dist>
+    <dist time="t30" from="wsulaw" to="luzonp">1230</dist>
+    <dist time="t30" from="wsulaw" to="caroli">2537</dist>
+
+    <dist time="t30" from="esulaw" to="borneo">1035</dist>
+    <dist time="t30" from="esulaw" to="wsulaw">481</dist>
+    <dist time="t30" from="esulaw" to="esulaw">0</dist>
+    <dist time="t30" from="esulaw" to="birdhd">868</dist>
+    <dist time="t30" from="esulaw" to="halmah">1748</dist>
+    <dist time="t30" from="esulaw" to="cnewgn">1437</dist>
+    <dist time="t30" from="esulaw" to="sepiko">1437</dist>
+    <dist time="t30" from="esulaw" to="papuao">1437</dist>
+    <dist time="t30" from="esulaw" to="ephili">1216</dist>
+    <dist time="t30" from="esulaw" to="luzonp">1694</dist>
+    <dist time="t30" from="esulaw" to="caroli">2701</dist>
+
+    <dist time="t30" from="birdhd" to="borneo">1749</dist>
+    <dist time="t30" from="birdhd" to="wsulaw">967</dist>
+    <dist time="t30" from="birdhd" to="esulaw">868</dist>
+    <dist time="t30" from="birdhd" to="birdhd">0</dist>
+    <dist time="t30" from="birdhd" to="halmah">933</dist>
+    <dist time="t30" from="birdhd" to="cnewgn">569</dist>
+    <dist time="t30" from="birdhd" to="sepiko">569</dist>
+    <dist time="t30" from="birdhd" to="papuao">569</dist>
+    <dist time="t30" from="birdhd" to="ephili">693</dist>
+    <dist time="t30" from="birdhd" to="luzonp">1662</dist>
+    <dist time="t30" from="birdhd" to="caroli">1912</dist>
+
+    <dist time="t30" from="halmah" to="borneo">2415</dist>
+    <dist time="t30" from="halmah" to="wsulaw">1660</dist>
+    <dist time="t30" from="halmah" to="esulaw">1748</dist>
+    <dist time="t30" from="halmah" to="birdhd">933</dist>
+    <dist time="t30" from="halmah" to="halmah">0</dist>
+    <dist time="t30" from="halmah" to="cnewgn">480</dist>
+    <dist time="t30" from="halmah" to="sepiko">480</dist>
+    <dist time="t30" from="halmah" to="papuao">480</dist>
+    <dist time="t30" from="halmah" to="ephili">720</dist>
+    <dist time="t30" from="halmah" to="luzonp">1658</dist>
+    <dist time="t30" from="halmah" to="caroli">979</dist>
+
+    <dist time="t30" from="cnewgn" to="borneo">2264</dist>
+    <dist time="t30" from="cnewgn" to="wsulaw">1478</dist>
+    <dist time="t30" from="cnewgn" to="esulaw">1437</dist>
+    <dist time="t30" from="cnewgn" to="birdhd">569</dist>
+    <dist time="t30" from="cnewgn" to="halmah">480</dist>
+    <dist time="t30" from="cnewgn" to="cnewgn">0</dist>
+    <dist time="t30" from="cnewgn" to="sepiko">0</dist>
+    <dist time="t30" from="cnewgn" to="papuao">0</dist>
+    <dist time="t30" from="cnewgn" to="ephili">774</dist>
+    <dist time="t30" from="cnewgn" to="luzonp">1837</dist>
+    <dist time="t30" from="cnewgn" to="caroli">1422</dist>
+
+    <dist time="t30" from="sepiko" to="borneo">2264</dist>
+    <dist time="t30" from="sepiko" to="wsulaw">1478</dist>
+    <dist time="t30" from="sepiko" to="esulaw">1437</dist>
+    <dist time="t30" from="sepiko" to="birdhd">569</dist>
+    <dist time="t30" from="sepiko" to="halmah">480</dist>
+    <dist time="t30" from="sepiko" to="cnewgn">0</dist>
+    <dist time="t30" from="sepiko" to="sepiko">0</dist>
+    <dist time="t30" from="sepiko" to="papuao">0</dist>
+    <dist time="t30" from="sepiko" to="ephili">774</dist>
+    <dist time="t30" from="sepiko" to="luzonp">1837</dist>
+    <dist time="t30" from="sepiko" to="caroli">1422</dist>
+
+    <dist time="t30" from="papuao" to="borneo">2264</dist>
+    <dist time="t30" from="papuao" to="wsulaw">1478</dist>
+    <dist time="t30" from="papuao" to="esulaw">1437</dist>
+    <dist time="t30" from="papuao" to="birdhd">569</dist>
+    <dist time="t30" from="papuao" to="halmah">480</dist>
+    <dist time="t30" from="papuao" to="cnewgn">0</dist>
+    <dist time="t30" from="papuao" to="sepiko">0</dist>
+    <dist time="t30" from="papuao" to="papuao">0</dist>
+    <dist time="t30" from="papuao" to="ephili">774</dist>
+    <dist time="t30" from="papuao" to="luzonp">1837</dist>
+    <dist time="t30" from="papuao" to="caroli">1422</dist>
+
+    <dist time="t30" from="ephili" to="borneo">1712</dist>
+    <dist time="t30" from="ephili" to="wsulaw">997</dist>
+    <dist time="t30" from="ephili" to="esulaw">1216</dist>
+    <dist time="t30" from="ephili" to="birdhd">693</dist>
+    <dist time="t30" from="ephili" to="halmah">720</dist>
+    <dist time="t30" from="ephili" to="cnewgn">774</dist>
+    <dist time="t30" from="ephili" to="sepiko">774</dist>
+    <dist time="t30" from="ephili" to="papuao">774</dist>
+    <dist time="t30" from="ephili" to="ephili">0</dist>
+    <dist time="t30" from="ephili" to="luzonp">1065</dist>
+    <dist time="t30" from="ephili" to="caroli">1540</dist>
+
+    <dist time="t30" from="luzonp" to="borneo">1462</dist>
+    <dist time="t30" from="luzonp" to="wsulaw">1230</dist>
+    <dist time="t30" from="luzonp" to="esulaw">1694</dist>
+    <dist time="t30" from="luzonp" to="birdhd">1662</dist>
+    <dist time="t30" from="luzonp" to="halmah">1658</dist>
+    <dist time="t30" from="luzonp" to="cnewgn">1837</dist>
+    <dist time="t30" from="luzonp" to="sepiko">1837</dist>
+    <dist time="t30" from="luzonp" to="papuao">1837</dist>
+    <dist time="t30" from="luzonp" to="ephili">1065</dist>
+    <dist time="t30" from="luzonp" to="luzonp">0</dist>
+    <dist time="t30" from="luzonp" to="caroli">2089</dist>
+
+    <dist time="t30" from="caroli" to="borneo">3224</dist>
+    <dist time="t30" from="caroli" to="wsulaw">2537</dist>
+    <dist time="t30" from="caroli" to="esulaw">2701</dist>
+    <dist time="t30" from="caroli" to="birdhd">1912</dist>
+    <dist time="t30" from="caroli" to="halmah">979</dist>
+    <dist time="t30" from="caroli" to="cnewgn">1422</dist>
+    <dist time="t30" from="caroli" to="sepiko">1422</dist>
+    <dist time="t30" from="caroli" to="papuao">1422</dist>
+    <dist time="t30" from="caroli" to="ephili">1540</dist>
+    <dist time="t30" from="caroli" to="luzonp">2089</dist>
+    <dist time="t30" from="caroli" to="caroli">0</dist>
+
+    <dist time="t25" from="borneo" to="borneo">0</dist>
+    <dist time="t25" from="borneo" to="wsulaw">734</dist>
+    <dist time="t25" from="borneo" to="esulaw">884</dist>
+    <dist time="t25" from="borneo" to="birdhd">1716</dist>
+    <dist time="t25" from="borneo" to="halmah">2245</dist>
+    <dist time="t25" from="borneo" to="cnewgn">2358</dist>
+    <dist time="t25" from="borneo" to="sepiko">2358</dist>
+    <dist time="t25" from="borneo" to="papuao">2358</dist>
+    <dist time="t25" from="borneo" to="ephili">1615</dist>
+    <dist time="t25" from="borneo" to="luzonp">1462</dist>
+    <dist time="t25" from="borneo" to="caroli">3331</dist>
+
+    <dist time="t25" from="wsulaw" to="borneo">734</dist>
+    <dist time="t25" from="wsulaw" to="wsulaw">0</dist>
+    <dist time="t25" from="wsulaw" to="esulaw">208</dist>
+    <dist time="t25" from="wsulaw" to="birdhd">984</dist>
+    <dist time="t25" from="wsulaw" to="halmah">1554</dist>
+    <dist time="t25" from="wsulaw" to="cnewgn">1639</dist>
+    <dist time="t25" from="wsulaw" to="sepiko">1639</dist>
+    <dist time="t25" from="wsulaw" to="papuao">1639</dist>
+    <dist time="t25" from="wsulaw" to="ephili">963</dist>
+    <dist time="t25" from="wsulaw" to="luzonp">1274</dist>
+    <dist time="t25" from="wsulaw" to="caroli">2681</dist>
+
+    <dist time="t25" from="esulaw" to="borneo">884</dist>
+    <dist time="t25" from="esulaw" to="wsulaw">208</dist>
+    <dist time="t25" from="esulaw" to="esulaw">0</dist>
+    <dist time="t25" from="esulaw" to="birdhd">881</dist>
+    <dist time="t25" from="esulaw" to="halmah">1505</dist>
+    <dist time="t25" from="esulaw" to="cnewgn">1555</dist>
+    <dist time="t25" from="esulaw" to="sepiko">1555</dist>
+    <dist time="t25" from="esulaw" to="papuao">1555</dist>
+    <dist time="t25" from="esulaw" to="ephili">966</dist>
+    <dist time="t25" from="esulaw" to="luzonp">1437</dist>
+    <dist time="t25" from="esulaw" to="caroli">2650</dist>
+
+    <dist time="t25" from="birdhd" to="borneo">1716</dist>
+    <dist time="t25" from="birdhd" to="wsulaw">984</dist>
+    <dist time="t25" from="birdhd" to="esulaw">881</dist>
+    <dist time="t25" from="birdhd" to="birdhd">0</dist>
+    <dist time="t25" from="birdhd" to="halmah">685</dist>
+    <dist time="t25" from="birdhd" to="cnewgn">679</dist>
+    <dist time="t25" from="birdhd" to="sepiko">679</dist>
+    <dist time="t25" from="birdhd" to="papuao">679</dist>
+    <dist time="t25" from="birdhd" to="ephili">503</dist>
+    <dist time="t25" from="birdhd" to="luzonp">1522</dist>
+    <dist time="t25" from="birdhd" to="caroli">1827</dist>
+
+    <dist time="t25" from="halmah" to="borneo">2245</dist>
+    <dist time="t25" from="halmah" to="wsulaw">1554</dist>
+    <dist time="t25" from="halmah" to="esulaw">1505</dist>
+    <dist time="t25" from="halmah" to="birdhd">685</dist>
+    <dist time="t25" from="halmah" to="halmah">0</dist>
+    <dist time="t25" from="halmah" to="cnewgn">277</dist>
+    <dist time="t25" from="halmah" to="sepiko">277</dist>
+    <dist time="t25" from="halmah" to="papuao">277</dist>
+    <dist time="t25" from="halmah" to="ephili">645</dist>
+    <dist time="t25" from="halmah" to="luzonp">1545</dist>
+    <dist time="t25" from="halmah" to="caroli">1150</dist>
+
+    <dist time="t25" from="cnewgn" to="borneo">2358</dist>
+    <dist time="t25" from="cnewgn" to="wsulaw">1639</dist>
+    <dist time="t25" from="cnewgn" to="esulaw">1555</dist>
+    <dist time="t25" from="cnewgn" to="birdhd">679</dist>
+    <dist time="t25" from="cnewgn" to="halmah">277</dist>
+    <dist time="t25" from="cnewgn" to="cnewgn">0</dist>
+    <dist time="t25" from="cnewgn" to="sepiko">0</dist>
+    <dist time="t25" from="cnewgn" to="papuao">0</dist>
+    <dist time="t25" from="cnewgn" to="ephili">824</dist>
+    <dist time="t25" from="cnewgn" to="luzonp">1796</dist>
+    <dist time="t25" from="cnewgn" to="caroli">1189</dist>
+
+    <dist time="t25" from="sepiko" to="borneo">2358</dist>
+    <dist time="t25" from="sepiko" to="wsulaw">1639</dist>
+    <dist time="t25" from="sepiko" to="esulaw">1555</dist>
+    <dist time="t25" from="sepiko" to="birdhd">679</dist>
+    <dist time="t25" from="sepiko" to="halmah">277</dist>
+    <dist time="t25" from="sepiko" to="cnewgn">0</dist>
+    <dist time="t25" from="sepiko" to="sepiko">0</dist>
+    <dist time="t25" from="sepiko" to="papuao">0</dist>
+    <dist time="t25" from="sepiko" to="ephili">824</dist>
+    <dist time="t25" from="sepiko" to="luzonp">1796</dist>
+    <dist time="t25" from="sepiko" to="caroli">1189</dist>
+
+    <dist time="t25" from="papuao" to="borneo">2358</dist>
+    <dist time="t25" from="papuao" to="wsulaw">1639</dist>
+    <dist time="t25" from="papuao" to="esulaw">1555</dist>
+    <dist time="t25" from="papuao" to="birdhd">679</dist>
+    <dist time="t25" from="papuao" to="halmah">277</dist>
+    <dist time="t25" from="papuao" to="cnewgn">0</dist>
+    <dist time="t25" from="papuao" to="sepiko">0</dist>
+    <dist time="t25" from="papuao" to="papuao">0</dist>
+    <dist time="t25" from="papuao" to="ephili">824</dist>
+    <dist time="t25" from="papuao" to="luzonp">1796</dist>
+    <dist time="t25" from="papuao" to="caroli">1189</dist>
+
+    <dist time="t25" from="ephili" to="borneo">1615</dist>
+    <dist time="t25" from="ephili" to="wsulaw">963</dist>
+    <dist time="t25" from="ephili" to="esulaw">966</dist>
+    <dist time="t25" from="ephili" to="birdhd">503</dist>
+    <dist time="t25" from="ephili" to="halmah">645</dist>
+    <dist time="t25" from="ephili" to="cnewgn">824</dist>
+    <dist time="t25" from="ephili" to="sepiko">824</dist>
+    <dist time="t25" from="ephili" to="papuao">824</dist>
+    <dist time="t25" from="ephili" to="ephili">0</dist>
+    <dist time="t25" from="ephili" to="luzonp">1047</dist>
+    <dist time="t25" from="ephili" to="caroli">1725</dist>
+
+    <dist time="t25" from="luzonp" to="borneo">1462</dist>
+    <dist time="t25" from="luzonp" to="wsulaw">1274</dist>
+    <dist time="t25" from="luzonp" to="esulaw">1437</dist>
+    <dist time="t25" from="luzonp" to="birdhd">1522</dist>
+    <dist time="t25" from="luzonp" to="halmah">1545</dist>
+    <dist time="t25" from="luzonp" to="cnewgn">1796</dist>
+    <dist time="t25" from="luzonp" to="sepiko">1796</dist>
+    <dist time="t25" from="luzonp" to="papuao">1796</dist>
+    <dist time="t25" from="luzonp" to="ephili">1047</dist>
+    <dist time="t25" from="luzonp" to="luzonp">0</dist>
+    <dist time="t25" from="luzonp" to="caroli">2275</dist>
+
+    <dist time="t25" from="caroli" to="borneo">3331</dist>
+    <dist time="t25" from="caroli" to="wsulaw">2681</dist>
+    <dist time="t25" from="caroli" to="esulaw">2650</dist>
+    <dist time="t25" from="caroli" to="birdhd">1827</dist>
+    <dist time="t25" from="caroli" to="halmah">1150</dist>
+    <dist time="t25" from="caroli" to="cnewgn">1189</dist>
+    <dist time="t25" from="caroli" to="sepiko">1189</dist>
+    <dist time="t25" from="caroli" to="papuao">1189</dist>
+    <dist time="t25" from="caroli" to="ephili">1725</dist>
+    <dist time="t25" from="caroli" to="luzonp">2275</dist>
+    <dist time="t25" from="caroli" to="caroli">0</dist>
+
+    <dist time="t20" from="borneo" to="borneo">0</dist>
+    <dist time="t20" from="borneo" to="wsulaw">611</dist>
+    <dist time="t20" from="borneo" to="esulaw">783</dist>
+    <dist time="t20" from="borneo" to="birdhd">1605</dist>
+    <dist time="t20" from="borneo" to="halmah">2058</dist>
+    <dist time="t20" from="borneo" to="cnewgn">2284</dist>
+    <dist time="t20" from="borneo" to="sepiko">2315</dist>
+    <dist time="t20" from="borneo" to="papuao">2315</dist>
+    <dist time="t20" from="borneo" to="ephili">1390</dist>
+    <dist time="t20" from="borneo" to="luzonp">1337</dist>
+    <dist time="t20" from="borneo" to="caroli">3085</dist>
+
+    <dist time="t20" from="wsulaw" to="borneo">611</dist>
+    <dist time="t20" from="wsulaw" to="wsulaw">0</dist>
+    <dist time="t20" from="wsulaw" to="esulaw">186</dist>
+    <dist time="t20" from="wsulaw" to="birdhd">1011</dist>
+    <dist time="t20" from="wsulaw" to="halmah">1504</dist>
+    <dist time="t20" from="wsulaw" to="cnewgn">1702</dist>
+    <dist time="t20" from="wsulaw" to="sepiko">1734</dist>
+    <dist time="t20" from="wsulaw" to="papuao">1734</dist>
+    <dist time="t20" from="wsulaw" to="ephili">972</dist>
+    <dist time="t20" from="wsulaw" to="luzonp">1346</dist>
+    <dist time="t20" from="wsulaw" to="caroli">2553</dist>
+
+    <dist time="t20" from="esulaw" to="borneo">783</dist>
+    <dist time="t20" from="esulaw" to="wsulaw">186</dist>
+    <dist time="t20" from="esulaw" to="esulaw">0</dist>
+    <dist time="t20" from="esulaw" to="birdhd">884</dist>
+    <dist time="t20" from="esulaw" to="halmah">1405</dist>
+    <dist time="t20" from="esulaw" to="cnewgn">1579</dist>
+    <dist time="t20" from="esulaw" to="sepiko">1612</dist>
+    <dist time="t20" from="esulaw" to="papuao">1612</dist>
+    <dist time="t20" from="esulaw" to="ephili">971</dist>
+    <dist time="t20" from="esulaw" to="luzonp">1470</dist>
+    <dist time="t20" from="esulaw" to="caroli">2459</dist>
+
+    <dist time="t20" from="birdhd" to="borneo">1605</dist>
+    <dist time="t20" from="birdhd" to="wsulaw">1011</dist>
+    <dist time="t20" from="birdhd" to="esulaw">884</dist>
+    <dist time="t20" from="birdhd" to="birdhd">0</dist>
+    <dist time="t20" from="birdhd" to="halmah">553</dist>
+    <dist time="t20" from="birdhd" to="cnewgn">695</dist>
+    <dist time="t20" from="birdhd" to="sepiko">728</dist>
+    <dist time="t20" from="birdhd" to="papuao">728</dist>
+    <dist time="t20" from="birdhd" to="ephili">692</dist>
+    <dist time="t20" from="birdhd" to="luzonp">1615</dist>
+    <dist time="t20" from="birdhd" to="caroli">1594</dist>
+
+    <dist time="t20" from="halmah" to="borneo">2058</dist>
+    <dist time="t20" from="halmah" to="wsulaw">1504</dist>
+    <dist time="t20" from="halmah" to="esulaw">1405</dist>
+    <dist time="t20" from="halmah" to="birdhd">553</dist>
+    <dist time="t20" from="halmah" to="halmah">0</dist>
+    <dist time="t20" from="halmah" to="cnewgn">308</dist>
+    <dist time="t20" from="halmah" to="sepiko">324</dist>
+    <dist time="t20" from="halmah" to="papuao">324</dist>
+    <dist time="t20" from="halmah" to="ephili">805</dist>
+    <dist time="t20" from="halmah" to="luzonp">1701</dist>
+    <dist time="t20" from="halmah" to="caroli">1054</dist>
+
+    <dist time="t20" from="cnewgn" to="borneo">2284</dist>
+    <dist time="t20" from="cnewgn" to="wsulaw">1702</dist>
+    <dist time="t20" from="cnewgn" to="esulaw">1579</dist>
+    <dist time="t20" from="cnewgn" to="birdhd">695</dist>
+    <dist time="t20" from="cnewgn" to="halmah">308</dist>
+    <dist time="t20" from="cnewgn" to="cnewgn">0</dist>
+    <dist time="t20" from="cnewgn" to="sepiko">33</dist>
+    <dist time="t20" from="cnewgn" to="papuao">33</dist>
+    <dist time="t20" from="cnewgn" to="ephili">1102</dist>
+    <dist time="t20" from="cnewgn" to="luzonp">2008</dist>
+    <dist time="t20" from="cnewgn" to="caroli">942</dist>
+
+    <dist time="t20" from="sepiko" to="borneo">2315</dist>
+    <dist time="t20" from="sepiko" to="wsulaw">1734</dist>
+    <dist time="t20" from="sepiko" to="esulaw">1612</dist>
+    <dist time="t20" from="sepiko" to="birdhd">728</dist>
+    <dist time="t20" from="sepiko" to="halmah">324</dist>
+    <dist time="t20" from="sepiko" to="cnewgn">33</dist>
+    <dist time="t20" from="sepiko" to="sepiko">0</dist>
+    <dist time="t20" from="sepiko" to="papuao">0</dist>
+    <dist time="t20" from="sepiko" to="ephili">1123</dist>
+    <dist time="t20" from="sepiko" to="luzonp">2025</dist>
+    <dist time="t20" from="sepiko" to="caroli">910</dist>
+
+    <dist time="t20" from="papuao" to="borneo">2315</dist>
+    <dist time="t20" from="papuao" to="wsulaw">1734</dist>
+    <dist time="t20" from="papuao" to="esulaw">1612</dist>
+    <dist time="t20" from="papuao" to="birdhd">728</dist>
+    <dist time="t20" from="papuao" to="halmah">324</dist>
+    <dist time="t20" from="papuao" to="cnewgn">33</dist>
+    <dist time="t20" from="papuao" to="sepiko">0</dist>
+    <dist time="t20" from="papuao" to="papuao">0</dist>
+    <dist time="t20" from="papuao" to="ephili">1123</dist>
+    <dist time="t20" from="papuao" to="luzonp">2025</dist>
+    <dist time="t20" from="papuao" to="caroli">910</dist>
+
+    <dist time="t20" from="ephili" to="borneo">1390</dist>
+    <dist time="t20" from="ephili" to="wsulaw">972</dist>
+    <dist time="t20" from="ephili" to="esulaw">971</dist>
+    <dist time="t20" from="ephili" to="birdhd">692</dist>
+    <dist time="t20" from="ephili" to="halmah">805</dist>
+    <dist time="t20" from="ephili" to="cnewgn">1102</dist>
+    <dist time="t20" from="ephili" to="sepiko">1123</dist>
+    <dist time="t20" from="ephili" to="papuao">1123</dist>
+    <dist time="t20" from="ephili" to="ephili">0</dist>
+    <dist time="t20" from="ephili" to="luzonp">940</dist>
+    <dist time="t20" from="ephili" to="caroli">1729</dist>
+
+    <dist time="t20" from="luzonp" to="borneo">1337</dist>
+    <dist time="t20" from="luzonp" to="wsulaw">1346</dist>
+    <dist time="t20" from="luzonp" to="esulaw">1470</dist>
+    <dist time="t20" from="luzonp" to="birdhd">1615</dist>
+    <dist time="t20" from="luzonp" to="halmah">1701</dist>
+    <dist time="t20" from="luzonp" to="cnewgn">2008</dist>
+    <dist time="t20" from="luzonp" to="sepiko">2025</dist>
+    <dist time="t20" from="luzonp" to="papuao">2025</dist>
+    <dist time="t20" from="luzonp" to="ephili">940</dist>
+    <dist time="t20" from="luzonp" to="luzonp">0</dist>
+    <dist time="t20" from="luzonp" to="caroli">2427</dist>
+
+    <dist time="t20" from="caroli" to="borneo">3085</dist>
+    <dist time="t20" from="caroli" to="wsulaw">2553</dist>
+    <dist time="t20" from="caroli" to="esulaw">2459</dist>
+    <dist time="t20" from="caroli" to="birdhd">1594</dist>
+    <dist time="t20" from="caroli" to="halmah">1054</dist>
+    <dist time="t20" from="caroli" to="cnewgn">942</dist>
+    <dist time="t20" from="caroli" to="sepiko">910</dist>
+    <dist time="t20" from="caroli" to="papuao">910</dist>
+    <dist time="t20" from="caroli" to="ephili">1729</dist>
+    <dist time="t20" from="caroli" to="luzonp">2427</dist>
+    <dist time="t20" from="caroli" to="caroli">0</dist>
+
+    <dist time="t15" from="borneo" to="borneo">0</dist>
+    <dist time="t15" from="borneo" to="wsulaw">489</dist>
+    <dist time="t15" from="borneo" to="esulaw">684</dist>
+    <dist time="t15" from="borneo" to="birdhd">1512</dist>
+    <dist time="t15" from="borneo" to="halmah">1876</dist>
+    <dist time="t15" from="borneo" to="cnewgn">2221</dist>
+    <dist time="t15" from="borneo" to="sepiko">2284</dist>
+    <dist time="t15" from="borneo" to="papuao">2284</dist>
+    <dist time="t15" from="borneo" to="ephili">1274</dist>
+    <dist time="t15" from="borneo" to="luzonp">1323</dist>
+    <dist time="t15" from="borneo" to="caroli">2838</dist>
+
+    <dist time="t15" from="wsulaw" to="borneo">489</dist>
+    <dist time="t15" from="wsulaw" to="wsulaw">0</dist>
+    <dist time="t15" from="wsulaw" to="esulaw">195</dist>
+    <dist time="t15" from="wsulaw" to="birdhd">1066</dist>
+    <dist time="t15" from="wsulaw" to="halmah">1458</dist>
+    <dist time="t15" from="wsulaw" to="cnewgn">1776</dist>
+    <dist time="t15" from="wsulaw" to="sepiko">1842</dist>
+    <dist time="t15" from="wsulaw" to="papuao">1842</dist>
+    <dist time="t15" from="wsulaw" to="ephili">1093</dist>
+    <dist time="t15" from="wsulaw" to="luzonp">1464</dist>
+    <dist time="t15" from="wsulaw" to="caroli">2424</dist>
+
+    <dist time="t15" from="esulaw" to="borneo">684</dist>
+    <dist time="t15" from="esulaw" to="wsulaw">195</dist>
+    <dist time="t15" from="esulaw" to="esulaw">0</dist>
+    <dist time="t15" from="esulaw" to="birdhd">901</dist>
+    <dist time="t15" from="esulaw" to="halmah">1305</dist>
+    <dist time="t15" from="esulaw" to="cnewgn">1606</dist>
+    <dist time="t15" from="esulaw" to="sepiko">1673</dist>
+    <dist time="t15" from="esulaw" to="papuao">1673</dist>
+    <dist time="t15" from="esulaw" to="ephili">1075</dist>
+    <dist time="t15" from="esulaw" to="luzonp">1560</dist>
+    <dist time="t15" from="esulaw" to="caroli">2266</dist>
+
+    <dist time="t15" from="birdhd" to="borneo">1512</dist>
+    <dist time="t15" from="birdhd" to="wsulaw">1066</dist>
+    <dist time="t15" from="birdhd" to="esulaw">901</dist>
+    <dist time="t15" from="birdhd" to="birdhd">0</dist>
+    <dist time="t15" from="birdhd" to="halmah">416</dist>
+    <dist time="t15" from="birdhd" to="cnewgn">711</dist>
+    <dist time="t15" from="birdhd" to="sepiko">776</dist>
+    <dist time="t15" from="birdhd" to="papuao">776</dist>
+    <dist time="t15" from="birdhd" to="ephili">910</dist>
+    <dist time="t15" from="birdhd" to="luzonp">1748</dist>
+    <dist time="t15" from="birdhd" to="caroli">1366</dist>
+
+    <dist time="t15" from="halmah" to="borneo">1876</dist>
+    <dist time="t15" from="halmah" to="wsulaw">1458</dist>
+    <dist time="t15" from="halmah" to="esulaw">1305</dist>
+    <dist time="t15" from="halmah" to="birdhd">416</dist>
+    <dist time="t15" from="halmah" to="halmah">0</dist>
+    <dist time="t15" from="halmah" to="cnewgn">388</dist>
+    <dist time="t15" from="halmah" to="sepiko">439</dist>
+    <dist time="t15" from="halmah" to="papuao">439</dist>
+    <dist time="t15" from="halmah" to="ephili">997</dist>
+    <dist time="t15" from="halmah" to="luzonp">1858</dist>
+    <dist time="t15" from="halmah" to="caroli">966</dist>
+
+    <dist time="t15" from="cnewgn" to="borneo">2221</dist>
+    <dist time="t15" from="cnewgn" to="wsulaw">1776</dist>
+    <dist time="t15" from="cnewgn" to="esulaw">1606</dist>
+    <dist time="t15" from="cnewgn" to="birdhd">711</dist>
+    <dist time="t15" from="cnewgn" to="halmah">388</dist>
+    <dist time="t15" from="cnewgn" to="cnewgn">0</dist>
+    <dist time="t15" from="cnewgn" to="sepiko">68</dist>
+    <dist time="t15" from="cnewgn" to="papuao">68</dist>
+    <dist time="t15" from="cnewgn" to="ephili">1381</dist>
+    <dist time="t15" from="cnewgn" to="luzonp">2238</dist>
+    <dist time="t15" from="cnewgn" to="caroli">693</dist>
+
+    <dist time="t15" from="sepiko" to="borneo">2284</dist>
+    <dist time="t15" from="sepiko" to="wsulaw">1842</dist>
+    <dist time="t15" from="sepiko" to="esulaw">1673</dist>
+    <dist time="t15" from="sepiko" to="birdhd">776</dist>
+    <dist time="t15" from="sepiko" to="halmah">439</dist>
+    <dist time="t15" from="sepiko" to="cnewgn">68</dist>
+    <dist time="t15" from="sepiko" to="sepiko">0</dist>
+    <dist time="t15" from="sepiko" to="papuao">0</dist>
+    <dist time="t15" from="sepiko" to="ephili">1423</dist>
+    <dist time="t15" from="sepiko" to="luzonp">2276</dist>
+    <dist time="t15" from="sepiko" to="caroli">627</dist>
+
+    <dist time="t15" from="papuao" to="borneo">2284</dist>
+    <dist time="t15" from="papuao" to="wsulaw">1842</dist>
+    <dist time="t15" from="papuao" to="esulaw">1673</dist>
+    <dist time="t15" from="papuao" to="birdhd">776</dist>
+    <dist time="t15" from="papuao" to="halmah">439</dist>
+    <dist time="t15" from="papuao" to="cnewgn">68</dist>
+    <dist time="t15" from="papuao" to="sepiko">0</dist>
+    <dist time="t15" from="papuao" to="papuao">0</dist>
+    <dist time="t15" from="papuao" to="ephili">1423</dist>
+    <dist time="t15" from="papuao" to="luzonp">2276</dist>
+    <dist time="t15" from="papuao" to="caroli">627</dist>
+
+    <dist time="t15" from="ephili" to="borneo">1274</dist>
+    <dist time="t15" from="ephili" to="wsulaw">1093</dist>
+    <dist time="t15" from="ephili" to="esulaw">1075</dist>
+    <dist time="t15" from="ephili" to="birdhd">910</dist>
+    <dist time="t15" from="ephili" to="halmah">997</dist>
+    <dist time="t15" from="ephili" to="cnewgn">1381</dist>
+    <dist time="t15" from="ephili" to="sepiko">1423</dist>
+    <dist time="t15" from="ephili" to="papuao">1423</dist>
+    <dist time="t15" from="ephili" to="ephili">0</dist>
+    <dist time="t15" from="ephili" to="luzonp">864</dist>
+    <dist time="t15" from="ephili" to="caroli">1799</dist>
+
+    <dist time="t15" from="luzonp" to="borneo">1323</dist>
+    <dist time="t15" from="luzonp" to="wsulaw">1464</dist>
+    <dist time="t15" from="luzonp" to="esulaw">1560</dist>
+    <dist time="t15" from="luzonp" to="birdhd">1748</dist>
+    <dist time="t15" from="luzonp" to="halmah">1858</dist>
+    <dist time="t15" from="luzonp" to="cnewgn">2238</dist>
+    <dist time="t15" from="luzonp" to="sepiko">2276</dist>
+    <dist time="t15" from="luzonp" to="papuao">2276</dist>
+    <dist time="t15" from="luzonp" to="ephili">864</dist>
+    <dist time="t15" from="luzonp" to="luzonp">0</dist>
+    <dist time="t15" from="luzonp" to="caroli">2584</dist>
+
+    <dist time="t15" from="caroli" to="borneo">2838</dist>
+    <dist time="t15" from="caroli" to="wsulaw">2424</dist>
+    <dist time="t15" from="caroli" to="esulaw">2266</dist>
+    <dist time="t15" from="caroli" to="birdhd">1366</dist>
+    <dist time="t15" from="caroli" to="halmah">966</dist>
+    <dist time="t15" from="caroli" to="cnewgn">693</dist>
+    <dist time="t15" from="caroli" to="sepiko">627</dist>
+    <dist time="t15" from="caroli" to="papuao">627</dist>
+    <dist time="t15" from="caroli" to="ephili">1799</dist>
+    <dist time="t15" from="caroli" to="luzonp">2584</dist>
+    <dist time="t15" from="caroli" to="caroli">0</dist>
+
+    <dist time="t10" from="borneo" to="borneo">0</dist>
+    <dist time="t10" from="borneo" to="wsulaw">605</dist>
+    <dist time="t10" from="borneo" to="esulaw">700</dist>
+    <dist time="t10" from="borneo" to="birdhd">1488</dist>
+    <dist time="t10" from="borneo" to="halmah">1628</dist>
+    <dist time="t10" from="borneo" to="cnewgn">2227</dist>
+    <dist time="t10" from="borneo" to="sepiko">2259</dist>
+    <dist time="t10" from="borneo" to="papuao">2259</dist>
+    <dist time="t10" from="borneo" to="ephili">1275</dist>
+    <dist time="t10" from="borneo" to="luzonp">1290</dist>
+    <dist time="t10" from="borneo" to="caroli">2229</dist>
+
+    <dist time="t10" from="wsulaw" to="borneo">605</dist>
+    <dist time="t10" from="wsulaw" to="wsulaw">0</dist>
+    <dist time="t10" from="wsulaw" to="esulaw">98</dist>
+    <dist time="t10" from="wsulaw" to="birdhd">895</dist>
+    <dist time="t10" from="wsulaw" to="halmah">1071</dist>
+    <dist time="t10" from="wsulaw" to="cnewgn">1631</dist>
+    <dist time="t10" from="wsulaw" to="sepiko">1663</dist>
+    <dist time="t10" from="wsulaw" to="papuao">1663</dist>
+    <dist time="t10" from="wsulaw" to="ephili">1002</dist>
+    <dist time="t10" from="wsulaw" to="luzonp">1325</dist>
+    <dist time="t10" from="wsulaw" to="caroli">1649</dist>
+
+    <dist time="t10" from="esulaw" to="borneo">700</dist>
+    <dist time="t10" from="esulaw" to="wsulaw">98</dist>
+    <dist time="t10" from="esulaw" to="esulaw">0</dist>
+    <dist time="t10" from="esulaw" to="birdhd">811</dist>
+    <dist time="t10" from="esulaw" to="halmah">1002</dist>
+    <dist time="t10" from="esulaw" to="cnewgn">1543</dist>
+    <dist time="t10" from="esulaw" to="sepiko">1576</dist>
+    <dist time="t10" from="esulaw" to="papuao">1576</dist>
+    <dist time="t10" from="esulaw" to="ephili">1009</dist>
+    <dist time="t10" from="esulaw" to="luzonp">1376</dist>
+    <dist time="t10" from="esulaw" to="caroli">1568</dist>
+
+    <dist time="t10" from="birdhd" to="borneo">1488</dist>
+    <dist time="t10" from="birdhd" to="wsulaw">895</dist>
+    <dist time="t10" from="birdhd" to="esulaw">811</dist>
+    <dist time="t10" from="birdhd" to="birdhd">0</dist>
+    <dist time="t10" from="birdhd" to="halmah">293</dist>
+    <dist time="t10" from="birdhd" to="cnewgn">739</dist>
+    <dist time="t10" from="birdhd" to="sepiko">770</dist>
+    <dist time="t10" from="birdhd" to="papuao">770</dist>
+    <dist time="t10" from="birdhd" to="ephili">984</dist>
+    <dist time="t10" from="birdhd" to="luzonp">1606</dist>
+    <dist time="t10" from="birdhd" to="caroli">759</dist>
+
+    <dist time="t10" from="halmah" to="borneo">1628</dist>
+    <dist time="t10" from="halmah" to="wsulaw">1071</dist>
+    <dist time="t10" from="halmah" to="esulaw">1002</dist>
+    <dist time="t10" from="halmah" to="birdhd">293</dist>
+    <dist time="t10" from="halmah" to="halmah">0</dist>
+    <dist time="t10" from="halmah" to="cnewgn">682</dist>
+    <dist time="t10" from="halmah" to="sepiko">707</dist>
+    <dist time="t10" from="halmah" to="papuao">707</dist>
+    <dist time="t10" from="halmah" to="ephili">850</dist>
+    <dist time="t10" from="halmah" to="luzonp">1498</dist>
+    <dist time="t10" from="halmah" to="caroli">617</dist>
+
+    <dist time="t10" from="cnewgn" to="borneo">2227</dist>
+    <dist time="t10" from="cnewgn" to="wsulaw">1631</dist>
+    <dist time="t10" from="cnewgn" to="esulaw">1543</dist>
+    <dist time="t10" from="cnewgn" to="birdhd">739</dist>
+    <dist time="t10" from="cnewgn" to="halmah">682</dist>
+    <dist time="t10" from="cnewgn" to="cnewgn">0</dist>
+    <dist time="t10" from="cnewgn" to="sepiko">34</dist>
+    <dist time="t10" from="cnewgn" to="papuao">34</dist>
+    <dist time="t10" from="cnewgn" to="ephili">1514</dist>
+    <dist time="t10" from="cnewgn" to="luzonp">2161</dist>
+    <dist time="t10" from="cnewgn" to="caroli">219</dist>
+
+    <dist time="t10" from="sepiko" to="borneo">2259</dist>
+    <dist time="t10" from="sepiko" to="wsulaw">1663</dist>
+    <dist time="t10" from="sepiko" to="esulaw">1576</dist>
+    <dist time="t10" from="sepiko" to="birdhd">770</dist>
+    <dist time="t10" from="sepiko" to="halmah">707</dist>
+    <dist time="t10" from="sepiko" to="cnewgn">34</dist>
+    <dist time="t10" from="sepiko" to="sepiko">0</dist>
+    <dist time="t10" from="sepiko" to="papuao">0</dist>
+    <dist time="t10" from="sepiko" to="ephili">1534</dist>
+    <dist time="t10" from="sepiko" to="luzonp">2180</dist>
+    <dist time="t10" from="sepiko" to="caroli">210</dist>
+
+    <dist time="t10" from="papuao" to="borneo">2259</dist>
+    <dist time="t10" from="papuao" to="wsulaw">1663</dist>
+    <dist time="t10" from="papuao" to="esulaw">1576</dist>
+    <dist time="t10" from="papuao" to="birdhd">770</dist>
+    <dist time="t10" from="papuao" to="halmah">707</dist>
+    <dist time="t10" from="papuao" to="cnewgn">34</dist>
+    <dist time="t10" from="papuao" to="sepiko">0</dist>
+    <dist time="t10" from="papuao" to="papuao">0</dist>
+    <dist time="t10" from="papuao" to="ephili">1534</dist>
+    <dist time="t10" from="papuao" to="luzonp">2180</dist>
+    <dist time="t10" from="papuao" to="caroli">210</dist>
+
+    <dist time="t10" from="ephili" to="borneo">1275</dist>
+    <dist time="t10" from="ephili" to="wsulaw">1002</dist>
+    <dist time="t10" from="ephili" to="esulaw">1009</dist>
+    <dist time="t10" from="ephili" to="birdhd">984</dist>
+    <dist time="t10" from="ephili" to="halmah">850</dist>
+    <dist time="t10" from="ephili" to="cnewgn">1514</dist>
+    <dist time="t10" from="ephili" to="sepiko">1534</dist>
+    <dist time="t10" from="ephili" to="papuao">1534</dist>
+    <dist time="t10" from="ephili" to="ephili">0</dist>
+    <dist time="t10" from="ephili" to="luzonp">648</dist>
+    <dist time="t10" from="ephili" to="caroli">1394</dist>
+
+    <dist time="t10" from="luzonp" to="borneo">1290</dist>
+    <dist time="t10" from="luzonp" to="wsulaw">1325</dist>
+    <dist time="t10" from="luzonp" to="esulaw">1376</dist>
+    <dist time="t10" from="luzonp" to="birdhd">1606</dist>
+    <dist time="t10" from="luzonp" to="halmah">1498</dist>
+    <dist time="t10" from="luzonp" to="cnewgn">2161</dist>
+    <dist time="t10" from="luzonp" to="sepiko">2180</dist>
+    <dist time="t10" from="luzonp" to="papuao">2180</dist>
+    <dist time="t10" from="luzonp" to="ephili">648</dist>
+    <dist time="t10" from="luzonp" to="luzonp">0</dist>
+    <dist time="t10" from="luzonp" to="caroli">2034</dist>
+
+    <dist time="t10" from="caroli" to="borneo">2229</dist>
+    <dist time="t10" from="caroli" to="wsulaw">1649</dist>
+    <dist time="t10" from="caroli" to="esulaw">1568</dist>
+    <dist time="t10" from="caroli" to="birdhd">759</dist>
+    <dist time="t10" from="caroli" to="halmah">617</dist>
+    <dist time="t10" from="caroli" to="cnewgn">219</dist>
+    <dist time="t10" from="caroli" to="sepiko">210</dist>
+    <dist time="t10" from="caroli" to="papuao">210</dist>
+    <dist time="t10" from="caroli" to="ephili">1394</dist>
+    <dist time="t10" from="caroli" to="luzonp">2034</dist>
+    <dist time="t10" from="caroli" to="caroli">0</dist>
+
+    <dist time="t5" from="borneo" to="borneo">0</dist>
+    <dist time="t5" from="borneo" to="wsulaw">744</dist>
+    <dist time="t5" from="borneo" to="esulaw">744</dist>
+    <dist time="t5" from="borneo" to="birdhd">1465</dist>
+    <dist time="t5" from="borneo" to="halmah">1388</dist>
+    <dist time="t5" from="borneo" to="cnewgn">2230</dist>
+    <dist time="t5" from="borneo" to="sepiko">2230</dist>
+    <dist time="t5" from="borneo" to="papuao">2230</dist>
+    <dist time="t5" from="borneo" to="ephili">1288</dist>
+    <dist time="t5" from="borneo" to="luzonp">1260</dist>
+    <dist time="t5" from="borneo" to="caroli">1618</dist>
+
+    <dist time="t5" from="wsulaw" to="borneo">744</dist>
+    <dist time="t5" from="wsulaw" to="wsulaw">0</dist>
+    <dist time="t5" from="wsulaw" to="esulaw">0</dist>
+    <dist time="t5" from="wsulaw" to="birdhd">722</dist>
+    <dist time="t5" from="wsulaw" to="halmah">705</dist>
+    <dist time="t5" from="wsulaw" to="cnewgn">1486</dist>
+    <dist time="t5" from="wsulaw" to="sepiko">1486</dist>
+    <dist time="t5" from="wsulaw" to="papuao">1486</dist>
+    <dist time="t5" from="wsulaw" to="ephili">959</dist>
+    <dist time="t5" from="wsulaw" to="luzonp">1194</dist>
+    <dist time="t5" from="wsulaw" to="caroli">874</dist>
+
+    <dist time="t5" from="esulaw" to="borneo">744</dist>
+    <dist time="t5" from="esulaw" to="wsulaw">0</dist>
+    <dist time="t5" from="esulaw" to="esulaw">0</dist>
+    <dist time="t5" from="esulaw" to="birdhd">722</dist>
+    <dist time="t5" from="esulaw" to="halmah">705</dist>
+    <dist time="t5" from="esulaw" to="cnewgn">1486</dist>
+    <dist time="t5" from="esulaw" to="sepiko">1486</dist>
+    <dist time="t5" from="esulaw" to="papuao">1486</dist>
+    <dist time="t5" from="esulaw" to="ephili">959</dist>
+    <dist time="t5" from="esulaw" to="luzonp">1194</dist>
+    <dist time="t5" from="esulaw" to="caroli">874</dist>
+
+    <dist time="t5" from="birdhd" to="borneo">1465</dist>
+    <dist time="t5" from="birdhd" to="wsulaw">722</dist>
+    <dist time="t5" from="birdhd" to="esulaw">722</dist>
+    <dist time="t5" from="birdhd" to="birdhd">0</dist>
+    <dist time="t5" from="birdhd" to="halmah">346</dist>
+    <dist time="t5" from="birdhd" to="cnewgn">770</dist>
+    <dist time="t5" from="birdhd" to="sepiko">770</dist>
+    <dist time="t5" from="birdhd" to="papuao">770</dist>
+    <dist time="t5" from="birdhd" to="ephili">1058</dist>
+    <dist time="t5" from="birdhd" to="luzonp">1464</dist>
+    <dist time="t5" from="birdhd" to="caroli">154</dist>
+
+    <dist time="t5" from="halmah" to="borneo">1388</dist>
+    <dist time="t5" from="halmah" to="wsulaw">705</dist>
+    <dist time="t5" from="halmah" to="esulaw">705</dist>
+    <dist time="t5" from="halmah" to="birdhd">346</dist>
+    <dist time="t5" from="halmah" to="halmah">0</dist>
+    <dist time="t5" from="halmah" to="cnewgn">977</dist>
+    <dist time="t5" from="halmah" to="sepiko">977</dist>
+    <dist time="t5" from="halmah" to="papuao">977</dist>
+    <dist time="t5" from="halmah" to="ephili">722</dist>
+    <dist time="t5" from="halmah" to="luzonp">1142</dist>
+    <dist time="t5" from="halmah" to="caroli">437</dist>
+
+    <dist time="t5" from="cnewgn" to="borneo">2230</dist>
+    <dist time="t5" from="cnewgn" to="wsulaw">1486</dist>
+    <dist time="t5" from="cnewgn" to="esulaw">1486</dist>
+    <dist time="t5" from="cnewgn" to="birdhd">770</dist>
+    <dist time="t5" from="cnewgn" to="halmah">977</dist>
+    <dist time="t5" from="cnewgn" to="cnewgn">0</dist>
+    <dist time="t5" from="cnewgn" to="sepiko">0</dist>
+    <dist time="t5" from="cnewgn" to="papuao">0</dist>
+    <dist time="t5" from="cnewgn" to="ephili">1647</dist>
+    <dist time="t5" from="cnewgn" to="luzonp">2084</dist>
+    <dist time="t5" from="cnewgn" to="caroli">616</dist>
+
+    <dist time="t5" from="sepiko" to="borneo">2230</dist>
+    <dist time="t5" from="sepiko" to="wsulaw">1486</dist>
+    <dist time="t5" from="sepiko" to="esulaw">1486</dist>
+    <dist time="t5" from="sepiko" to="birdhd">770</dist>
+    <dist time="t5" from="sepiko" to="halmah">977</dist>
+    <dist time="t5" from="sepiko" to="cnewgn">0</dist>
+    <dist time="t5" from="sepiko" to="sepiko">0</dist>
+    <dist time="t5" from="sepiko" to="papuao">0</dist>
+    <dist time="t5" from="sepiko" to="ephili">1647</dist>
+    <dist time="t5" from="sepiko" to="luzonp">2084</dist>
+    <dist time="t5" from="sepiko" to="caroli">616</dist>
+
+    <dist time="t5" from="papuao" to="borneo">2230</dist>
+    <dist time="t5" from="papuao" to="wsulaw">1486</dist>
+    <dist time="t5" from="papuao" to="esulaw">1486</dist>
+    <dist time="t5" from="papuao" to="birdhd">770</dist>
+    <dist time="t5" from="papuao" to="halmah">977</dist>
+    <dist time="t5" from="papuao" to="cnewgn">0</dist>
+    <dist time="t5" from="papuao" to="sepiko">0</dist>
+    <dist time="t5" from="papuao" to="papuao">0</dist>
+    <dist time="t5" from="papuao" to="ephili">1647</dist>
+    <dist time="t5" from="papuao" to="luzonp">2084</dist>
+    <dist time="t5" from="papuao" to="caroli">616</dist>
+
+    <dist time="t5" from="ephili" to="borneo">1288</dist>
+    <dist time="t5" from="ephili" to="wsulaw">959</dist>
+    <dist time="t5" from="ephili" to="esulaw">959</dist>
+    <dist time="t5" from="ephili" to="birdhd">1058</dist>
+    <dist time="t5" from="ephili" to="halmah">722</dist>
+    <dist time="t5" from="ephili" to="cnewgn">1647</dist>
+    <dist time="t5" from="ephili" to="sepiko">1647</dist>
+    <dist time="t5" from="ephili" to="papuao">1647</dist>
+    <dist time="t5" from="ephili" to="ephili">0</dist>
+    <dist time="t5" from="ephili" to="luzonp">437</dist>
+    <dist time="t5" from="ephili" to="caroli">1159</dist>
+
+    <dist time="t5" from="luzonp" to="borneo">1260</dist>
+    <dist time="t5" from="luzonp" to="wsulaw">1194</dist>
+    <dist time="t5" from="luzonp" to="esulaw">1194</dist>
+    <dist time="t5" from="luzonp" to="birdhd">1464</dist>
+    <dist time="t5" from="luzonp" to="halmah">1142</dist>
+    <dist time="t5" from="luzonp" to="cnewgn">2084</dist>
+    <dist time="t5" from="luzonp" to="sepiko">2084</dist>
+    <dist time="t5" from="luzonp" to="papuao">2084</dist>
+    <dist time="t5" from="luzonp" to="ephili">437</dist>
+    <dist time="t5" from="luzonp" to="luzonp">0</dist>
+    <dist time="t5" from="luzonp" to="caroli">1577</dist>
+
+    <dist time="t5" from="caroli" to="borneo">1618</dist>
+    <dist time="t5" from="caroli" to="wsulaw">874</dist>
+    <dist time="t5" from="caroli" to="esulaw">874</dist>
+    <dist time="t5" from="caroli" to="birdhd">154</dist>
+    <dist time="t5" from="caroli" to="halmah">437</dist>
+    <dist time="t5" from="caroli" to="cnewgn">616</dist>
+    <dist time="t5" from="caroli" to="sepiko">616</dist>
+    <dist time="t5" from="caroli" to="papuao">616</dist>
+    <dist time="t5" from="caroli" to="ephili">1159</dist>
+    <dist time="t5" from="caroli" to="luzonp">1577</dist>
+    <dist time="t5" from="caroli" to="caroli">0</dist>
+
+    <dist time="t0" from="borneo" to="borneo">0</dist>
+    <dist time="t0" from="borneo" to="wsulaw">591</dist>
+    <dist time="t0" from="borneo" to="esulaw">591</dist>
+    <dist time="t0" from="borneo" to="birdhd">1398</dist>
+    <dist time="t0" from="borneo" to="halmah">1115</dist>
+    <dist time="t0" from="borneo" to="cnewgn">1965</dist>
+    <dist time="t0" from="borneo" to="sepiko">1965</dist>
+    <dist time="t0" from="borneo" to="papuao">1965</dist>
+    <dist time="t0" from="borneo" to="ephili">976</dist>
+    <dist time="t0" from="borneo" to="luzonp">1173</dist>
+    <dist time="t0" from="borneo" to="caroli">1965</dist>
+
+    <dist time="t0" from="wsulaw" to="borneo">591</dist>
+    <dist time="t0" from="wsulaw" to="wsulaw">0</dist>
+    <dist time="t0" from="wsulaw" to="esulaw">0</dist>
+    <dist time="t0" from="wsulaw" to="birdhd">829</dist>
+    <dist time="t0" from="wsulaw" to="halmah">652</dist>
+    <dist time="t0" from="wsulaw" to="cnewgn">1387</dist>
+    <dist time="t0" from="wsulaw" to="sepiko">1387</dist>
+    <dist time="t0" from="wsulaw" to="papuao">1387</dist>
+    <dist time="t0" from="wsulaw" to="ephili">910</dist>
+    <dist time="t0" from="wsulaw" to="luzonp">1245</dist>
+    <dist time="t0" from="wsulaw" to="caroli">1387</dist>
+
+    <dist time="t0" from="esulaw" to="borneo">591</dist>
+    <dist time="t0" from="esulaw" to="wsulaw">0</dist>
+    <dist time="t0" from="esulaw" to="esulaw">0</dist>
+    <dist time="t0" from="esulaw" to="birdhd">829</dist>
+    <dist time="t0" from="esulaw" to="halmah">652</dist>
+    <dist time="t0" from="esulaw" to="cnewgn">1387</dist>
+    <dist time="t0" from="esulaw" to="sepiko">1387</dist>
+    <dist time="t0" from="esulaw" to="papuao">1387</dist>
+    <dist time="t0" from="esulaw" to="ephili">910</dist>
+    <dist time="t0" from="esulaw" to="luzonp">1245</dist>
+    <dist time="t0" from="esulaw" to="caroli">1387</dist>
+
+    <dist time="t0" from="birdhd" to="borneo">1398</dist>
+    <dist time="t0" from="birdhd" to="wsulaw">829</dist>
+    <dist time="t0" from="birdhd" to="esulaw">829</dist>
+    <dist time="t0" from="birdhd" to="birdhd">0</dist>
+    <dist time="t0" from="birdhd" to="halmah">443</dist>
+    <dist time="t0" from="birdhd" to="cnewgn">569</dist>
+    <dist time="t0" from="birdhd" to="sepiko">569</dist>
+    <dist time="t0" from="birdhd" to="papuao">569</dist>
+    <dist time="t0" from="birdhd" to="ephili">1133</dist>
+    <dist time="t0" from="birdhd" to="luzonp">1492</dist>
+    <dist time="t0" from="birdhd" to="caroli">569</dist>
+
+    <dist time="t0" from="halmah" to="borneo">1115</dist>
+    <dist time="t0" from="halmah" to="wsulaw">652</dist>
+    <dist time="t0" from="halmah" to="esulaw">652</dist>
+    <dist time="t0" from="halmah" to="birdhd">443</dist>
+    <dist time="t0" from="halmah" to="halmah">0</dist>
+    <dist time="t0" from="halmah" to="cnewgn">960</dist>
+    <dist time="t0" from="halmah" to="sepiko">960</dist>
+    <dist time="t0" from="halmah" to="papuao">960</dist>
+    <dist time="t0" from="halmah" to="ephili">690</dist>
+    <dist time="t0" from="halmah" to="luzonp">1052</dist>
+    <dist time="t0" from="halmah" to="caroli">960</dist>
+
+    <dist time="t0" from="cnewgn" to="borneo">1965</dist>
+    <dist time="t0" from="cnewgn" to="wsulaw">1387</dist>
+    <dist time="t0" from="cnewgn" to="esulaw">1387</dist>
+    <dist time="t0" from="cnewgn" to="birdhd">569</dist>
+    <dist time="t0" from="cnewgn" to="halmah">960</dist>
+    <dist time="t0" from="cnewgn" to="cnewgn">0</dist>
+    <dist time="t0" from="cnewgn" to="sepiko">0</dist>
+    <dist time="t0" from="cnewgn" to="papuao">0</dist>
+    <dist time="t0" from="cnewgn" to="ephili">1617</dist>
+    <dist time="t0" from="cnewgn" to="luzonp">1948</dist>
+    <dist time="t0" from="cnewgn" to="caroli">0</dist>
+
+    <dist time="t0" from="sepiko" to="borneo">1965</dist>
+    <dist time="t0" from="sepiko" to="wsulaw">1387</dist>
+    <dist time="t0" from="sepiko" to="esulaw">1387</dist>
+    <dist time="t0" from="sepiko" to="birdhd">569</dist>
+    <dist time="t0" from="sepiko" to="halmah">960</dist>
+    <dist time="t0" from="sepiko" to="cnewgn">0</dist>
+    <dist time="t0" from="sepiko" to="sepiko">0</dist>
+    <dist time="t0" from="sepiko" to="papuao">0</dist>
+    <dist time="t0" from="sepiko" to="ephili">1617</dist>
+    <dist time="t0" from="sepiko" to="luzonp">1948</dist>
+    <dist time="t0" from="sepiko" to="caroli">0</dist>
+
+    <dist time="t0" from="papuao" to="borneo">1965</dist>
+    <dist time="t0" from="papuao" to="wsulaw">1387</dist>
+    <dist time="t0" from="papuao" to="esulaw">1387</dist>
+    <dist time="t0" from="papuao" to="birdhd">569</dist>
+    <dist time="t0" from="papuao" to="halmah">960</dist>
+    <dist time="t0" from="papuao" to="cnewgn">0</dist>
+    <dist time="t0" from="papuao" to="sepiko">0</dist>
+    <dist time="t0" from="papuao" to="papuao">0</dist>
+    <dist time="t0" from="papuao" to="ephili">1617</dist>
+    <dist time="t0" from="papuao" to="luzonp">1948</dist>
+    <dist time="t0" from="papuao" to="caroli">0</dist>
+
+    <dist time="t0" from="ephili" to="borneo">976</dist>
+    <dist time="t0" from="ephili" to="wsulaw">910</dist>
+    <dist time="t0" from="ephili" to="esulaw">910</dist>
+    <dist time="t0" from="ephili" to="birdhd">1133</dist>
+    <dist time="t0" from="ephili" to="halmah">690</dist>
+    <dist time="t0" from="ephili" to="cnewgn">1617</dist>
+    <dist time="t0" from="ephili" to="sepiko">1617</dist>
+    <dist time="t0" from="ephili" to="papuao">1617</dist>
+    <dist time="t0" from="ephili" to="ephili">0</dist>
+    <dist time="t0" from="ephili" to="luzonp">371</dist>
+    <dist time="t0" from="ephili" to="caroli">1617</dist>
+
+    <dist time="t0" from="luzonp" to="borneo">1173</dist>
+    <dist time="t0" from="luzonp" to="wsulaw">1245</dist>
+    <dist time="t0" from="luzonp" to="esulaw">1245</dist>
+    <dist time="t0" from="luzonp" to="birdhd">1492</dist>
+    <dist time="t0" from="luzonp" to="halmah">1052</dist>
+    <dist time="t0" from="luzonp" to="cnewgn">1948</dist>
+    <dist time="t0" from="luzonp" to="sepiko">1948</dist>
+    <dist time="t0" from="luzonp" to="papuao">1948</dist>
+    <dist time="t0" from="luzonp" to="ephili">371</dist>
+    <dist time="t0" from="luzonp" to="luzonp">0</dist>
+    <dist time="t0" from="luzonp" to="caroli">1948</dist>
+
+    <dist time="t0" from="caroli" to="borneo">1965</dist>
+    <dist time="t0" from="caroli" to="wsulaw">1387</dist>
+    <dist time="t0" from="caroli" to="esulaw">1387</dist>
+    <dist time="t0" from="caroli" to="birdhd">569</dist>
+    <dist time="t0" from="caroli" to="halmah">960</dist>
+    <dist time="t0" from="caroli" to="cnewgn">0</dist>
+    <dist time="t0" from="caroli" to="sepiko">0</dist>
+    <dist time="t0" from="caroli" to="papuao">0</dist>
+    <dist time="t0" from="caroli" to="ephili">1617</dist>
+    <dist time="t0" from="caroli" to="luzonp">1948</dist>
+    <dist time="t0" from="caroli" to="caroli">0</dist>
+  </distances>
+    <taxa n="3">
+    <taxon id="x1">Sp1</taxon>
+    <taxon id="x2">Sp2</taxon>
+    <taxon id="x3">Sp3</taxon>
+  </taxa>
+  <phylo n="2">
+    <newick id="p1">(Sp1:40,(Sp2:30,Sp3:30):10):15;</newick>
+    <newick id="p2">(Sp1:20,(Sp2:10,Sp3:10):10):35;</newick>
+  </phylo>
+  <extantIn> <!-- included fossils -->
+    <extant taxon="x1" time="t0" space="borneo"/>
+    <extant taxon="x2" time="t0" space="wsulaw"/>
+    <extant taxon="x2" time="t0" space="esulaw"/>
+    <extant taxon="x3" time="t0" space="wsulaw"/>
+    <extant taxon="x3" time="t0" space="esulaw"/>
+  </extantIn>
+  <config>
+    <nStartSpaces>1</nStartSpaces>
+    <startSpaces>
+      <allowed space="borneo"/> 
+      <allowed space="esulaw"/> 
+      <allowed space="wsulaw"/> 
+    </startSpaces>
+    <maxRuns>10000000</maxRuns>
+    <stopAfterSuccess>100</stopAfterSuccess>
+    <probSurvA>1.0</probSurvA>
+    <probSurvB>2.0</probSurvB>
+    <probDispA>1.0</probDispA>
+    <probDispB>2.0</probDispB>
+  </config>
+</shibaInput>

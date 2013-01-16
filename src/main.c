@@ -15,6 +15,7 @@ int main(int argc, char **argv)
   PhyloToUse = 0;
   DataFile = "shibaInput.xml";
   PrintData = 0;
+  RUN_BATCH = 1000;
   Cfg.verbose = 0;
   Cfg.probSurvA = -1.0;
   Cfg.probDispA = -1.0; 
@@ -95,6 +96,7 @@ void readArgs(int argc, char **argv)
         }
         else error("Survival parameter on command line not acceptable"); 
       case 'v':
+        RUN_BATCH = 1; // cannot do verbose in parallel mode
         Cfg.verbose = 1;
         break;
       case 'h':

@@ -246,7 +246,7 @@ void readXML()
           else if (!strcmp(mxmlGetElement(node), "dist"))
             {
               int d_t; int d_s1; int d_s2;
-              if (a > ((Spaces * (Spaces-1))/2) * Times) 
+              if (a > Spaces * Spaces * Times) 
                 error("Too many dist elements");
               // Test for text child element
               if (!mxmlGetOpaque(mxmlGetFirstChild(node)))
@@ -425,7 +425,8 @@ void readXML()
   if (p != Phylos) error("Wrong number of newick elements");
   if (x != Taxa) error("Wrong number of taxon elements");
   if (a != (Spaces * Times)) error("Wrong number of area elements");
-  if (d != ((Spaces * (Spaces-1))/2) * Times) 
+  if ((d != ((Spaces * (Spaces-1))/2) * Times) && 
+      (d != Spaces * Spaces * Times ))
     error("Wrong number of dist elements");
   if (e < 1) error("Need at least one extant taxon");
 

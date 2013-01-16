@@ -13,7 +13,7 @@ start =
          attribute n { xsd:integer },
          element spaceName {
             attribute id { xsd:ID },
-            xsd:NCName
+            text
          }+
       },
       element areas {

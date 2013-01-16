@@ -6,7 +6,6 @@
 */
 
 #define _GNU_SOURCE //!< to allow the very useful asprintf()
-#define RUN_BATCH 1000 //!< the number of threads to run in parallel
 
 /*! Safer asprintf macro for extending strings.
  * From [21st Century C](http://shop.oreilly.com/product/0636920025108.do).
@@ -102,6 +101,7 @@ long int topresent;
 double maxdist;
 double maxarea;
 pthread_mutex_t mymutex;
+int RUN_BATCH ; //!< the number of threads to run in parallel
 
 
 // ------------------------ FUNCTIONS ---------------------------

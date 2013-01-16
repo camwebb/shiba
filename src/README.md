@@ -22,7 +22,7 @@ bugs in the code.
 
  * \ref intro
  * \ref install
- * \ref infile
+ * \ref infile (A space-time grid for Malesia is available [here](https://raw.github.com/camwebb/shiba/master/data/malesia.xml)).
  * \ref usage
  * \ref pseudo of the biogeographical algorithms
  * \ref license
@@ -37,7 +37,7 @@ bugs in the code.
    Asia_. Cambridge University
    Press. [[PDF](http://camwebb.info/files/webb2012_sage.pdf)] [[book](http://www.cambridge.org/aus/catalogue/catalogue.asp?isbn=9781139533935)] 
  
-\page ack Acknlowledgments
+\page ack Acknowledgments
 
 The initial idea and context for SHIBA arose during discussions
 with Michael Donoghue, Rick Ree and Brian Moore in 2004, which also
@@ -71,7 +71,7 @@ led to Ree et al. (2005) and to [LAGRANGE](http://code.google.com/p/lagrange/).
     * (If a clade enters a `period` with on edge and leaves with two,
       the two ‘new’ lineages will be reconciled to appear at the
       beginning of the subsequent `period`.  If a clade enters a
-      `period` with on edge and branchs twice, thus leaving with three
+      `period` with on edge and branches twice, thus leaving with three
       edges, the three ‘new’ lineages will appear at
       the beginning of the subsequent `period`; information about the
       branch within a `period` does not persist).
@@ -115,7 +115,7 @@ See \ref infile for more details on encoding your input data.
 ## Speciation-distribution model
 
 `SHIBA` uses a simple model to determine the spatial distribution of
-daughter lineages that maximises allopatric speciation. When, at the
+daughter lineages that maximizes allopatric speciation. When, at the
 transition of one period to the next, a lineage splitting occurs (as
 specified by the input phylogeny):
 
@@ -138,9 +138,9 @@ See \ref pseudo for more details of the biogeographical algorithm.
 ## Island Biogeography features
 
 Both the size of an ancestral area and its degree of isolation from
-other areas will strongly influence the liklihood that an ancestral
+other areas will strongly influence the likelihood that an ancestral
 taxon distribution included it or not.  To incorporate these data,
-`SHIBA` conatains a basic Island Biogeography model, with functions
+`SHIBA` contains a basic Island Biogeography model, with functions
 similar to those proposed in the classic MacArthur and Wilson model:
 extinction of a lineage on an island is inversely related to its area,
 while dispersal probability into and out of an island is inversely
@@ -178,7 +178,7 @@ Please see \ref func for more details on the functions.
     vicariant split prior at 20 Mya.
  7. By changing the survival and dispersal curves (with `-d` or `-s`
     on the command line, or in the `shibaInput.xml` file), our
-    confidence in these interpretations can be further strenghtened.
+    confidence in these interpretations can be further strengthened.
 
 ## Performance
 
@@ -225,7 +225,7 @@ Generalizing, the basic survival curve is: \f$log(\frac{A_i \times (10^b - 1)}{A
 Finally, a further parameter, \f$p_{surv}\f$ sets the survival for
 \f$A_{total}\f$:
 
-> **Survival probablility** \f$= p_{surv} \times log(\frac{A_i \times (10^b - 1)}{A_{total}} + 1) / b\f$
+> **Survival probability** \f$= p_{surv} \times log(\frac{A_i \times (10^b - 1)}{A_{total}} + 1) / b\f$
 
 In the **input data**, \f$p_{surv}\f$ is set with `probSurvA` and shape
 parameter \f$b\f$ is set with `probSurvB`. Values of ‘1.0’ for
@@ -244,9 +244,9 @@ with a parameter \f$b\f$ (as opposed to varying the ‘base,’ i.e. 10):
 \f$10^{(-1 \times b \times \frac{d_{i,j}}{d_{max}})}\f$
 
 Finally, a further parameter, \f$p_{disp}\f$ sets the dispersal
-probablility for distance zero, i.e., when landmasses are touching.
+probability for distance zero, i.e., when landmasses are touching.
 
-> **Dispersal probablility** \f$= p_{disp} \times 10^{(-1 \times b \times \frac{d_{i,j}}{d_{max}})}\f$
+> **Dispersal probability** \f$= p_{disp} \times 10^{(-1 \times b \times \frac{d_{i,j}}{d_{max}})}\f$
 
 In the **input data**, \f$p_{disp}\f$ is set with `probDispA` and shape
 parameter \f$b\f$ is set with `probDispB`. Values of ‘1.0’ for
@@ -309,7 +309,7 @@ suggest [trang](http://www.thaiopensource.com/relaxng/trang.html) and
 After \ref install, the program can be run simply by typing `shiba` in
 a terminal window, while in the same directory it was compiled in.  If
 you have not set your `PATH` environmental variable to include ‘`.`’,
-you will need to type `./shiba`. The otions area:
+you will need to type `./shiba`. The options are:
  
       -d NUM   Use this value as the prob. of dispersal (probDispA)
       -f FILE  Use this file as input. Default file: shibaInput.xml
